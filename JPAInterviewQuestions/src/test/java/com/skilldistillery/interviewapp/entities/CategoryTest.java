@@ -12,12 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class CategoryTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
-	private User user2;
+	private Category category;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,47 +31,25 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
-		
+		category = em.find(Category.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		category = null;
 	}
 
 	@Test
-	void test_User_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
-		assertEquals("admin", user.getFirstName());
+	void test_Category_entity_mapping() {
+		assertNotNull(category);
+		assertEquals("Electrical", category.getName());
+		
 	}
 	
 	@Test
-	void test_User_mapping_to_Address() {
-		assertNotNull(user);
-		assertNotNull(user.getAddress());
-		assertEquals("Denver", user.getAddress().getCity());
+	void test_Category_mapping_Question() {
+		assertNotNull(category);
+		assertTrue(category.getQuestions().size() > 0);
 	}
-	
-	@Test
-	void test_user_mapping_to_Question() {
-		assertNotNull(user);
-		assertTrue(user.getQuestions().size() > 0);
-	}
-	
-	@Test
-	void test_user_mapping_answer() {
-		user2 = em.find(User.class, 2);
-		assertNotNull(user2);
-		assertTrue(user2.getAnswers().size() > 0);
-	}
-	
-	@Test
-	void test_user_mapping_job() {
-		assertNotNull(user);
-		assertTrue(user.getJobs().size() > 0);
-	}
-
 }
