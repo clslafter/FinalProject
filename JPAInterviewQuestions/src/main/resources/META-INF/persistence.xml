@@ -6,6 +6,13 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider </provider>
     
     <!-- entities -->
+    <class>com.skilldistillery.interviewapp.entities.Answer</class>
+    <class>com.skilldistillery.interviewapp.entities.AnswerComment</class>
+    <class>com.skilldistillery.interviewapp.entities.AnswerRating</class>
+    <class>com.skilldistillery.interviewapp.entities.Category</class>
+    <class>com.skilldistillery.interviewapp.entities.Company</class>
+    <class>com.skilldistillery.interviewapp.entities.Industry</class>
+    <class>com.skilldistillery.interviewapp.entities.JobOpening</class>
     <class>com.skilldistillery.interviewapp.entities.Question</class>
     <class>com.skilldistillery.interviewapp.entities.User</class>
     
