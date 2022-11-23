@@ -45,5 +45,23 @@ class JobOpeningTest {
 		assertNotNull(job);
 		assertTrue(job.getRoleFilled() == null);
 	}
+	
+	@Test
+	void test_JobOpening_mapping_User() {
+		assertNotNull(job);
+		assertEquals("admin", job.getUser().getFirstName());
+	}
+	
+	@Test
+	void test_JobOpening_mapping_Company() {
+		assertNotNull(job);
+		assertEquals("CEC", job.getCompany().getName());
+	}
+	
+	@Test
+	void test_JobOpening_mapping_address() {
+		assertNotNull(job);
+		assertEquals("Denver", job.getAddress().getCity());
+	}
 
 }

@@ -46,4 +46,10 @@ class CategoryTest {
 		assertEquals("Electrical", category.getName());
 		
 	}
+	
+	@Test
+	void test_Category_mapping_Question() {
+		assertNotNull(category);
+		assertTrue(category.getQuestions().size() > 0);
+	}
 }

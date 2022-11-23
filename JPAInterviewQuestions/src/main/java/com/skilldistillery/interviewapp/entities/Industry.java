@@ -1,11 +1,14 @@
 package com.skilldistillery.interviewapp.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Industry {
@@ -13,10 +16,13 @@ public class Industry {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
+
 	private boolean enabled;
+
+	@ManyToMany(mappedBy = "industries")
+	private List<Company> companies;
 
 	public Industry() {
 		super();
@@ -46,6 +52,31 @@ public class Industry {
 		this.enabled = enabled;
 	}
 
+	public List<Company> getCompanies() {
+		return companies;
+	}
+
+	public void setCompanies(List<Company> companies) {
+		this.companies = companies;
+	}
+
+	public void addCompany(Company company) {
+		if (companies == null) {
+			companies = new ArrayList<>();
+		}
+		if (!companies.contains(company)) {
+			companies.add(company);
+			company.addIndustry(this);
+		}
+	}
+
+	public void removeCompany(Company company) {
+		if (companies != null && companies.contains(company)) {
+			companies.remove(company);
+			company.removeIndustry(this);
+		}
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -67,6 +98,5 @@ public class Industry {
 	public String toString() {
 		return "Industry [id=" + id + ", name=" + name + ", enabled=" + enabled + "]";
 	}
-	
-	
+
 }

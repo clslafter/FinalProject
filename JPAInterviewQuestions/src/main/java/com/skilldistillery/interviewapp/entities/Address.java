@@ -1,33 +1,43 @@
 package com.skilldistillery.interviewapp.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Address{
-	
+public class Address {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String street;
-	
+
 	private String street2;
-	
+
 	private String city;
-	
+
 	private String state;
-	
+
 	private String zip;
-	
+
 	private Boolean enabled;
-	
-	//METHODS
-	
+
+	@OneToOne(mappedBy = "address")
+	private Company company;
+
+	@OneToOne(mappedBy = "user")
+	private JobOpening job;
+
+	// METHODS
+
 	public Address() {
 		super();
 	}
@@ -88,6 +98,23 @@ public class Address{
 		this.enabled = enabled;
 	}
 
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+	
+	public JobOpening getJob() {
+		return job;
+	}
+
+	public void setJob(JobOpening job) {
+		this.job = job;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -111,5 +138,4 @@ public class Address{
 				+ state + ", zip=" + zip + ", enabled=" + enabled + "]";
 	}
 
-	
 }

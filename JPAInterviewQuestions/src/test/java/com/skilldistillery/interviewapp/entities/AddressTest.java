@@ -47,4 +47,16 @@ class AddressTest {
 		assertEquals("Colorado", address.getState());
 		
 	}
+	
+	@Test
+	void test_Address_mapping_Company() {
+		assertNotNull(address);
+		assertEquals("CEC",address.getCompany().getName());
+	}
+	
+	@Test
+	void test_address_mapping_Job() {
+		assertNotNull(address);
+		assertEquals("Hiring Electricians", address.getJob().getDescription());
+	}
 }

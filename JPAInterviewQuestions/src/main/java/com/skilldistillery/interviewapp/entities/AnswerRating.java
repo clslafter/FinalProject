@@ -6,6 +6,9 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Table(name = "answer_rating")
@@ -14,11 +17,21 @@ public class AnswerRating {
 
 	@EmbeddedId
 	private AnswerRatingId id;
-	
+
 	private Boolean upvote;
-	
-	@Column(name="rating_date")
+
+	@Column(name = "rating_date")
 	private LocalDateTime ratingDate;
+
+	@ManyToOne
+	@JoinColumn(name = "answer_id")
+	@MapsId(value = "answerId")
+	private Answer answer;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	@MapsId(value = "userId")
+	private User user;
 
 	public AnswerRating() {
 		super();
@@ -48,6 +61,22 @@ public class AnswerRating {
 		this.ratingDate = ratingDate;
 	}
 
+	public Answer getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(Answer answer) {
+		this.answer = answer;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -69,5 +98,5 @@ public class AnswerRating {
 	public String toString() {
 		return "AnswerRating [id=" + id + ", upvote=" + upvote + ", ratingDate=" + ratingDate + "]";
 	}
-	
+
 }
