@@ -15,6 +15,7 @@
     <class>com.skilldistillery.interviewapp.entities.JobOpening</class>
     <class>com.skilldistillery.interviewapp.entities.Question</class>
     <class>com.skilldistillery.interviewapp.entities.User</class>
+    <class>com.skilldistillery.interviewapp.entities.AnswerRatingId</class>
     
     
     <!-- end entities -->
