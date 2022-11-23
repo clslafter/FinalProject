@@ -47,4 +47,16 @@ private static EntityManagerFactory emf;
 		assertNotNull(answerRating);
 		assertTrue(answerRating.getUpvote());
 	}
+	
+	@Test
+	void test_answerRating_mapping_user() {
+		assertNotNull(answerRating);
+		assertEquals("user", answerRating.getUser().getFirstName());
+	}
+	
+	@Test
+	void test_answerRating_mapping_answer() {
+		assertNotNull(answerRating);
+		assertEquals("You can start a tech school or get hired by an electrical company", answerRating.getAnswer().getAnswer());
+	}
 }

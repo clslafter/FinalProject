@@ -45,5 +45,29 @@ class QuestionTest {
 		assertNotNull(question);
 		assertEquals("How do I start my apprenticeship?", question.getQuestion());
 	}
+	
+	@Test
+	void test_Question_mapping_to_User() {
+		assertNotNull(question);
+		assertEquals("admin", question.getUser().getUsername());
+	}
+	
+	@Test
+	void test_Question_mapping_Answer() {
+		assertNotNull(question);
+		assertTrue(question.getAnswers().size() > 0);
+	}
+	
+	@Test
+	void test_Question_mapping_Category() {
+		assertNotNull(question);
+		assertTrue(question.getCategories().size() > 0);
+	}
+	
+	@Test
+	void test_Question_mapping_Company() {
+		assertNotNull(question);
+		assertTrue(question.getCompanies().size() > 0);
+	}
 
 }

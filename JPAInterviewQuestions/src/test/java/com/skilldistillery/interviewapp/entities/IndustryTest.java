@@ -47,4 +47,10 @@ private static EntityManagerFactory emf;
 		assertNotNull(industry);
 		assertEquals("Construction",industry.getName());
 	}
+	
+	@Test
+	void test_Industry_mapping_Company() {
+		assertNotNull(industry);
+		assertTrue(industry.getCompanies().size() > 0);
+	}
 }

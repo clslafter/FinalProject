@@ -50,6 +50,24 @@ class AnswerTest {
 		assertEquals("You can start a tech school or get hired by an electrical company",answer.getAnswer());
 		assertTrue(answer.isEnabled());
 	}
+	
+	@Test
+	void test_Answer_mapping_Question() {
+		assertNotNull(answer);
+		assertEquals("How do I start my apprenticeship?", answer.getQuestion().getQuestion());
+	}
+	
+	@Test
+	void test_Answer_mapping_User() {
+		assertNotNull(answer);
+		assertEquals("user", answer.getUser().getFirstName());
+	}
+	
+	@Test
+	void test_Answer_mapping_AnswerRating() {
+		assertNotNull(answer);
+		assertTrue(answer.getRatings().size() > 0);
+	}
 
 
 }

@@ -47,5 +47,29 @@ private static EntityManagerFactory emf;
 		assertNotNull(company);
 		assertEquals("CEC",company.getName());
 	}
+	
+	@Test
+	void test_Company_mapping_Address() {
+		assertNotNull(company);
+		assertEquals("Denver", company.getAddress().getCity());
+	}
+	
+	@Test
+	void test_Company_mapping_Question() {
+		assertNotNull(company);
+		assertTrue(company.getQuestions().size() > 0);
+	}
+	
+	@Test
+	void test_Company_mapping_Industry() {
+		assertNotNull(company);
+		assertTrue(company.getIndustries().size() > 0);
+	}
+	
+	@Test
+	void test_Company_mapping_job() {
+		assertNotNull(company);
+		assertTrue(company.getJobs().size() > 0);
+	}
 
 }
