@@ -1,10 +1,8 @@
 package com.skilldistillery.interviewapp.entities;
 
 import java.time.LocalDateTime;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -12,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -20,6 +17,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Question {
@@ -40,16 +39,20 @@ public class Question {
 
 	private Boolean enabled;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "question")
 	private List<Answer> answers;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "questions")
 	private List<Category> categories;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "questions")
 	private List<Company> companies;
 
