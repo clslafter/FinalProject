@@ -16,6 +16,8 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
 
@@ -49,16 +51,20 @@ public class User {
 	@Column(name = "avatar_url")
 	private String avatarUrl;
 
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Question> questions;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Answer> answers;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<JobOpening> jobs;
 

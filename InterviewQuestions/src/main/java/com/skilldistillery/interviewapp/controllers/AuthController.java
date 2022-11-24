@@ -33,6 +33,7 @@ public class AuthController {
 
 	@GetMapping("authenticate")
 	public User authenticate(Principal principal, HttpServletResponse res) {
+		System.out.println("**************Entered Authenticate Method");
 		if (principal == null) { // no Authorization header sent
 			res.setStatus(401);
 			res.setHeader("WWW-Authenticate", "Basic");
