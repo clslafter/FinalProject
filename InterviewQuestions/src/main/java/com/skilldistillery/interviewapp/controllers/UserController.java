@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,6 +57,22 @@ public class UserController {
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(user.getId());
 			res.setHeader("location", url.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			user = null;
+		}
+		return user;
+	}
+	
+	@PutMapping("users/{tid}")
+	public User update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody User user, Principal principal) {
+		try {
+			//user = userService.update(principal.getName(), uid, user);
+			user = userService.update(uid, user);
+			if (user == null) {
+				res.setStatus(404);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
