@@ -11,12 +11,12 @@ export class Answer {
   answer: string;
   user: User;
   question: Question;
-  ratings: AnswerRating;
+  ratings: AnswerRating[];
 
   constructor(
     id: number = 0, dateCreated: string = '', dateUpdated: string = '',
     enabled: boolean = true, answer: string = '', user: User,
-    question: Question, ratings: AnswerRating
+    question: Question, ratings: AnswerRating[]
     ){
       this.id = id;
       this.dateCreated = dateCreated;

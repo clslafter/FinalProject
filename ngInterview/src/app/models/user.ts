@@ -8,7 +8,7 @@ export class User {
     firstName: string;
     lastName: string;
     enabled: boolean;
-    role: boolean;
+    role: string;
     username: string;
     password: string;
     email: string;
@@ -20,7 +20,7 @@ export class User {
     answers?: Answer[];
     jobs?: JobOpening[];
     constructor(id: number = 0, firstName: string = '',lastName: string = '',
-        enabled: boolean = true, role: boolean = true, username: string = '',
+        enabled: boolean = true, role: string = '', username: string = '',
         password: string = '', email: string = '', aboutMe: string = '',
         dateCreated: string = '', avatarURL: string = '', address?: Address,
         questions?: Question[], answers?: Answer[], jobs?: JobOpening[]
