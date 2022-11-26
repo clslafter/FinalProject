@@ -60,8 +60,10 @@ public class UserServiceImpl implements UserService {
 			managed.setEnabled(false);
 
 			userRepo.save(managed);
-			return managed.getEnabled();
+			//returns true if user was disabled
+			return !managed.getEnabled();
 		}
-		return userRepo.findById(uid).getEnabled();
+		//returns false if user is enabled
+		return !userRepo.findById(uid).getEnabled();
 	}
 }
