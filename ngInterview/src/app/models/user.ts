@@ -16,14 +16,14 @@ export class User {
     dateCreated: string;
     avatarUrl: string;
     address?: Address;
-    questions: Question[];
-    answers: Answer[];
-    jobs: JobOpening[];
+    questions?: Question[];
+    answers?: Answer[];
+    jobs?: JobOpening[];
     constructor(id: number = 0, firstName: string = '',lastName: string = '',
         enabled: boolean = true, role: boolean = true, username: string = '',
         password: string = '', email: string = '', aboutMe: string = '',
-        dateCreated: string = '', avatarURL: string = '', address: Address,
-        questions: Question[], answers: Answer[], jobs: JobOpening[]
+        dateCreated: string = '', avatarURL: string = '', address?: Address,
+        questions?: Question[], answers?: Answer[], jobs?: JobOpening[]
          ){
             this.id = id;
             this.firstName = firstName;
