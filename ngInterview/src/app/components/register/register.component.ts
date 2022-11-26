@@ -20,6 +20,9 @@ export class RegisterComponent implements OnInit {
   register(user: User): void {
     console.log('Registering user:');
     console.log(user);
+    this.newUser.enabled = true;
+    this.newUser.role = 'USER';
+
     this.auth.register(user).subscribe({
       next: (registeredUser) => {
         this.auth.login(user.username, user.password).subscribe({
