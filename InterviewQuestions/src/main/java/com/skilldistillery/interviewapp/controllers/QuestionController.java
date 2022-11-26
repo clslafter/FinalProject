@@ -43,7 +43,7 @@ public class QuestionController {
 		return questions;
 	}
 	
-	@PostMapping("questions")
+	@PostMapping("api/questions")
 	public Question create(HttpServletRequest req, HttpServletResponse res, @RequestBody Question question, Principal principal) {
 		try {
 			if (question == null) {
