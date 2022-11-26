@@ -1,6 +1,6 @@
 import { Address } from "./address";
 import { Answer } from "./answer";
-import { Job } from "./job";
+import { JobOpening } from "./job-opening";
 import { Question } from "./question";
 
 export class User {
@@ -18,12 +18,12 @@ export class User {
     address?: Address;
     questions: Question[];
     answers: Answer[];
-    jobs: Job[];
+    jobs: JobOpening[];
     constructor(id: number = 0, firstName: string = '',lastName: string = '',
         enabled: boolean = true, role: boolean = true, username: string = '',
         password: string = '', email: string = '', aboutMe: string = '',
         dateCreated: string = '', avatarURL: string = '', address: Address,
-        questions: Question[], answers: Answer[], jobs: Job[]
+        questions: Question[], answers: Answer[], jobs: JobOpening[]
          ){
             this.id = id;
             this.firstName = firstName;
