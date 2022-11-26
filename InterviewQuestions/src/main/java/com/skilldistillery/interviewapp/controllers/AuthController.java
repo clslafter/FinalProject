@@ -15,7 +15,7 @@ import com.skilldistillery.interviewapp.entities.User;
 import com.skilldistillery.interviewapp.services.AuthService;
 
 @RestController
-@CrossOrigin({ "*", "http://localhost" })
+@CrossOrigin({ "*", "http://localhost:4300" })
 public class AuthController {
 
 	@Autowired
@@ -23,6 +23,7 @@ public class AuthController {
 
 	@PostMapping("register")
 	public User register(@RequestBody User user, HttpServletResponse res) {
+		System.out.println("**************Entered Register Method");
 		if (user == null) {
 			res.setStatus(400);
 			return null;
@@ -33,7 +34,6 @@ public class AuthController {
 
 	@GetMapping("authenticate")
 	public User authenticate(Principal principal, HttpServletResponse res) {
-		System.out.println("**************Entered Authenticate Method");
 		if (principal == null) { // no Authorization header sent
 			res.setStatus(401);
 			res.setHeader("WWW-Authenticate", "Basic");

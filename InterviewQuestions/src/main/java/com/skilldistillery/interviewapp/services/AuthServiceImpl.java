@@ -21,10 +21,11 @@ public class AuthServiceImpl implements AuthService {
 
 	@Override
 	public User register(User user) {
+		System.out.println("********Entered AuthService register method********");
 		String ecryptedPassword = encoder.encode(user.getPassword());
 		user.setPassword(ecryptedPassword);
 		user.setEnabled(true);
-		user.setRole("standard");
+		user.setRole("USER");
 		userRepo.saveAndFlush(user);
 		return user;
 	}
