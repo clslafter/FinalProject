@@ -22,15 +22,15 @@ export class RegisterComponent implements OnInit {
     console.log(user);
     this.auth.register(user).subscribe({
       next: (registeredUser) => {
-        // this.auth.login(user.username, user.password).subscribe({
-        //   next: (loggedInUser) => {
-        //     this.router.navigateByUrl('/todo');
-        //   },
-        //   error: (problem) => {
-        //     console.error('RegisterComponent.register(): Error logging in user:');
-        //     console.error(problem);
-        //   }
-        // });
+        this.auth.login(user.username, user.password).subscribe({
+          next: (loggedInUser) => {
+            this.router.navigateByUrl('/todo');
+          },
+          error: (problem) => {
+            console.error('RegisterComponent.register(): Error logging in user:');
+            console.error(problem);
+          }
+        });
       },
       error: (fail) => {
         console.error('RegisterComponent.register(): Error registering account');
