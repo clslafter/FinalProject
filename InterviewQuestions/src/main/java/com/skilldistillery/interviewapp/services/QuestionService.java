@@ -8,4 +8,12 @@ public interface QuestionService {
 
 	List<Question> questionList();
 
+	Question show(int qid);
+
+	Question create(Question question);
+
+	Question update(int qid, Question question);
+
+	boolean delete(int qid);
+
 }
