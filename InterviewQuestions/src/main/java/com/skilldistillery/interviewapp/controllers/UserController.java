@@ -65,7 +65,7 @@ public class UserController {
 		return user;
 	}
 
-	@PutMapping("users/{tid}")
+	@PutMapping("users/{uid}")
 	public User update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody User user,
 			Principal principal) {
 		try {
@@ -82,11 +82,11 @@ public class UserController {
 		return user;
 	}
 
-	@DeleteMapping("users/{tid}")
-	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int tid, Principal principal) {
+	@DeleteMapping("users/{uid}")
+	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, Principal principal) {
 		try {
-			// if (userService.delete(principal.getName(), tid)) {
-			if (userService.delete(tid)) {
+			// if (userService.delete(principal.getName(), uid)) {
+			if (userService.delete(uid)) {
 				res.setStatus(204);
 			} else {
 				res.setStatus(404);
