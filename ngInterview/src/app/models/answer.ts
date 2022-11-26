@@ -9,14 +9,14 @@ export class Answer {
   dateUpdated: string;
   enabled: boolean;
   answer: string;
-  user: User;
-  question: Question;
-  ratings: AnswerRating[];
+  user?: User;
+  question?: Question;
+  ratings?: AnswerRating[];
 
   constructor(
     id: number = 0, dateCreated: string = '', dateUpdated: string = '',
-    enabled: boolean = true, answer: string = '', user: User,
-    question: Question, ratings: AnswerRating[]
+    enabled: boolean = true, answer: string = '', user?: User,
+    question?: Question, ratings?: AnswerRating[]
     ){
       this.id = id;
       this.dateCreated = dateCreated;

@@ -10,12 +10,12 @@ export class Address {
   state: string;
   zip: string;
   enabled: boolean;
-  company: Company;
-  job: JobOpening;
+  company?: Company;
+  job?: JobOpening;
   constructor(
     id: number = 0, street: string = '', street2: string = '',
     city: string = '', state: string = '', zip: string = '',
-    enabled: boolean = true, company: Company, job: JobOpening,
+    enabled: boolean = true, company?: Company, job?: JobOpening,
   ){
     this.id = id;
     this.street = street;

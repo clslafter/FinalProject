@@ -8,7 +8,7 @@ export class Company {
   name: string;
   description: string;
   logoURL: string;
-  address: Address;
+  address?: Address;
   enabled: boolean;
   questions?: Question[];
   industries?: Industry[];
@@ -16,8 +16,8 @@ export class Company {
 
   constructor(
     id: number = 0, name: string = '', description: string = '',
-    logoURL: string = '', address: Address, enabled: boolean = true,
-    questions: Question[], industries: Industry[], jobs: JobOpening[]
+    logoURL: string = '', address?: Address, enabled: boolean = true,
+    questions?: Question[], industries?: Industry[], jobs?: JobOpening[]
   ){
     this.id = id;
     this.name = name;
