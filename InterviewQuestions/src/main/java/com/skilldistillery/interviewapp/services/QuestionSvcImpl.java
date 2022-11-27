@@ -64,9 +64,8 @@ public class QuestionSvcImpl implements QuestionService {
 	}
 
 	@Override
-	public boolean delete(int qid) {
-		Question managed = null;
-		managed = questionRepo.findById(qid);
+	public boolean delete(String username, int qid) {
+		Question managed = questionRepo.findByIdAndUser_Username(qid, username);
 		if (managed != null) {
 
 			managed.setEnabled(false);

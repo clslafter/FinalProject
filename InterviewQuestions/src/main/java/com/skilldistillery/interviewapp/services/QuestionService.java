@@ -14,6 +14,6 @@ public interface QuestionService {
 
 	public Question update(String username, int qid, Question question);
 
-	boolean delete(int qid);
+	public boolean delete(String username, int qid);
 
 }
