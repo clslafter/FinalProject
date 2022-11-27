@@ -23,7 +23,6 @@ import { LogoutComponent } from './components/logout/logout.component';
     RegisterComponent,
     NotFoundComponent,
     LogoutComponent
-
   ],
   imports: [
     BrowserModule,
