@@ -10,5 +10,7 @@ import com.skilldistillery.interviewapp.entities.User;
 public interface QuestionRepository extends JpaRepository<Question, Integer>{
 	
 	Question findById(int qid);
+	
+	Question findByIdAndUser_Username(int qid, String username);
 
 }
