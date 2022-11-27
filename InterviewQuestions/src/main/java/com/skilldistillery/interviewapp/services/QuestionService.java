@@ -10,7 +10,9 @@ public interface QuestionService {
 
 	Question show(int qid);
 
-	Question create(Question question);
+	//Question create(Question question);
+	
+	public Question create(String username, Question question);
 
 	Question update(int qid, Question question);
 

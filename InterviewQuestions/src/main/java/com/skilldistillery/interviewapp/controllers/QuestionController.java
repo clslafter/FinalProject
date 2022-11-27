@@ -50,8 +50,9 @@ public class QuestionController {
 				res.setStatus(401);
 				return question;
 			}
-			// question = questionService.create(principal.getName(), question);
-			question = questionService.create(question);
+			System.out.println("*****  **** From QuestionController " + principal.getName());
+			question = questionService.create(principal.getName(), question);
+			//question = questionService.create(question);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(question.getId());

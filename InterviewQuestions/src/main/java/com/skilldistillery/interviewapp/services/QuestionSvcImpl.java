@@ -6,13 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.interviewapp.entities.Question;
+import com.skilldistillery.interviewapp.entities.User;
 import com.skilldistillery.interviewapp.repositories.QuestionRepository;
+import com.skilldistillery.interviewapp.repositories.UserRepository;
 
 @Service
 public class QuestionSvcImpl implements QuestionService {
 	
 	@Autowired
 	private QuestionRepository questionRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
 	
 	@Override
 	public List<Question> questionList() {
@@ -25,9 +30,18 @@ public class QuestionSvcImpl implements QuestionService {
 	}
 
 	@Override
-	public Question create(Question question) {
-		return questionRepo.saveAndFlush(question);
+	//public Question create(Question question) {
+		public Question create(String username, Question question) {
+		System.out.println("**** from QuestionServImpl, username is "+ username);
+		User user = userRepo.findByUsername(username);
+		System.out.println(" ***** From QuestionSvcImpl after userRepo call***");
+		if (user != null) {
+			question.setUser(user);
+			return questionRepo.saveAndFlush(question);
+		}
+		return null;
 	}
+	
 
 	@Override
 	public Question update(int qid, Question question) {
