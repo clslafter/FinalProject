@@ -10,6 +10,8 @@ export class NavigationComponent implements OnInit {
 
   public isCollapsed = false;
 
+
+
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {

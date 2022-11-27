@@ -1,1 +1,17 @@
-<p>welcome works!</p>
+<h1>Welcome to the InterviewQuestions App!</h1>
+
+<p>Register or Login to view answers and more!</p>
+
+<div>
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Question</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let question of questions">
+        <td><a class="nav-link" [routerLink]="['/register']">{{ question.question }}</a></td>
+      </tr>
+    </tbody>
+  </table>
