@@ -453,6 +453,12 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (1, 1);
+INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (1, 5);
+INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (2, 5);
+INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (3, 5);
+INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (4, 5);
+INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (2, 8);
+INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (3, 7);
 
 COMMIT;
 
@@ -463,6 +469,7 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (1, 1);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (7, 4);
 
 COMMIT;
 
