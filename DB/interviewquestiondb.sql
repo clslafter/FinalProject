@@ -21,7 +21,7 @@ USE `interviewquestiondb` ;
 DROP TABLE IF EXISTS `address` ;
 
 CREATE TABLE IF NOT EXISTS `address` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `street` VARCHAR(45) NULL,
   `street2` VARCHAR(45) NULL,
   `city` VARCHAR(45) NOT NULL,
@@ -67,7 +67,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `question` ;
 
 CREATE TABLE IF NOT EXISTS `question` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `date_created` DATETIME NULL,
   `date_updated` DATETIME NULL,
@@ -89,7 +89,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `answer` ;
 
 CREATE TABLE IF NOT EXISTS `answer` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `question_id` INT NOT NULL,
   `answer` TEXT NOT NULL,
@@ -118,7 +118,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `industry` ;
 
 CREATE TABLE IF NOT EXISTS `industry` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `enabled` TINYINT NOT NULL,
   PRIMARY KEY (`id`))
@@ -131,7 +131,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `company` ;
 
 CREATE TABLE IF NOT EXISTS `company` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NULL,
   `logo_url` VARCHAR(1000) NULL,
@@ -153,7 +153,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `category` ;
 
 CREATE TABLE IF NOT EXISTS `category` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NULL,
   `enabled` TINYINT NOT NULL,
@@ -167,7 +167,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `job_opening` ;
 
 CREATE TABLE IF NOT EXISTS `job_opening` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `company_id` INT NOT NULL,
   `description` VARCHAR(45) NOT NULL,
   `url_post` VARCHAR(100) NULL,
