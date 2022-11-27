@@ -32,9 +32,7 @@ public class QuestionSvcImpl implements QuestionService {
 	@Override
 	//public Question create(Question question) {
 		public Question create(String username, Question question) {
-		System.out.println("**** from QuestionServImpl, username is "+ username);
 		User user = userRepo.findByUsername(username);
-		System.out.println(" ***** From QuestionSvcImpl after userRepo call***");
 		if (user != null) {
 			question.setUser(user);
 			return questionRepo.saveAndFlush(question);
@@ -44,21 +42,23 @@ public class QuestionSvcImpl implements QuestionService {
 	
 
 	@Override
-	public Question update(int qid, Question question) {
-		Question managed = null;
-		managed = questionRepo.findById(qid);
-		if (managed != null) {
-			managed.setDateCreated(question.getDateCreated());
-			managed.setDateUpdated(question.getDateUpdated());
-			managed.setEnabled(question.getEnabled());
-			managed.setQuestion(question.getQuestion());
-			managed.setEnabled(question.getEnabled());
-			managed.setUser(question.getUser());
-			managed.setAnswers(question.getAnswers());
-			managed.setCategories(question.getCategories());
-			managed.setCompanies(question.getCompanies());
+	public Question update(String username, int qid, Question question) {
+		User user = userRepo.findByUsername(username);
+		Question managed = questionRepo.findById(qid);
+		if(managed.getUser().getUsername().equals(username)) {
+			if (managed != null) {
+				managed.setDateCreated(question.getDateCreated());
+				managed.setDateUpdated(question.getDateUpdated());
+				managed.setEnabled(question.getEnabled());
+				managed.setQuestion(question.getQuestion());
+				managed.setEnabled(question.getEnabled());
+				managed.setUser(userRepo.findByUsername(username));
+				managed.setAnswers(question.getAnswers());
+				managed.setCategories(question.getCategories());
+				managed.setCompanies(question.getCompanies());
 
 			return questionRepo.save(managed);
+			}
 		}
 		return managed;
 	}
