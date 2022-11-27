@@ -392,6 +392,7 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (1, 2, 1, 'You can start a tech school or get hired by an electrical company', NULL, NULL, 1);
+INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (2, 3, 7, 'Prior to your interview make sure you do some research on the company you are applying to and write down some questions you have for them. It shows your interest in the job and company.', NULL, NULL, 1);
 
 COMMIT;
 
@@ -485,6 +486,8 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 2, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (2, 3, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (2, 6, 1, NULL);
 
 COMMIT;
 
