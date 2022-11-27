@@ -345,7 +345,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (1, NULL, NULL, 'Denver', 'Colorado', NULL, 1);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (1, '4245 Smoky Hill ', NULL, 'Denver', 'Colorado', '80015', 1);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (2, '90212 East West Drive', NULL, 'Pueblo', 'Colorado', '80001', 1);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (3, '8923 Blood Meridian ave ', NULL, 'Westminister', 'Colorado', '72569', 1);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (4, '98321 Old Man & the Sea Drive', NULL, 'Thornton', 'Colorado', '78321', 1);
 
 COMMIT;
 
@@ -357,6 +360,10 @@ START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (1, 'admin', 'admin', 1, 'ADMIN', 'admin', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'admin@gmail.com', 'I\'m an Admin', NULL, 1, NULL);
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (2, 'user', 'user', 1, 'USER', 'user', 'user', 'user@gmail.com', 'I\'m a User', NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (3, 'Ethan', 'Lauzon', 1, 'ADMIN', 'ethanlauzon', 'wombat1', 'ethanlauzon@gmail.com', 'SD Graduate', NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (4, 'Josh', 'Ingram', 1, 'ADMIN', 'joshingram', 'wombat1', 'joshingram@gmail.com', 'SD Graduate', NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (5, 'Celicia', 'Slafter', 1, 'ADMIN', 'celiciaslafter', 'wombat1', 'celiciaslafter@gmail.com', 'SD Graduate', NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (6, 'Steve', 'Dave', 1, 'USER', 'stevedave', 'wombat1', 'stevedave@gmail.com', 'Construction Worker', NULL, NULL, NULL);
 
 COMMIT;
 
@@ -367,6 +374,14 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (1, 1, NULL, NULL, 'How do I start my apprenticeship?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (2, 3, NULL, NULL, 'Is Java \"pass by reference\" or \"pass by value\"?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (3, 4, NULL, NULL, 'Name and describe the four pillars of OOP', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (4, 5, NULL, NULL, 'Describe various data structures (stacks, queues, maps, linked list)', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (5, 6, NULL, NULL, 'why are you interested in this company?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (6, 3, NULL, NULL, 'what\'s a weakness of yours?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (7, 4, NULL, NULL, 'what questions do you have for the company?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (8, 5, NULL, NULL, 'What happens when you hit enter on your browser?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (9, 6, NULL, NULL, 'Define \"Referential Integrity\"', 1);
 
 COMMIT;
 
@@ -387,6 +402,9 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (1, 'Construction', 1);
+INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (2, 'Manufacturing', 1);
+INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (3, 'Tech', 1);
+INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (4, 'blah', 0);
 
 COMMIT;
 
@@ -396,7 +414,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (1, 'CEC', NULL, NULL, 1, 1);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (1, 'CEC', 'Electrical company ', NULL, 1, 1);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (2, 'Weyland-Yutani Corporation', 'Building better worlds', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Favp.fandom.com%2Fwiki%2FWeyland-Yutani_Corporation&psig=AOvVaw0T51L50kjsTKwvtoEhRQVT&ust=1669581733593000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCNCDlePazPsCFQAAAAAdAAAAABAE', 1, 2);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (3, 'Omni Consumer Products', 'Global Mega-Corporation', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.crunchbase.com%2Forganization%2Fomni-consumer-products&psig=AOvVaw0Mz2tC5EWpvAHmMHPly5UI&ust=1669581781991000&source=images&cd=vfe&ved=0CA4QjRxqFwoTCPjJ0PnazPsCFQAAAAAdAAAAABAE', 1, 3);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (4, 'SIlver Shamrock Novelties', 'A factory that builds masks', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fvillains.fandom.com%2Fwiki%2FSilver_Shamrock&psig=AOvVaw1FkbhmZz1sN3KYhJKmCAUh&ust=1669582046846000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCKjAyPjbzPsCFQAAAAAdAAAAABAE', 1, 4);
 
 COMMIT;
 
@@ -406,7 +427,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `category` (`id`, `name`, `description`, `enabled`) VALUES (1, 'Electrical', NULL, 1);
+INSERT INTO `category` (`id`, `name`, `description`, `enabled`) VALUES (1, 'Electrical', 'Commerical, Residental, Industrial', 1);
+INSERT INTO `category` (`id`, `name`, `description`, `enabled`) VALUES (2, 'Tech', 'Programming and Security', 1);
+INSERT INTO `category` (`id`, `name`, `description`, `enabled`) VALUES (3, 'Manufacturing', 'Making of Items', 1);
+INSERT INTO `category` (`id`, `name`, `description`, `enabled`) VALUES (4, 'General', 'General questions', 1);
 
 COMMIT;
 
@@ -417,6 +441,7 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `job_opening` (`id`, `company_id`, `description`, `url_post`, `enabled`, `address_id`, `role_filled`, `posted`, `user_id`) VALUES (1, 1, 'Hiring Electricians', NULL, 1, 1, NULL, NULL, 1);
+INSERT INTO `job_opening` (`id`, `company_id`, `description`, `url_post`, `enabled`, `address_id`, `role_filled`, `posted`, `user_id`) VALUES (2, 4, 'Hiring Mask Makers', NULL, 1, 4, 1, NULL, 2);
 
 COMMIT;
 
@@ -447,6 +472,9 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (1, 1);
+INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (2, 3);
+INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (2, 4);
+INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (3, 2);
 
 COMMIT;
 
