@@ -4,13 +4,15 @@
 <p>Member since: {{selectedUser?.dateCreated}}</p>
 <p>Your avatar: {{selectedUser?.avatarUrl}}</p>
 
-
+<!-- Add conditional to only show if array contains objects -->
 <p>This User's Questions: </p>
 <ul *ngFor="let question of selectedUser?.questions">
 <li>{{question.question}}</li>
 </ul>
 
+
+<!-- Add conditional to only show if array contains objects -->
 <p>This User's Answers</p>
-<ul *ngFor="let question of selectedUser?.questions">
-  <li>{{question.question}}</li>
+<ul *ngFor="let answer of selectedUser?.answers">
+  <li>{{answer.answer}}</li>
   </ul>
