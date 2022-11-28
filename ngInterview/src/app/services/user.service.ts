@@ -48,4 +48,15 @@ export class UserService {
     );
   }
 
+  update(id: number, user: User): Observable<User> {
+    return this.http.put<User>(this.url + '/' + id, user, this.getHttpOptions()).pipe(
+      catchError((err:any)=>{
+        console.error(err);
+        return throwError(
+          ()=> new Error('User.update(): error updating User: ' +err)
+        );
+      })
+    );
+  }
+
 }
