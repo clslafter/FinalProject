@@ -18,7 +18,7 @@ export class AnswerService {
         console.log(err);
         return throwError(
           () =>
-            new Error('QuestionService.index():error retrieving question list: ' + err)
+            new Error('AnswerService.index():error retrieving question list: ' + err)
         );
       })
     );
