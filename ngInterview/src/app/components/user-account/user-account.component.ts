@@ -32,13 +32,13 @@ selected: User | null = null;
   }
 
   setEditUser(): void {
-    this.editUser = Object.assign({}, this.selected);
+    this.editUser = Object.assign({}, this.user);
   }
 
   updateUser(id: number, user: User): void {
-    this.userService.update(id, user).subscribe({
+    this.userService.update(1, user).subscribe({
       next: (data: any) => {
-          this.selected = data;
+          this.user = data;
         },
       error: (fail: any) => {
         console.error(
