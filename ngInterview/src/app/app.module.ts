@@ -17,6 +17,7 @@ import { UserAccountComponent } from './components/user-account/user-account.com
 import { QuestionsComponent } from './components/questions/questions.component';
 import { CategoryPipe } from './pipes/category.pipe';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AnswerFormComponent } from './components/answer-form/answer-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     UserAccountComponent,
     QuestionsComponent,
     CategoryPipe,
-    UserProfileComponent
+    UserProfileComponent,
+    AnswerFormComponent
   ],
   imports: [
     BrowserModule,
