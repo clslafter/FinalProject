@@ -24,10 +24,13 @@
           <app-login></app-login>
         </li>
         <li class="nav-item" *ngIf="loggedIn()">
-          <app-logout></app-logout>
+          <a class="nav-link" [routerLink]="['/userAccount']" routerLinkActive="active">My Account</a>
         </li>
         <li class="nav-item" *ngIf="loggedIn()">
-          <a class="nav-link" [routerLink]="['/userAccount']" routerLinkActive="active">My Account</a>
+          <a class="nav-link" [routerLink]="['/questions']" routerLinkActive="active">Questions</a>
+        </li>
+        <li class="nav-item" *ngIf="loggedIn()">
+          <app-logout></app-logout>
         </li>
       </ul>
       <!-- <form class="d-flex" role="search">
