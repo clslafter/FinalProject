@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogoutComponent } from './components/logout/logout.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
-    LogoutComponent
+    LogoutComponent,
+    UserAccountComponent
   ],
   imports: [
     BrowserModule,

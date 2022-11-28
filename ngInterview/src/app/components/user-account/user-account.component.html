@@ -1,0 +1,23 @@
+<H2>Welcome {{user.firstName}}, this is your user account data:</H2>
+
+<div id="userData" *ngIf="!editUser">
+  <p>User Name: {{user.username}}</p>
+  <p>First Name: {{user.firstName}}</p>
+  <p>Last Name: {{user.lastName}}</p>
+  <p>email address: {{user.email}}</p>
+  <p>About me: {{user.aboutMe}}</p>
+  <p>Member since: {{user.dateCreated}}</p>
+  <p>Your avatar: {{user.avatarUrl}}</p>
+</div>
+
+<button class="btn btn-outline-primary" (click)="setEditUser()">Edit your info</button>
+
+<div id="userDataEdit" *ngIf="editUser">
+  <form>
+    <label for="username">User Name</label>
+    <input type="text" name="username" [(ngModel)]="editUser.username" /> <br />
+
+    <button class="btn btn-danger" (click)="editUser = null">Cancel</button>
+    <button class="btn btn-success" (click)="updateUser(editUser.id, editUser)">Save</button>
+  </form>
+</div>
