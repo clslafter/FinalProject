@@ -59,5 +59,16 @@ export class UserService {
     );
   }
 
+  disable(id: number): Observable<User> {
+    return this.http.delete<User>(this.url + '/' + id, this.getHttpOptions()).pipe(
+      catchError((err:any)=>{
+        console.error(err);
+        return throwError(
+          ()=> new Error('User.delete(): error deleting User: ' +err)
+        );
+      })
+    );
+  }
+
 }
 
