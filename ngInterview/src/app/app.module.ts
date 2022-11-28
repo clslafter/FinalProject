@@ -16,6 +16,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { CategoryPipe } from './pipes/category.pipe';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CategoryPipe } from './pipes/category.pipe';
     LogoutComponent,
     UserAccountComponent,
     QuestionsComponent,
-    CategoryPipe
+    CategoryPipe,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
