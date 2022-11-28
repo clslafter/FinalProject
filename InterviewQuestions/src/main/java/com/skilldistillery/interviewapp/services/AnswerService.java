@@ -10,10 +10,12 @@ public interface AnswerService {
 	
 	Answer show(int aId);
 	
-	Answer create(Answer answer);
+	Answer create(String username, Answer answer);
 	
-	Answer update(Answer answer , int aId);
+	Answer update(Answer answer , int aId, String username);
 	
-	Answer delete(int aId);
+	public boolean delete(String username, int aId);
+	
+	List<Answer> questionAnswers(int id);
 
 }

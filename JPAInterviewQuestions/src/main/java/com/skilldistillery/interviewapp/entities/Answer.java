@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Answer {
 
@@ -31,14 +33,17 @@ public class Answer {
 
 	private String answer;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "question_id")
 	private Question question;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerRating> ratings;
 
