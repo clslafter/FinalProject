@@ -16,7 +16,7 @@
     <tbody>
       <tr *ngFor="let question of questions | category: selectedCategory">
         <td>{{ question.id }}</td>
-        <td>{{ question.user?.username }}</td>
+        <td><a class="nav-link" [routerLink]="['/userProfile', question.user?.id]">{{ question.user?.username }}</a></td>
         <td>{{ question.question }}</td>
       </tr>
     </tbody>
