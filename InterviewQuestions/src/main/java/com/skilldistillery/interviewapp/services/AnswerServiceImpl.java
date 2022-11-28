@@ -6,13 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.interviewapp.entities.Answer;
+import com.skilldistillery.interviewapp.entities.User;
 import com.skilldistillery.interviewapp.repositories.AnswerRepository;
+import com.skilldistillery.interviewapp.repositories.UserRepository;
 
 @Service
 public class AnswerServiceImpl implements AnswerService {
-	
+
 	@Autowired
 	private AnswerRepository answerRepo;
+
+	@Autowired
+	private UserRepository userRepo;
 
 	@Override
 	public List<Answer> answerList() {
@@ -25,31 +30,51 @@ public class AnswerServiceImpl implements AnswerService {
 	}
 
 	@Override
-	public Answer create(Answer answer) {
-		
+	public Answer create(String username, Answer answer) {
+		User user = userRepo.findByUsername(username);
+		if (user != null) {
+			answer.setUser(user);
+			return answerRepo.saveAndFlush(answer);
+		}
 		return null;
 	}
 
 	@Override
-	public Answer update(Answer answer, int aId) {
+	public Answer update(Answer answer, int aId, String username) {
+		User user = userRepo.findByUsername(username);
 		Answer updatedAnswer = answerRepo.findById(aId);
-		if(updatedAnswer != null) {
-			updatedAnswer.setAnswer(answer.getAnswer());
-			updatedAnswer.setEnabled(true);
-			updatedAnswer.setDateUpdated(answer.getDateUpdated());
-			updatedAnswer.setQuestion(answer.getQuestion());
-			updatedAnswer.setDateCreated(answer.getDateCreated());
-			updatedAnswer.setUser(answer.getUser());
-			return answerRepo.save(updatedAnswer);
+		if (updatedAnswer.getUser().getUsername().equals(username)) {
+			if (updatedAnswer != null) {
+				updatedAnswer.setAnswer(answer.getAnswer());
+				updatedAnswer.setEnabled(answer.isEnabled());
+				updatedAnswer.setDateUpdated(answer.getDateUpdated());
+				updatedAnswer.setQuestion(answer.getQuestion());
+				updatedAnswer.setDateCreated(answer.getDateCreated());
+				updatedAnswer.setUser(user);
+
+				return answerRepo.save(updatedAnswer);
+			}
 		}
-		
 		return updatedAnswer;
 	}
 
 	@Override
-	public Answer delete(int aId) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean delete(String username, int aId) {
+		Answer answerToDelete = answerRepo.findById(aId);
+		if (answerToDelete != null) {
+
+			answerToDelete.setEnabled(false);
+
+			answerRepo.save(answerToDelete);
+
+			return !answerToDelete.isEnabled();
+		}
+		return !answerRepo.findById(aId).isEnabled();
+	}
+
+	@Override
+	public List<Answer> questionAnswers(int id) {
+		return answerRepo.findByQuestionId(id);
 	}
 
 }
