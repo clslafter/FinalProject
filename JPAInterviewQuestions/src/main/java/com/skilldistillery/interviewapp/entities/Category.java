@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Category {
 
@@ -25,8 +27,9 @@ public class Category {
 
 	private Boolean enabled;
 
+	
 	@ManyToMany
-	@JoinTable(name = "question_has_category", joinColumns = @JoinColumn(name = "question_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+	@JoinTable(name = "question_has_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "question_id"))
 	private List<Question> questions;
 
 	// METHODS
@@ -66,6 +69,7 @@ public class Category {
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
+
 
 	public List<Question> getQuestions() {
 		return questions;
