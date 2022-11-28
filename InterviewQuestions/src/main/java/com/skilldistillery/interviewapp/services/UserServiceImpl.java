@@ -36,19 +36,19 @@ public class UserServiceImpl implements UserService {
 		if (managed != null) {
 			managed.setFirstName(user.getFirstName());
 			managed.setLastName(user.getLastName());
-			managed.setEnabled(user.getEnabled());
-			managed.setUsername(user.getUsername());
-			managed.setPassword(user.getPassword());
+//			managed.setEnabled(user.getEnabled());
+//			managed.setUsername(user.getUsername());
+//			managed.setPassword(user.getPassword());
 			managed.setEmail(user.getEmail());
 			managed.setAboutMe(user.getAboutMe());
-			managed.setDateCreated(user.getDateCreated());
+//			managed.setDateCreated(user.getDateCreated());
 			managed.setAvatarUrl(user.getAvatarUrl());
-			managed.setAddress(user.getAddress());
-			managed.setQuestions(user.getQuestions());
-			managed.setAnswers(user.getAnswers());
-			managed.setJobs(user.getJobs());
+//			managed.setAddress(user.getAddress());
+//			managed.setQuestions(user.getQuestions());
+//			managed.setAnswers(user.getAnswers());
+//			managed.setJobs(user.getJobs());
 
-			return userRepo.save(managed);
+			return userRepo.saveAndFlush(managed);
 		}
 		return managed;
 	}

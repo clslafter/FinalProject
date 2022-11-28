@@ -21,7 +21,7 @@ editUser: User | null = null;
 selected: User | null = null;
 
   loadUser(): void {
-    this.auth.getLoggedInUser().subscribe({  //hardcoded #1 until we figure out how to grab current user id
+    this.auth.getLoggedInUser().subscribe({
       next: (data) => {
         this.user = data;
       },
@@ -36,10 +36,15 @@ selected: User | null = null;
     this.editUser = Object.assign({}, this.user);
   }
 
-  updateUser(id: number, user: User): void {
-    this.userService.update(1, user).subscribe({
+  clearEditUser(): void {
+    this.editUser = null;
+  }
+
+  updateUser(user: User): void {
+  this.userService.update(this.auth.getLoggedInUserId(), user).subscribe({
       next: (data: any) => {
           this.user = data;
+          this.clearEditUser();
         },
       error: (fail: any) => {
         console.error(

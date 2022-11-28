@@ -14,6 +14,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
+import { QuestionsComponent } from './components/questions/questions.component';
+import { CategoryPipe } from './pipes/category.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     RegisterComponent,
     NotFoundComponent,
     LogoutComponent,
-    UserAccountComponent
+    UserAccountComponent,
+    QuestionsComponent,
+    CategoryPipe
   ],
   imports: [
     BrowserModule,
