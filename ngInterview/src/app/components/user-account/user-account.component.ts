@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-user-account',
@@ -10,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserAccountComponent implements OnInit {
 
-  constructor(private userService: UserService, private auth: AuthService) { }
+  constructor(private userService: UserService, private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadUser()
@@ -55,5 +57,22 @@ selected: User | null = null;
     });
   }
 
-
+  deleteUserAccount(){
+    if(confirm("Are you sure to delete your account?")){
+    this.userService.disable(this.auth.getLoggedInUserId()).subscribe({
+      next: (data: any) => {
+          this.user = data;
+          // this.clearEditUser();
+         this.auth.logout();
+         this.router.navigateByUrl('/welcome');
+        },
+      error: (fail: any) => {
+        console.error(
+          'UserListHttpComponent.disableUser(): error disabling user:'
+        );
+        console.error(fail);
+      },
+    });
+  }
+  }
 }
