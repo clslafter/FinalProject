@@ -27,9 +27,9 @@
         <li class="nav-item" *ngIf="loggedIn()">
           <a class="nav-link" [routerLink]="['/userAccount']" routerLinkActive="active">My Account</a>
         </li>
-        <li class="nav-item" *ngIf="loggedIn()">
+        <!-- <li class="nav-item" *ngIf="loggedIn()">
           <a class="nav-link" [routerLink]="['/questions']" routerLinkActive="active">Questions</a>
-        </li>
+        </li> -->
         <li class="nav-item" *ngIf="loggedIn()">
           <app-logout></app-logout>
         </li>
