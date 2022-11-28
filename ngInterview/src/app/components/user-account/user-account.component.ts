@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserAccountComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.loadUser()
@@ -20,7 +21,7 @@ editUser: User | null = null;
 selected: User | null = null;
 
   loadUser(): void {
-    this.userService.show(1).subscribe({  //hardcoded #1 until we figure out how to grab current user id
+    this.auth.getLoggedInUser().subscribe({  //hardcoded #1 until we figure out how to grab current user id
       next: (data) => {
         this.user = data;
       },

@@ -2,10 +2,10 @@
   <form >
 <div class="row">
   <div class="col-auto">
-    <input  class="col form-control" type="text" name="username" placeholder="username" [(ngModel)]="loginUser.username"/>
+    <input  class="col form-control" type="text" name="username" placeholder="username" [(ngModel)]="loginUser.username" required/>
   </div>
   <div class="col-auto">
-    <input class="col form-control" type="password" name="password" placeholder="password" [(ngModel)]="loginUser.password"/>
+    <input class="col form-control" type="password" name="password" placeholder="password" [(ngModel)]="loginUser.password" required/>
   </div>
   <div class="col-auto">
     <input class="col btn btn-primary" type="submit" name="loginUser" value="login" (click)="login(loginUser)"/>
@@ -13,3 +13,5 @@
   </div>
   </form>
   </div>
+
+  <div>{{errorMessage}}</div>
