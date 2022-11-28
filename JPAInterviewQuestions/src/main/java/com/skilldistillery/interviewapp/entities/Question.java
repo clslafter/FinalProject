@@ -42,6 +42,7 @@ public class Question {
 
 	
 	@ManyToOne
+	@JsonIgnoreProperties({"questions"})
 	@JoinColumn(name = "user_id")
 	private User user;
 

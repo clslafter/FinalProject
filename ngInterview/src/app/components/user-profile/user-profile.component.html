@@ -1,0 +1,16 @@
+<p>User Name: {{selectedUser?.username}}</p>
+
+<p>About {{selectedUser?.username}}: {{selectedUser?.aboutMe}}</p>
+<p>Member since: {{selectedUser?.dateCreated}}</p>
+<p>Your avatar: {{selectedUser?.avatarUrl}}</p>
+
+
+<p>This User's Questions: </p>
+<ul *ngFor="let question of selectedUser?.questions">
+<li>{{question.question}}</li>
+</ul>
+
+<p>This User's Answers</p>
+<ul *ngFor="let question of selectedUser?.questions">
+  <li>{{question.question}}</li>
+  </ul>
