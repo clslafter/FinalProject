@@ -48,9 +48,9 @@ public class AnswerServiceImpl implements AnswerService {
 				updatedAnswer.setAnswer(answer.getAnswer());
 				updatedAnswer.setEnabled(answer.isEnabled());
 				updatedAnswer.setDateUpdated(answer.getDateUpdated());
-				updatedAnswer.setQuestion(answer.getQuestion());
 				updatedAnswer.setDateCreated(answer.getDateCreated());
 				updatedAnswer.setUser(user);
+				updatedAnswer.setRatings(answer.getRatings());
 
 				return answerRepo.save(updatedAnswer);
 			}

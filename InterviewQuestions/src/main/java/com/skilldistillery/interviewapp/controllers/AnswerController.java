@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.interviewapp.entities.Answer;
@@ -33,9 +36,45 @@ public class AnswerController {
 		return answerService.answerList();
 	}
 
+	@PostMapping("api/answers")
+	public Answer create(HttpServletRequest req, HttpServletResponse res, @RequestBody Answer answer, Principal principal) {
+		try {
+			if (answer == null) {
+				res.setStatus(401);
+				return answer;
+			}
+			answer = answerService.create(principal.getName(), answer);
+			res.setStatus(201);
+			StringBuffer url = req.getRequestURL();
+			url.append("/").append(answer.getId());
+			res.setHeader("location", url.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			answer = null;
+		}
+		return answer;
+	}
+
+	@PutMapping("api/answers/{aid}")
+	public Answer update(HttpServletResponse res, HttpServletRequest req, @PathVariable int aid,
+			@RequestBody Answer answer, Principal principal) {
+		answer = answerService.update(answer, aid, principal.getName());
+		try {
+			if (answer == null) {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			answer = null;
+		}
+
+		return answer;
+	}
+
 	@DeleteMapping("api/answers/{aid}")
-	public void destroy(HttpServletRequest req, HttpServletResponse res, 
-			@PathVariable int aid, Principal principal) {
+	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int aid, Principal principal) {
 		try {
 			if (answerService.delete(principal.getName(), aid)) {
 				res.setStatus(204);
@@ -58,4 +97,5 @@ public class AnswerController {
 		}
 		return answers;
 	}
+
 }
