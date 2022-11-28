@@ -19,6 +19,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Question {
@@ -48,7 +49,7 @@ public class Question {
 	@OneToMany(mappedBy = "question")
 	private List<Answer> answers;
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"questions"})
 	@ManyToMany(mappedBy = "questions")
 	private List<Category> categories;
 
