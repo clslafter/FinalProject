@@ -36,7 +36,7 @@ public class CompanyController {
 
 	@GetMapping("companies/{cid}")
 	public Company show(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid, Principal principal) {
-		// Company company = userService.show(principal.getName(), cid);
+		// Company company = companyService.show(principal.getName(), cid);
 		Company company = companyService.show(cid);
 		if (company == null) {
 			res.setStatus(404);
