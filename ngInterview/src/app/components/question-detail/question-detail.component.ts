@@ -44,4 +44,18 @@ export class QuestionDetailComponent implements OnInit {
     }
   }
   }
+
+  loadNewAnswer(){
+    if (this.selected){
+    this.questionService.show(this.selected.id).subscribe({
+      next: (data) => {
+        this.selected = data;
+      },
+      error: (fail) => {
+        console.error('QuestionDetailComponent.ngOnInit: question not found');
+        this.router.navigateByUrl('questionNotFound'); //doesn't exist
+      }
+    });
+  }
+}
 }

@@ -35,8 +35,8 @@ export class AnswerService {
     );
   }
 
-  create(answer: Answer) {
-    return this.http.post<Answer>(this.url, answer, this.getHttpOptions()).pipe(
+  create(answer: Answer, questionId: number) {
+    return this.http.post<Answer>(this.url + "/" + questionId, answer, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

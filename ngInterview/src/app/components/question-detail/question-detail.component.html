@@ -18,6 +18,6 @@
 </ul>
 <button class="btn btn-outline-primary" (click)="setAddAnswer()">add an answer</button>
 
-<div id="addAnswerFormDiv" *ngIf="addAnswer">
-  <app-answer-form></app-answer-form>
+<div id="addAnswerFormDiv" >
+  <app-answer-form *ngIf="addAnswer && addAnswer != null" [selectedQuestion]="selected" (returnToParent)="loadNewAnswer()"> </app-answer-form>
 </div>
