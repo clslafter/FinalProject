@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.interviewapp.entities.Address;
 import com.skilldistillery.interviewapp.entities.User;
 import com.skilldistillery.interviewapp.services.UserService;
 
@@ -65,12 +66,30 @@ public class UserController {
 		return user;
 	}
 
-	@PutMapping("users/{uid}")
-	public User update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody User user,
+	//change to principle rather than user id. Also change the user service impl
+	@PutMapping("users")
+	public User update(HttpServletRequest req, HttpServletResponse res, @RequestBody User user,
 			Principal principal) {
 		try {
 			// user = userService.update(principal.getName(), uid, user);
-			user = userService.update(uid, user);
+			user = userService.update(principal.getName(), user);
+			if (user == null) {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			user = null;
+		}
+		return user;
+	}
+	@PutMapping("users/addresses/{aid}")
+	public User addAddress(HttpServletRequest req, HttpServletResponse res, @PathVariable int aid,
+			Principal principal) {
+		User user = new User();
+		try {
+			// user = userService.update(principal.getName(), uid, user);
+			user = userService.addAddress(principal.getName(), aid);
 			if (user == null) {
 				res.setStatus(404);
 			}

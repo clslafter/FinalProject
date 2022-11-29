@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Address } from 'src/app/models/address';
 import { User } from 'src/app/models/user';
+import { AddressService } from 'src/app/services/address.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserAccountComponent implements OnInit {
 
-  constructor(private userService: UserService, private auth: AuthService, private router: Router) { }
+  constructor(private userService: UserService, private addressService: AddressService, private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadUser()
@@ -46,27 +47,67 @@ newAddress: Address | null = null
   }
 
   updateUser(user: User): void {
-  this.userService.update(this.auth.getLoggedInUserId(), user).subscribe({
+  this.userService.update(user).subscribe({
       next: (data: any) => {
           this.user = data;
           this.clearEditUser();
         },
       error: (fail: any) => {
         console.error(
-          'UserListHttpComponent.updateUser(): error updating user:'
+          'UserAccountComponent.updateUser(): error updating user:'
         );
         console.error(fail);
       },
     });
   }
 
-//  Create Address form with field addAddress.
-//   Then get address id after it has been added.
-//   Make a newAddress field and set it to data from the addAddress function.
-//   Then set editUser.address to newAddress.
-//   Then call updateUser(editUser)
+
+//  Make address service - make create address function.
+//  Also in user service - make put function with controller mapping to add address to user
+//  Make addNewAddress function here in component.ts
+//   Then get address id after it has been added inside the next.
+//   Make a newAddress field and set it to data from the addAddress function inside the next.
+//   Then set editUser.address to newAddress inside the next.
+//   Then call updateUser(editUser) (inside the next?)
 // Will need address service for a create and a show method. Create address controller in Boot project
-//Create API endpoint to add an address to a user that takes a userId and request body address. Handle that on the back end
+
+addressAdd(address: Address) {
+  this.addressService.create(address).subscribe({
+    next: (data) => {
+      this.loadUser()
+      this.newAddress = data;
+      let aid = data.id;
+      this.userService.addAddress(aid).subscribe({
+
+          next: (userData) => {
+            this.user = userData;
+            this.clearEditUser();
+            this.newAddress = null;
+          },
+
+          error: (fail) => {
+            console.error('UserAccountComponent.reload: error adding address to user');
+      console.error(fail);
+          }
+
+
+      })
+      this.addAddress = new Address();
+     // this.selected = null;
+
+    },
+    error: (fail) => {
+      console.error('UserAccountComponent.reload: error creating address');
+      console.error(fail);
+    }
+
+  });
+
+}
+
+
+
+
 
 
   deleteUserAccount(){
