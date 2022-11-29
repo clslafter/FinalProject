@@ -15,33 +15,47 @@ export class AnswerFormComponent implements OnInit {
 
   answers: Answer[] = [];
 
-
+  newAnswer: Answer = new Answer();
   constructor(private questionService: QuestionService, private answerService: AnswerService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  loadQuestion(){this.questionService.index().subscribe({
-    next: (data) => {
-      this.questions = data;
-    },
-    error: (fail) => {
-      console.error('QuestionComponent.loadQuestions: error getting questions');
-      console.error(fail);
-    }
-  })
-}
+//   loadQuestion(){this.questionService.index().subscribe({
+//     next: (data) => {
+//       this.questions = data;
+//     },
+//     error: (fail) => {
+//       console.error('QuestionComponent.loadQuestions: error getting questions');
+//       console.error(fail);
+//     }
+//   })
+// }
 
-  loadAnswers(){
-    this.answerService.index().subscribe({
-      next: (data) => {
-        this.answers = data;
+//   loadAnswers(){
+//     this.answerService.index().subscribe({
+//       next: (data) => {
+//         this.answers = data;
+//       },
+//       error: (fail) => {
+//         console.error('AnswerComponent.loadAnswers: error getting questions');
+//         console.error(fail);
+//       }
+//     })
+//   }
+
+  createAnswer(){
+
+    this.answerService.create(this.newAnswer).subscribe({
+      next: (data: any) => {
+        this.newAnswer = new Answer();
+        this.newAnswer.enabled = true;
+        this.newAnswer.user;
       },
-      error: (fail) => {
-        console.error('AnswerComponent.loadAnswers: error getting questions');
-        console.error(fail);
+      error: (err: any) => {
+        console.error('createAnswer: error creating answer:');
+        console.error(err);
       }
     })
   }
-
 }
