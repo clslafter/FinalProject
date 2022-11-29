@@ -1,16 +1,18 @@
 <p>question-detail works!</p>
 
 <p>{{selected?.question}}</p>
-<p> Submitted by {{selected?.user}}</p>
+<p> Submitted by {{selected?.user?.username}}</p>
 <p> Submitted on {{selected?.dateCreated}}</p>
+
+<h5>Companies that have asked similar questions:</h5>
 <ul *ngFor="let company of selected?.companies;">
   <li> {{company.name}} </li>
 </ul>
-
+<h5>Applicable Categories:</h5>
 <ul *ngFor="let category of selected?.categories;">
   <li > {{category.name}} </li>
 </ul>
-
+<h5>Answers:</h5>
 <ul *ngFor="let answer of selected?.answers;">
   <li> {{answer.answer}}  </li>
 </ul>

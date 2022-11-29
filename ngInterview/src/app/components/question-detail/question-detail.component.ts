@@ -18,7 +18,7 @@ export class QuestionDetailComponent implements OnInit {
   }
 
   loadQuestion () {
-    this.questionService.show(1).subscribe({
+    this.questionService.show(1).subscribe({ //hardcoded to #1 until we have a button that passes a question id
       next: (data) => {
         this.selected = data;
       },

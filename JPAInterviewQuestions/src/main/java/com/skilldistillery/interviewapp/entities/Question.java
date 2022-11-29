@@ -46,7 +46,7 @@ public class Question {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy = "question")
 	private List<Answer> answers;
 
@@ -54,6 +54,9 @@ public class Question {
 	@ManyToMany(mappedBy = "questions")
 	private List<Category> categories;
 
+	//@JsonManagedReference()
+	//@JsonBackReference()
+	//@JsonIgnoreProperties({"questions"})
 	@JsonIgnore
 	@ManyToMany(mappedBy = "questions")
 	private List<Company> companies;
