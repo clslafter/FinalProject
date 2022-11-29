@@ -36,14 +36,14 @@ public class AnswerController {
 		return answerService.answerList();
 	}
 
-	@PostMapping("api/answers")
-	public Answer create(HttpServletRequest req, HttpServletResponse res, @RequestBody Answer answer, Principal principal) {
+	@PostMapping("api/answers/{questionId}")
+	public Answer create(HttpServletRequest req, HttpServletResponse res, @RequestBody Answer answer, @PathVariable int questionId, Principal principal) {
 		try {
 			if (answer == null) {
 				res.setStatus(401);
 				return answer;
 			}
-			answer = answerService.create(principal.getName(), answer);
+			answer = answerService.create(principal.getName(), answer, questionId);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(answer.getId());
