@@ -7,12 +7,13 @@
 <!-- Add conditional to only show if array contains objects -->
 <p>This User's Questions: </p>
 <ul *ngFor="let question of selectedUser?.questions">
-<li>{{question.question}}</li>
+<li><a class="nav-link" [routerLink]="['/questionDetail', question.id]">{{question.question}}</a></li>
 </ul>
 
 
 <!-- Add conditional to only show if array contains objects -->
 <p>This User's Answers</p>
 <ul *ngFor="let answer of selectedUser?.answers">
-  <li>{{answer.answer}}</li>
+  <!-- this link doesn't work because answer.question?.id is null? -->
+  <li><a class="nav-link" [routerLink]="['/questionDetail', answer.question?.id]">{{answer.answer}}</a></li>
   </ul>

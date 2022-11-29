@@ -31,7 +31,7 @@ public class AnswerController {
 	@Autowired
 	private QuestionService questionService;
 
-	@GetMapping("answers")
+	@GetMapping("api/answers")
 	public List<Answer> index(HttpServletRequest req, HttpServletResponse res) {
 		return answerService.answerList();
 	}

@@ -1,8 +1,5 @@
-<p>question-detail works!</p>
-
-<p>{{selected?.question}}</p>
-<p> Submitted by {{selected?.user?.username}}</p>
-<p> Submitted on {{selected?.dateCreated}}</p>
+<h5>Details for: {{selected?.question}}</h5>
+<p> Submitted by <a class="nav-link" [routerLink]="['/userProfile', selected?.user?.id]">{{selected?.user?.username}}</a> on {{selected?.dateCreated}}</p>
 
 <h5>Companies that have asked similar questions:</h5>
 <ul *ngFor="let company of selected?.companies;">
@@ -15,6 +12,12 @@
 <h5>Answers:</h5>
 <ul *ngFor="let answer of selected?.answers;">
   <li> {{answer.answer}}  </li>
+  <ul>
+    <li> <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]">{{answer.user?.username}}</a> on {{answer.dateCreated}}</li>
+  </ul>
 </ul>
-<!-- <button class="btn btn-outline-primary" (click)="XXXX()">add an answer</button> -->
-<button class="btn btn-outline-primary">add an answer</button>
+<button class="btn btn-outline-primary" (click)="setAddAnswer()">add an answer</button>
+
+<div id="addAnswerFormDiv" *ngIf="addAnswer">
+  <app-answer-form></app-answer-form>
+</div>
