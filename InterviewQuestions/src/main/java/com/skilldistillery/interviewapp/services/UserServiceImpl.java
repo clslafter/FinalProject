@@ -70,6 +70,7 @@ public class UserServiceImpl implements UserService {
 		}
 		return managed;
 	}
+	
 	@Override
 	public User addAddress(String username, int aid) {
 		User managed = null;
@@ -101,4 +102,21 @@ public class UserServiceImpl implements UserService {
 		//returns false if user is enabled
 		return !userRepo.findById(uid).getEnabled();
 	}
+	
+	@Override
+	public boolean enable(int uid) {
+		User managed = null;
+		managed = userRepo.findById(uid);
+		if (managed != null) {
+			managed.setEnabled(true);
+			
+			userRepo.save(managed);
+			//returns true if user was disabled
+			return managed.getEnabled();
+		}
+		//returns false if user is enabled
+		return userRepo.findById(uid).getEnabled();
+	}
+	
+//
 }

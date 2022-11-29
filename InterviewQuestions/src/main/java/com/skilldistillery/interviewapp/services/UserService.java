@@ -19,5 +19,7 @@ public interface UserService {
 
 	User addAddress(String username, int aid);
 
+	boolean enable(int uid);
+
 	
 }

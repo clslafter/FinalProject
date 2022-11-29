@@ -84,5 +84,16 @@ export class UserService {
     );
   }
 
+  enable(id: number): Observable<User> {
+    return this.http.put<User>(this.url + '/enable/' + id, this.getHttpOptions()).pipe(
+      catchError((err:any)=>{
+        console.error(err);
+        return throwError(
+          ()=> new Error('User.delete(): error deleting User: ' +err)
+        );
+      })
+    );
+  }
+
 }
 

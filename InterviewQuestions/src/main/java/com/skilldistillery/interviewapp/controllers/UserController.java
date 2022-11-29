@@ -83,6 +83,8 @@ public class UserController {
 		}
 		return user;
 	}
+	
+	
 	@PutMapping("users/addresses/{aid}")
 	public User addAddress(HttpServletRequest req, HttpServletResponse res, @PathVariable int aid,
 			Principal principal) {
@@ -115,4 +117,21 @@ public class UserController {
 			res.setStatus(400);
 		}
 	}
+	
+	//
+	@PutMapping("users/enable/{uid}")
+	public void enableUser(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, Principal principal) {
+		try {
+			// if (userService.delete(principal.getName(), uid)) {
+			if (userService.enable(uid)) {
+				res.setStatus(204);
+			} else {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+		}
+	}
+	//
 }
