@@ -1,5 +1,5 @@
 <h5>Details for: {{selected?.question}}</h5>
-<p> Submitted by {{selected?.user?.username}} on {{selected?.dateCreated}}</p>
+<p> Submitted by <a class="nav-link" [routerLink]="['/userProfile', selected?.user?.id]">{{selected?.user?.username}}</a> on {{selected?.dateCreated}}</p>
 
 <h5>Companies that have asked similar questions:</h5>
 <ul *ngFor="let company of selected?.companies;">
@@ -13,7 +13,7 @@
 <ul *ngFor="let answer of selected?.answers;">
   <li> {{answer.answer}}  </li>
   <ul>
-    <li> {{answer.user?.username}} on {{answer.dateCreated}}</li>
+    <li> <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]">{{answer.user?.username}}</a> on {{answer.dateCreated}}</li>
   </ul>
 </ul>
 <!-- <button class="btn btn-outline-primary" (click)="XXXX()">add an answer</button> -->
