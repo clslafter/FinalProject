@@ -64,6 +64,7 @@ export class QuestionDetailComponent implements OnInit {
 }
 
 determineRatingValue(answer: Answer){
+let ratings;
 
 }
 }
