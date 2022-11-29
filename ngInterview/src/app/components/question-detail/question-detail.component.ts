@@ -18,17 +18,11 @@ export class QuestionDetailComponent implements OnInit {
     this.loadPage();
   }
 
-  // loadQuestion () {
-  //   this.questionService.show(1).subscribe({ //hardcoded to #1 until we have a button that passes a question id
-  //     next: (data) => {
-  //       this.selected = data;
-  //     },
-  //     error: (fail) => {
-  //       console.error('Question-DetailComponent.loadQuestion: error getting question');
-  //       console.error(fail);
-  //     }
-  //   })
-  // }
+  addAnswer: boolean = false;
+
+  setAddAnswer(){
+  this.addAnswer = true;
+  }
 
   loadPage(){
   let routeId = this.route.snapshot.paramMap.get('id');

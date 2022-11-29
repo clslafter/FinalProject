@@ -2,15 +2,26 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Answer } from '../models/answer';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnswerService {
   private baseUrl = 'http://localhost:8090/';
-  private url = this.baseUrl + 'answers';
+  private url = this.baseUrl + 'api/answers';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
+
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
 
   index(): Observable<Answer[]> {
     return this.http.get<Answer[]>(this.url).pipe(
@@ -25,7 +36,7 @@ export class AnswerService {
   }
 
   create(answer: Answer) {
-    return this.http.post<Answer>(this.url, answer).pipe(
+    return this.http.post<Answer>(this.url, answer, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

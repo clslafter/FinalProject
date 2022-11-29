@@ -16,5 +16,8 @@
     <li> <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]">{{answer.user?.username}}</a> on {{answer.dateCreated}}</li>
   </ul>
 </ul>
-<!-- <button class="btn btn-outline-primary" (click)="XXXX()">add an answer</button> -->
-<button class="btn btn-outline-primary">add an answer</button>
+<button class="btn btn-outline-primary" (click)="setAddAnswer()">add an answer</button>
+
+<div id="addAnswerFormDiv" *ngIf="addAnswer">
+  <app-answer-form></app-answer-form>
+</div>
