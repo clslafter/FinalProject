@@ -1,0 +1,21 @@
+<h1>ADD Question Form</h1>
+<form>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-auto">
+        <label for="question"><b>Question: </b></label>
+      </div>
+      <div class="col col-auto">
+        <input
+          id="question"
+          type="text"
+          name="question"
+          placeholder="question"
+          [(ngModel)]="newQuestion.question"
+        />
+        <!-- <button name="addAnswerButton" (click)="createQuestion()">Submit Question</button> -->
+      </div>
+    </div>
+  </div>
+</form>
+
