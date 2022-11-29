@@ -1,9 +1,4 @@
 <h1>ADD Answer Form</h1>
-
-<p>
-Question The user is answering is Here
-</p>
-
 <form>
   <div class="form-group">
     <div class="row">
@@ -16,8 +11,9 @@ Question The user is answering is Here
           type="text"
           name="answer"
           placeholder="answer"
-
+          [(ngModel)]="newAnswer.answer"
         />
+        <button name="addAnswerButton" (click)="createAnswer()">Submit Answer</button>
       </div>
     </div>
   </div>
