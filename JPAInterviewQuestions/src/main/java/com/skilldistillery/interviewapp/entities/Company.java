@@ -40,16 +40,17 @@ public class Company {
 	//@JsonBackReference()
 	//@JsonManagedReference()
 	//@JsonIgnoreProperties({"companies"})
-	//@JsonIgnore
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "company_has_question", joinColumns = @JoinColumn(name = "company_id"), inverseJoinColumns = @JoinColumn(name = "question_id"))
 	private List<Question> questions;
 	
-
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "industry_has_company", joinColumns = @JoinColumn(name = "industry_id"), inverseJoinColumns = @JoinColumn(name = "company_id"))
 	private List<Industry> industries;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<JobOpening> jobs;
 
