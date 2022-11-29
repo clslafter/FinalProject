@@ -25,11 +25,15 @@ editUser: User | null = null;
 selected: User | null = null;
 addAddress = new Address();
 newAddress: Address | null = null
+isAdmin: boolean = false;
 
   loadUser(): void {
     this.auth.getLoggedInUser().subscribe({
       next: (data) => {
         this.user = data;
+        if(this.user.role === "ADMIN"){
+          this.isAdmin = true;
+        }
       },
       error: (fail) => {
         console.error('UserComponent.reload: error getting user');
@@ -41,6 +45,8 @@ newAddress: Address | null = null
   setEditUser(): void {
     this.editUser = Object.assign({}, this.user);
   }
+
+
 
   clearEditUser(): void {
     this.editUser = null;
@@ -100,19 +106,13 @@ addressAdd(address: Address) {
       console.error('UserAccountComponent.reload: error creating address');
       console.error(fail);
     }
-
   });
 
 }
 
-
-
-
-
-
   deleteUserAccount(){
     if(confirm("Are you sure to delete your account?")){
-    this.userService.disable(this.auth.getLoggedInUserId()).subscribe({
+    this.userService.delete(this.auth.getLoggedInUserId()).subscribe({
       next: (data: any) => {
           this.user = data;
           // this.clearEditUser();

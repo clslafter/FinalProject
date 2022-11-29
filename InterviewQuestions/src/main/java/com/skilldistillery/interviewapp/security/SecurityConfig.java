@@ -29,8 +29,9 @@ public class SecurityConfig {
         .csrf().disable()
         .authorizeRequests()
         .antMatchers(HttpMethod.OPTIONS, "/api/**").permitAll() // For CORS, the preflight request
-//        .antMatchers(HttpMethod.OPTIONS, "/api/**").hasRole("admin") // Reference for role restricted route
         .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()     // will hit the OPTIONS on the route
+        .antMatchers("/api/users/enable/**").hasAuthority("ADMIN") // Reference for role restricted route
+        .antMatchers("/api/users/disable/**").hasAuthority("ADMIN")
         .antMatchers("/api/**").authenticated() // Requests for our REST API must be authorized.
         .anyRequest().permitAll()               // All other requests are allowed without authentication.
         .and()

@@ -6,14 +6,19 @@
       <tr>
         <th>Id</th>
         <th>User</th>
-        <th>Enabled</th>
+        <th>Role</th>
+        <th>Enabled?</th>
+        <th>Toggle Enabled</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
         <td>{{ user.id }}</td>
         <td>{{ user.username}}</td>
+        <td>{{ user.role}}</td>
         <td>{{ user.enabled}}</td>
+        <td *ngIf="!user.enabled"><button class="btn btn-outline-success" (click)="enableUser(user.id)">Enable</button></td>
+        <td *ngIf="user.enabled"><button class="btn btn-outline-danger" (click)="disableUser(user.id)">Disable</button></td>
       </tr>
     </tbody>
   </table>

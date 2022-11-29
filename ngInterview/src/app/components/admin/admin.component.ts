@@ -27,4 +27,36 @@ populateUsers(){
     }
   })
 }
+
+disableUser(uid: number){
+  if(confirm("Are you sure to disable this account?")){
+    this.userService.disable(uid).subscribe({
+      next: (data: any) => {
+          //this.user = data;
+          this.populateUsers();
+        },
+      error: (fail: any) => {
+        console.error(
+          'AdminComponent.disableUser(): error disabling user:'
+        );
+        console.error(fail);
+      },
+    });
+  }
+  }
+
+  enableUser(uid: number){
+      this.userService.enable(uid).subscribe({
+        next: (data: any) => {
+            //this.user = data;
+            this.populateUsers();
+          },
+        error: (fail: any) => {
+          console.error(
+            'AdminComponent.enableUser(): error enabling user:'
+          );
+          console.error(fail);
+        },
+      });
+    }
 }
