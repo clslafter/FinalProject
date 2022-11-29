@@ -47,4 +47,15 @@ export class QuestionService {
     );
   }
 
+  create(question: Question): Observable<Question> {
+    return this.http.post<Question>(this.url, question, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+           () => new Error( 'QuestionService.create(): error creating question: ' + err )
+        );
+      })
+    );
+  }
+
 }
