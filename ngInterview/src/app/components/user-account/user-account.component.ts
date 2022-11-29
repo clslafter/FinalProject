@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Address } from 'src/app/models/address';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -21,6 +22,8 @@ export class UserAccountComponent implements OnInit {
 user: User = new User;
 editUser: User | null = null;
 selected: User | null = null;
+addAddress = new Address();
+newAddress: Address | null = null
 
   loadUser(): void {
     this.auth.getLoggedInUser().subscribe({
@@ -56,6 +59,15 @@ selected: User | null = null;
       },
     });
   }
+
+//  Create Address form with field addAddress.
+//   Then get address id after it has been added.
+//   Make a newAddress field and set it to data from the addAddress function.
+//   Then set editUser.address to newAddress.
+//   Then call updateUser(editUser)
+// Will need address service for a create and a show method. Create address controller in Boot project
+//Create API endpoint to add an address to a user that takes a userId and request body address. Handle that on the back end
+
 
   deleteUserAccount(){
     if(confirm("Are you sure to delete your account?")){
