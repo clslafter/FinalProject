@@ -12,7 +12,7 @@ public interface AddressRepository extends JpaRepository<Address, Integer> {
 	
 	Address findByCompanyId(int cId);
 	
-	Address findByUserId(int uId);
+//	Address findByUserId(int uId);
 	
 	Address findByJobId(int jId);
 	
