@@ -19,6 +19,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private AddressRepository addressRepo;
 	
+	@Autowired
+	private AddressService addressSvc;
+	
 	@Override
 	public List<User> index(){
 		return userRepo.findAll();
@@ -40,9 +43,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User update(int uid, User user) {
+	public User update(String username, User user) {
 		User managed = null;
-		managed = userRepo.findById(uid);
+		managed = userRepo.findByUsername(username);
 		if (managed != null) {
 			managed.setFirstName(user.getFirstName());
 			managed.setLastName(user.getLastName());
@@ -54,14 +57,30 @@ public class UserServiceImpl implements UserService {
 //			managed.setDateCreated(user.getDateCreated());
 			managed.setAvatarUrl(user.getAvatarUrl());
 //			managed.setAddress(user.getAddress());
-//			if (user.getAddress() != null) {
-//				Address managedAddress = addressRepo.findById(user.getAddress().getId());
-//				managedAddress.update(user.getAddress(), user.getAddress().getId());
-//			}
+			if (user.getAddress() != null) {
+				System.out.println(user.getAddress());
+				Address managedAddress = addressSvc.update(user.getAddress(), user.getAddress().getId());
+				managed.setAddress(managedAddress);
+			}
 //			managed.setQuestions(user.getQuestions());
 //			managed.setAnswers(user.getAnswers());
 //			managed.setJobs(user.getJobs());
 
+			return userRepo.saveAndFlush(managed);
+		}
+		return managed;
+	}
+	@Override
+	public User addAddress(String username, int aid) {
+		User managed = null;
+		managed = userRepo.findByUsername(username);
+		if (managed != null) {
+			Address newAddress = addressRepo.findById(aid);
+			if(managed.getAddress() == null) {
+				managed.setAddress(newAddress);
+			}
+
+			
 			return userRepo.saveAndFlush(managed);
 		}
 		return managed;

@@ -41,8 +41,18 @@
     <label for="avatarUrl">Avatar URL</label>
     <input type="text" name="avatarUrl" [(ngModel)]="editUser.avatarUrl" /> <br />
 
+    <div *ngIf="editUser.address">
     <label for="street">Street Address</label>
-    <input *ngIf="editUser.address" type="text" name="street" [(ngModel)]="editUser.address.street" /> <br />
+    <input type="text" name="street" [(ngModel)]="editUser.address.street" /> <br />
+    <label for="street2">Unit</label>
+    <input type="text" name="street2" [(ngModel)]="editUser.address.street2" /> <br />
+    <label for="city">City</label>
+    <input type="text" name="city" [(ngModel)]="editUser.address.city" /> <br />
+    <label for="state">State</label>
+    <input type="text" name="state" [(ngModel)]="editUser.address.state" /> <br />
+    <label for="zip">Zip Code</label>
+    <input type="text" name="zip" [(ngModel)]="editUser.address.zip" /> <br />
+    </div>
 
     <button class="btn btn-danger" (click)="editUser = null">Cancel</button>
     <!-- <button class="btn btn-success" (click)="updateUser(editUser.id, editUser)">Save</button> -->
@@ -58,7 +68,7 @@ Will need address service for a create and a show method. Create address control
 
 </div>
 
-<div>
+<div *ngIf="editUser && !editUser.address">
   <form>
     <div class="form-group">
       <div class="row">
@@ -76,18 +86,66 @@ Will need address service for a create and a show method. Create address control
         </div>
       </div>
     </div>
-    <!-- <div class="form-group">
+    <div class="form-group">
       <div class="row">
         <div class="col-auto">
-          <label for="password"><b>Password:  </b></label>
+          <label for="street2"><b>Unit:  </b></label>
         </div>
         <div class="col col-auto">
            <input
-            id="password"
-            type="password"
-            name="password"
-            placeholder="password"
-            [(ngModel)]="newUser.password"
+            id="street2"
+            type="text"
+            name="street2"
+            placeholder="Unit"
+            [(ngModel)]="addAddress.street2"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="city"><b>City:  </b></label>
+        </div>
+        <div class="col col-auto">
+           <input
+            id="city"
+            type="text"
+            name="city"
+            placeholder="City"
+            [(ngModel)]="addAddress.city"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="state"><b>State:  </b></label>
+        </div>
+        <div class="col col-auto">
+           <input
+            id="state"
+            type="text"
+            name="state"
+            placeholder="State"
+            [(ngModel)]="addAddress.state"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="zip"><b>Zip Code:  </b></label>
+        </div>
+        <div class="col col-auto">
+           <input
+            id="zip"
+            type="text"
+            name="zip"
+            placeholder="Zip Code"
+            [(ngModel)]="addAddress.zip"
           />
         </div>
       </div>
@@ -95,9 +153,9 @@ Will need address service for a create and a show method. Create address control
     <input
       class="btn btn-secondary"
       type="submit"
-      name="newUser"
-      value="register"
-      (click)="register(newUser)"
-    /> -->
+      name="addAddress"
+      value="Add Address"
+      (click)="addressAdd(addAddress)"
+    />
   </form>
 </div>

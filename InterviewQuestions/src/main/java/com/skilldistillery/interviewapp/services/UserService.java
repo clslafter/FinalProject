@@ -2,6 +2,7 @@ package com.skilldistillery.interviewapp.services;
 
 import java.util.List;
 
+
 import com.skilldistillery.interviewapp.entities.User;
 
 public interface UserService {
@@ -12,9 +13,11 @@ public interface UserService {
 
 	public User create(User user);
 
-	public User update(int uid, User user);
+	public User update(String username, User user);
 
 	boolean delete(int uid);
+
+	User addAddress(String username, int aid);
 
 	
 }
