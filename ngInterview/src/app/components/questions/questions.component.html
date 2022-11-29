@@ -1,4 +1,10 @@
 
+<button class="btn btn-outline-primary" (click)="setAddQuestion()">add a question</button>
+<div id="addAnswerFormDiv" >
+  <app-add-question *ngIf="addQuestion" (reloadParent)="questionAdded()"> </app-add-question>
+</div>
+
+
 <select name="categories" id="categories" [(ngModel)]="selectedCategory">
   <option type="text" >All</option>
   <option type="text" *ngFor="let category of categories">{{category.name}}</option>

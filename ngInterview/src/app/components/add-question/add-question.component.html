@@ -13,9 +13,26 @@
           placeholder="question"
           [(ngModel)]="newQuestion.question"
         />
-        <!-- <button name="addAnswerButton" (click)="createQuestion()">Submit Question</button> -->
       </div>
     </div>
   </div>
+  <!-- Add checkboxes for list of categories to select -->
+  <div class="form-group">
+    <div class="row">
+      <div class="col-auto">
+        <label for="categories"><b>Categories: </b></label>
+      </div>
+      <div class="col col-auto" *ngFor="let category of categories; let i = index" [attr.data-index]="i">
+        <label for="{{category.name}}">{{category.name}}</label><br>
+        <input
+          type="checkbox"
+          name="{{category.name}}"
+          [(ngModel)]="selectedCategories[i]"
+        />
+      </div>
+    </div>
+  </div>
+  <button name="addQuestionButton" (click)="createQuestion()">
+    Submit Question
+  </button>
 </form>
-
