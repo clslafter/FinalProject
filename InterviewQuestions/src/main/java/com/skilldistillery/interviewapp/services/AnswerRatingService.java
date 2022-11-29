@@ -8,5 +8,9 @@ public interface AnswerRatingService {
 
 	List <AnswerRating> answerRatingsList(int answerId);
 	
+	AnswerRating answerRatingUpVote(boolean up, int answerId);
+	
+	AnswerRating answerRatingDownVote(boolean down, int answerId);
+	
 	
 }
