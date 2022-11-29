@@ -19,6 +19,7 @@ import { CategoryPipe } from './pipes/category.pipe';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
 import { AnswerFormComponent } from './components/answer-form/answer-form.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AnswerFormComponent } from './components/answer-form/answer-form.compon
     CategoryPipe,
     UserProfileComponent,
     QuestionDetailComponent,
-    AnswerFormComponent
+    AnswerFormComponent,
+    AdminComponent
 
   ],
   imports: [
