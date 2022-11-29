@@ -56,8 +56,8 @@ public class Question {
 
 	//@JsonManagedReference()
 	//@JsonBackReference()
-	//@JsonIgnoreProperties({"questions"})
-	@JsonIgnore
+	@JsonIgnoreProperties({"questions", "industries", "jobs"})
+	//@JsonIgnore
 	@ManyToMany(mappedBy = "questions")
 	private List<Company> companies;
 

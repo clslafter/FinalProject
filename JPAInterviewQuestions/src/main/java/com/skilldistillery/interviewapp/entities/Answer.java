@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Answer {
@@ -38,7 +39,7 @@ public class Answer {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"answers", "categories", "companies", "user"})
 	@ManyToOne
 	@JoinColumn(name = "question_id")
 	private Question question;
