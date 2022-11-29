@@ -10,6 +10,13 @@
   <p>Member since: {{user.dateCreated}}</p>
   <p>Your avatar: {{user.avatarUrl}}</p>
 
+  <p>Your Address</p>
+  <p>Street Address: {{user.address?.street}}</p>
+  <p>Unit: {{user.address?.street2}}</p>
+  <p>City: {{user.address?.city}}</p>
+  <p>State: {{user.address?.state}}</p>
+  <p>Zip Code: {{user.address?.zip}}</p>
+
   <button class="btn btn-outline-primary" (click)="setEditUser()">Edit your info</button>
   <button class="btn btn-outline-danger" (click)="deleteUserAccount()">Delete your account</button>
 </div>
@@ -34,8 +41,18 @@
     <label for="avatarUrl">Avatar URL</label>
     <input type="text" name="avatarUrl" [(ngModel)]="editUser.avatarUrl" /> <br />
 
+    <label for="street">Street Address</label>
+    <input *ngIf="editUser.address" type="text" name="street" [(ngModel)]="editUser.address.street" /> <br />
+
     <button class="btn btn-danger" (click)="editUser = null">Cancel</button>
     <!-- <button class="btn btn-success" (click)="updateUser(editUser.id, editUser)">Save</button> -->
     <button class="btn btn-success" (click)="updateUser(editUser)">Save</button>
   </form>
+
+  <!-- Create Address form with field addAddress.
+    Then get address id after it has been added.
+    Make a newAddress field and set it to data from the addAddress function.
+    Then set editUser.address to newAddress.
+    Then call updateUser(editUser)
+Will need address service for a create and a show method. Create address controller in Boot project -->
 </div>

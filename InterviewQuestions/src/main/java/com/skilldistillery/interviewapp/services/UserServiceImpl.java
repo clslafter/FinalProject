@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.interviewapp.entities.Address;
 import com.skilldistillery.interviewapp.entities.User;
+import com.skilldistillery.interviewapp.repositories.AddressRepository;
 import com.skilldistillery.interviewapp.repositories.UserRepository;
 
 @Service
@@ -13,6 +15,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private AddressRepository addressRepo;
 	
 	@Override
 	public List<User> index(){
@@ -26,6 +31,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User create(User user) {
+		
+			if (user.getAddress() != null) {
+			
+			user.setAddress(addressRepo.saveAndFlush(user.getAddress()));
+		}
 		return userRepo.saveAndFlush(user);
 	}
 
@@ -44,6 +54,10 @@ public class UserServiceImpl implements UserService {
 //			managed.setDateCreated(user.getDateCreated());
 			managed.setAvatarUrl(user.getAvatarUrl());
 //			managed.setAddress(user.getAddress());
+//			if (user.getAddress() != null) {
+//				Address managedAddress = addressRepo.findById(user.getAddress().getId());
+//				managedAddress.update(user.getAddress(), user.getAddress().getId());
+//			}
 //			managed.setQuestions(user.getQuestions());
 //			managed.setAnswers(user.getAnswers());
 //			managed.setJobs(user.getJobs());
