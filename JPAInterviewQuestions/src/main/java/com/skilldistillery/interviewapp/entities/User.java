@@ -52,7 +52,6 @@ public class User {
 	@Column(name = "avatar_url")
 	private String avatarUrl;
 
-	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
