@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -23,10 +26,12 @@ public class Answer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
+	@CreationTimestamp
 	@Column(name = "date_created")
 	private LocalDateTime dateCreated;
 
+	@UpdateTimestamp
 	@Column(name = "date_updated")
 	private LocalDateTime dateUpdated;
 
@@ -44,7 +49,7 @@ public class Answer {
 	@JoinColumn(name = "question_id")
 	private Question question;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({"answer", "user"})
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerRating> ratings;
 
