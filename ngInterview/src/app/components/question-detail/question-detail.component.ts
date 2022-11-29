@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Answer } from 'src/app/models/answer';
+import { AnswerRating } from 'src/app/models/answer-rating';
 import { Question } from 'src/app/models/question';
 import { QuestionService } from 'src/app/services/question-service';
 
@@ -11,6 +13,8 @@ import { QuestionService } from 'src/app/services/question-service';
 export class QuestionDetailComponent implements OnInit {
 
   selected: Question | null = null;
+
+
 
   constructor(private questionService: QuestionService, private route: ActivatedRoute, private router: Router) { }
 
@@ -57,5 +61,9 @@ export class QuestionDetailComponent implements OnInit {
       }
     });
   }
+}
+
+determineRatingValue(answer: Answer){
+
 }
 }
