@@ -20,6 +20,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
 import { AnswerFormComponent } from './components/answer-form/answer-form.component';
 import { AddQuestionComponent } from './components/add-question/add-question.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -37,8 +38,8 @@ import { AddQuestionComponent } from './components/add-question/add-question.com
     UserProfileComponent,
     QuestionDetailComponent,
     AnswerFormComponent,
-    AddQuestionComponent
-
+    AddQuestionComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
