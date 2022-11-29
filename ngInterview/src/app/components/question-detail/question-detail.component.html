@@ -11,7 +11,7 @@
 </ul>
 <h5>Answers:</h5>
 <ul *ngFor="let answer of selected?.answers;">
-  <li> {{answer.answer}}  </li>
+  <li> {{answer.answer}} <br> <button class="btn btn-outline-primary" (click)="voteUp(answer)">UpVote</button> <button class="btn btn-outline-danger" (click)="voteDown(answer)">DownVote</button> </li>
   <li *ngIf="answer.ratings">{{determineRatingValue(answer)}}</li>
 
   <ul>
