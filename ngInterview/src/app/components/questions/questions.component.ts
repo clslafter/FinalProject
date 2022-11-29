@@ -18,12 +18,24 @@ export class QuestionsComponent implements OnInit {
 
   selectedCategory = 'all';
 
+  addQuestion: boolean = false;
+
   constructor(private questionService: QuestionService, private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.loadQuestions();
     this.loadCategories();
   }
+
+  questionAdded() {
+    this.loadQuestions();
+    this.loadCategories();
+    this.addQuestion = false;
+  }
+
+  setAddQuestion(){
+    this.addQuestion = true;
+    }
 
   loadQuestions () {
     this.questionService.index().subscribe({

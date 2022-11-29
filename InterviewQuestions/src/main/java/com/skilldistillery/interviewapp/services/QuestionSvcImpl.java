@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.interviewapp.entities.Category;
 import com.skilldistillery.interviewapp.entities.Question;
 import com.skilldistillery.interviewapp.entities.User;
+import com.skilldistillery.interviewapp.repositories.CategoryRepository;
 import com.skilldistillery.interviewapp.repositories.QuestionRepository;
 import com.skilldistillery.interviewapp.repositories.UserRepository;
 
@@ -17,7 +19,10 @@ public class QuestionSvcImpl implements QuestionService {
 	private QuestionRepository questionRepo;
 	
 	@Autowired
+	
 	private UserRepository userRepo;
+	@Autowired
+	private CategoryRepository categoryRepo;
 	
 	@Override
 	public List<Question> questionList() {
@@ -35,7 +40,13 @@ public class QuestionSvcImpl implements QuestionService {
 		User user = userRepo.findByUsername(username);
 		if (user != null) {
 			question.setUser(user);
-			return questionRepo.saveAndFlush(question);
+			questionRepo.saveAndFlush(question);
+			for (Category category: question.getCategories()) {
+				Category newCat = categoryRepo.queryById(category.getId());
+				newCat.addQuestion(question);
+				categoryRepo.saveAndFlush(newCat);
+			}
+			return question;
 		}
 		return null;
 	}

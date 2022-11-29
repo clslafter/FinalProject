@@ -48,7 +48,7 @@ export class QuestionService {
   }
 
   create(question: Question): Observable<Question> {
-    return this.http.post<Question>(this.url, question, this.getHttpOptions()).pipe(
+    return this.http.post<Question>(this.baseUrl+'api/questions/', question, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(
