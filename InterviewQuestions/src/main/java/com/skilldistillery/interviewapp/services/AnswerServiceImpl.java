@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.interviewapp.entities.Answer;
+import com.skilldistillery.interviewapp.entities.Question;
 import com.skilldistillery.interviewapp.entities.User;
 import com.skilldistillery.interviewapp.repositories.AnswerRepository;
+import com.skilldistillery.interviewapp.repositories.QuestionRepository;
 import com.skilldistillery.interviewapp.repositories.UserRepository;
 
 @Service
@@ -15,6 +17,9 @@ public class AnswerServiceImpl implements AnswerService {
 
 	@Autowired
 	private AnswerRepository answerRepo;
+	
+	@Autowired
+	private QuestionRepository questionRepo;
 
 	@Autowired
 	private UserRepository userRepo;
@@ -30,9 +35,13 @@ public class AnswerServiceImpl implements AnswerService {
 	}
 
 	@Override
-	public Answer create(String username, Answer answer) {
+	public Answer create(String username, Answer answer, int questionId) {
 		User user = userRepo.findByUsername(username);
 		if (user != null) {
+			Question question = questionRepo.findById(questionId);
+			answer.setQuestion(question);
+			question.addAnswer(answer);
+			user.addAnswer(answer);
 			answer.setUser(user);
 			return answerRepo.saveAndFlush(answer);
 		}

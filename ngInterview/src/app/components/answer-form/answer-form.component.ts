@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Answer } from 'src/app/models/answer';
 import { Question } from 'src/app/models/question';
@@ -15,6 +15,10 @@ export class AnswerFormComponent implements OnInit {
   questions: Question[] = [];
 
   answers: Answer[] = [];
+
+  @Input() selectedQuestion: Question | null | undefined;
+
+  @Output() returnToParent = new EventEmitter<Question|null>();
 
   newAnswer: Answer = new Answer();
   constructor(private questionService: QuestionService,
@@ -49,17 +53,20 @@ export class AnswerFormComponent implements OnInit {
 //   }
 
   createAnswer(){
-
-    this.answerService.create(this.newAnswer).subscribe({
+  if (this.selectedQuestion){
+    this.answerService.create(this.newAnswer, this.selectedQuestion.id).subscribe({
       next: (data: any) => {
         this.newAnswer = new Answer();
         this.newAnswer.enabled = true;
-        this.newAnswer.user
+        this.newAnswer.user;
+
+        this.returnToParent.emit(data);
       },
       error: (err: any) => {
         console.error('createAnswer: error creating answer:');
         console.error(err);
       }
     })
+  }
   }
 }

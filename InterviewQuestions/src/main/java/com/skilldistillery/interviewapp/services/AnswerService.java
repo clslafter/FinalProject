@@ -10,7 +10,7 @@ public interface AnswerService {
 	
 	Answer show(int aId);
 	
-	Answer create(String username, Answer answer);
+	Answer create(String username, Answer answer, int questionId);
 	
 	Answer update(Answer answer , int aId, String username);
 	
