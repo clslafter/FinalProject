@@ -3,6 +3,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { Address } from '../models/address';
 
 @Injectable({
   providedIn: 'root'
@@ -48,16 +49,29 @@ export class UserService {
     );
   }
 
-  update(id: number, user: User): Observable<User> {
-    return this.http.put<User>(this.url + '/' + id, user, this.getHttpOptions()).pipe(
+  update(user: User): Observable<User> {
+    return this.http.put<User>(this.url, user, this.getHttpOptions()).pipe(
       catchError((err:any)=>{
         console.error(err);
         return throwError(
-          ()=> new Error('User.update(): error updating User: ' +err)
+          ()=> new Error('UserService.update(): error updating User: ' +err)
         );
       })
     );
   }
+//add error messages for Address
+  addAddress(addressId: number): Observable<User> {
+    return this.http.put<User>(this.url + '/addresses/'+ addressId, null, this.getHttpOptions()).pipe(
+      catchError((err:any)=>{
+        console.error(err);
+        return throwError(
+          ()=> new Error('User.addAddress(): error adding address to User: ' +err)
+        );
+      })
+    );
+  }
+
+
 
   disable(id: number): Observable<User> {
     return this.http.delete<User>(this.url + '/' + id, this.getHttpOptions()).pipe(
