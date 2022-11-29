@@ -1,5 +1,5 @@
 <h5>Details for: {{selected?.question}}</h5>
-<p> Submitted by <a class="nav-link" [routerLink]="['/userProfile', selected?.user?.id]">{{selected?.user?.username}}</a> on {{selected?.dateCreated}}</p>
+<p> Submitted by <a class="nav-link" [routerLink]="['/userProfile', selected?.user?.id]">{{selected?.user?.username}}</a> on {{selected?.dateCreated | date: 'short'}}</p>
 
 <h5>Companies that have asked similar questions:</h5>
 <ul *ngFor="let company of selected?.companies;">
@@ -11,7 +11,7 @@
 </ul>
 <h5>Answers:</h5>
 <ul *ngFor="let answer of selected?.answers;">
-  <li> {{answer.answer}}  </li>
+  <li> {{answer.answer}} <br> <button class="btn btn-outline-primary" (click)="voteUp(answer)">UpVote</button> <button class="btn btn-outline-danger" (click)="voteDown(answer)">DownVote</button> </li>
   <li *ngIf="answer.ratings">{{determineRatingValue(answer)}}</li>
 
   <ul>

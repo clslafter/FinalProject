@@ -16,6 +16,8 @@ export class QuestionDetailComponent implements OnInit {
 
 
 
+
+
   constructor(private questionService: QuestionService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -64,7 +66,31 @@ export class QuestionDetailComponent implements OnInit {
 }
 
 determineRatingValue(answer: Answer){
-let ratings;
+  let up = 0;
+  let down = 0;
+  if(answer.ratings){
+    let ratings: AnswerRating[] = answer.ratings;
+    for(let i = 0; i < ratings.length; i++){
+      if(ratings[i].upvote){
+        up++;
+      }
+      else {
+        down++;
+      }
+    }
+
+  }
+  return up - down;
+}
+
+voteUp(answer: Answer){
+  console.log("vote up clicked");
+
+}
+
+voteDown(answer: Answer){
+  console.log("vote down clicked");
 
 }
 }
+
