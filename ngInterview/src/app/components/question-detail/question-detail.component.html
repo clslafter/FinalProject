@@ -1,1 +1,18 @@
 <p>question-detail works!</p>
+
+<p>{{selected?.question}}</p>
+<p> Submitted by {{selected?.user}}</p>
+<p> Submitted on {{selected?.dateCreated}}</p>
+<ul *ngFor="let company of selected?.companies;">
+  <li> {{company.name}} </li>
+</ul>
+
+<ul *ngFor="let category of selected?.categories;">
+  <li > {{category.name}} </li>
+</ul>
+
+<ul *ngFor="let answer of selected?.answers;">
+  <li> {{answer.answer}}  </li>
+</ul>
+<!-- <button class="btn btn-outline-primary" (click)="XXXX()">add an answer</button> -->
+<button class="btn btn-outline-primary">add an answer</button>
