@@ -23,4 +23,15 @@ export class AnswerService {
       })
     );
   }
-}
+
+  create(answer: Answer) {
+    return this.http.post<Answer>(this.url, answer).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('TodoService.create():error creating Todo: ' + err)
+        );
+      })
+    );
+    }
+  }
