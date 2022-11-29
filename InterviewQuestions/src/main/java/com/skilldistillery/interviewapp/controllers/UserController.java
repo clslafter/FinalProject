@@ -118,7 +118,22 @@ public class UserController {
 		}
 	}
 	
-	//
+	@DeleteMapping("users/disable/{uid}")
+	public void disable(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, Principal principal) {
+		try {
+			// if (userService.delete(principal.getName(), uid)) {
+			if (userService.delete(uid)) {
+				res.setStatus(204);
+			} else {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+		}
+	}
+	
+	
 	@PutMapping("users/enable/{uid}")
 	public void enableUser(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, Principal principal) {
 		try {
@@ -133,5 +148,5 @@ public class UserController {
 			res.setStatus(400);
 		}
 	}
-	//
+	
 }

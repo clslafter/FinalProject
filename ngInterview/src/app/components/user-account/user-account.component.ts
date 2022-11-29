@@ -112,7 +112,7 @@ addressAdd(address: Address) {
 
   deleteUserAccount(){
     if(confirm("Are you sure to delete your account?")){
-    this.userService.disable(this.auth.getLoggedInUserId()).subscribe({
+    this.userService.delete(this.auth.getLoggedInUserId()).subscribe({
       next: (data: any) => {
           this.user = data;
           // this.clearEditUser();
