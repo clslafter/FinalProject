@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'userAccount', component: UserAccountComponent },
   { path: 'userProfile/:id', component: UserProfileComponent },
   { path: 'questions', component: QuestionsComponent },
-  { path: 'questionDetail', component: QuestionDetailComponent },
+  { path: 'questionDetail/:id', component: QuestionDetailComponent },
 
   { path: '**', component: NotFoundComponent }
 ];
