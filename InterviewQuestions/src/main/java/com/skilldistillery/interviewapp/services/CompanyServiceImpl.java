@@ -60,10 +60,10 @@ public class CompanyServiceImpl implements CompanyService {
 			managed.setEnabled(false);
 
 			companyRepo.save(managed);
-			//returns true if user was disabled
+			//returns true if company was disabled
 			return !managed.isEnabled();
 		}
-		//returns false if user is enabled
+		//returns false if company is enabled
 		return !companyRepo.findById(cid).isEnabled();
 	}
 }
