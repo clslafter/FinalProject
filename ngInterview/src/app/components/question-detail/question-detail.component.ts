@@ -77,6 +77,9 @@ export class QuestionDetailComponent implements OnInit {
         this.questionService.show(questionId).subscribe({
           next: (data) => {
             this.selected = data;
+            console.log('********************')
+            console.log(this.selected)
+            console.log('********************')
             this.selected.answers?.sort(this.answerService.sortAnswersByRating);
           },
           error: (fail) => {

@@ -68,8 +68,28 @@ public class QuestionSvcImpl implements QuestionService {
 				managed.setAnswers(question.getAnswers());
 				managed.setCategories(question.getCategories());
 				managed.setCompanies(question.getCompanies());
-
-			return questionRepo.save(managed);
+				System.out.println(managed.getCategories());
+				
+				
+				List<Category> allCats = categoryRepo.findAll();
+				for (Category category : allCats) {
+					if(!managed.getCategories().contains(category) && category.getQuestions().contains(managed)) {
+						category.removeQuestion(managed);
+					}
+				}
+				
+				for (int i = 0; i < managed.getCategories().size(); i++) {
+					Category managedCat = categoryRepo.queryById(managed.getCategories().get(i).getId());
+					managedCat.addQuestion(managed);
+					managed.getCategories().set(i, managedCat);
+				}
+				
+				
+				
+				Question savedQuestion = questionRepo.save(managed);
+				
+				
+			return savedQuestion;
 			}
 		}
 		return managed;
