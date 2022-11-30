@@ -32,6 +32,29 @@
     />
     </div>
 
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="categories"><b>Categories: </b></label>
+        </div>
+        <div class="col col-auto" *ngFor="let category of categories; let i = index" [attr.data-index]="i">
+          <label for="{{category.name}}">{{category.name}}</label><br>
+          <input
+            type="checkbox"
+            name="{{category.name}}"
+            [(ngModel)]="selectedCategories[i]"
+          />
+        </div>
+      </div>
+    </div>
+
+
+    <input
+      class="btn btn-outline-danger"
+      type="submit"
+      value="Cancel"
+      (click)="backToDetail()"/>
+
     <input
     class="btn btn-secondary"
     type="submit"
@@ -43,3 +66,4 @@
   </form>
 
 </div>
+

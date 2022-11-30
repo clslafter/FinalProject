@@ -24,6 +24,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { EditQuestionComponent } from './components/edit-question/edit-question.component';
 import { CompanyComponent } from './components/company/company.component';
 import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
+import { EditAnswerComponent } from './components/edit-answer/edit-answer.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { CompanyDetailComponent } from './components/company-detail/company-deta
     AdminComponent,
     EditQuestionComponent,
     CompanyComponent,
-    CompanyDetailComponent
+    CompanyDetailComponent,
+    EditAnswerComponent
   ],
   imports: [
     BrowserModule,
