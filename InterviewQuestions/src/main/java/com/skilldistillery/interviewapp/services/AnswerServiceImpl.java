@@ -51,16 +51,14 @@ public class AnswerServiceImpl implements AnswerService {
 	@Override
 	public Answer update(Answer answer, int aId, String username) {
 		User user = userRepo.findByUsername(username);
+		System.out.println(aId);
+		System.out.println(user);
 		Answer updatedAnswer = answerRepo.findById(aId);
+		System.out.println(updatedAnswer);
 		if (updatedAnswer.getUser().getUsername().equals(username)) {
 			if (updatedAnswer != null) {
 				updatedAnswer.setAnswer(answer.getAnswer());
 				updatedAnswer.setEnabled(answer.isEnabled());
-				updatedAnswer.setDateUpdated(answer.getDateUpdated());
-				updatedAnswer.setDateCreated(answer.getDateCreated());
-				updatedAnswer.setUser(user);
-				updatedAnswer.setRatings(answer.getRatings());
-
 				return answerRepo.save(updatedAnswer);
 			}
 		}

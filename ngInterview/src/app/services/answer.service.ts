@@ -46,8 +46,8 @@ export class AnswerService {
     );
     }
 
-    update(answer: Answer): Observable<Answer> {
-      return this.http.put<Answer>(this.url + '/' + answer.id, answer, this.getHttpOptions()).pipe(
+    update(answer: Answer, answerId: number): Observable<Answer> {
+      return this.http.put<Answer>(this.url + '/' + answerId, answer, this.getHttpOptions()).pipe(
         catchError((err: any) => {
           console.error(err);
           return throwError(

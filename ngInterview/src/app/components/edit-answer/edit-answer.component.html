@@ -6,20 +6,20 @@
   <form>
     <textarea
     class="form-control"
-    id="question"
+    id="answer"
     type="text"
-    name="question"
+    name="answer"
     rows="3"
     [(ngModel)]="updateAnswer.answer"
     >{{updateAnswer.answer}}</textarea>
 
-    <!-- <input
+    <input
     class="btn btn-secondary"
     type="submit"
     name="updateAnswer"
     value="Save"
-    (click)="answerToUpdate(answer)"
-  /> -->
+    (click)="answerToUpdate(updateAnswer)"
+  />
   </form>
 
 </div>
