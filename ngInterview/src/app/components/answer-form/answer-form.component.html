@@ -1,4 +1,4 @@
-<h1>ADD Answer Form</h1>
+
 <form>
   <div class="form-group">
     <div class="row">
@@ -6,13 +6,17 @@
         <label for="answer"><b>ANSWER: </b></label>
       </div>
       <div class="col col-auto">
-        <input
+        <textarea
           id="answer"
           type="text"
           name="answer"
+          rows="4"
+          cols="50"
           placeholder="answer"
           [(ngModel)]="newAnswer.answer"
-        />
+        >
+        </textarea>
+        <br>
         <button name="addAnswerButton" (click)="createAnswer()">Submit Answer</button>
       </div>
     </div>
