@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
+import { EditQuestionComponent } from './components/edit-question/edit-question.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'userProfile/:id', component: UserProfileComponent },
   { path: 'questions', component: QuestionsComponent },
   { path: 'questionDetail/:id', component: QuestionDetailComponent },
+  { path: 'editQuestion/:id', component: EditQuestionComponent },
+  { path: 'company', component: CompanyComponent },
   { path: 'admin', component: AdminComponent },
 
   { path: '**', component: NotFoundComponent }

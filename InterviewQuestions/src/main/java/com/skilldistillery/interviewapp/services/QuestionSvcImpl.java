@@ -26,6 +26,7 @@ public class QuestionSvcImpl implements QuestionService {
 	
 	@Override
 	public List<Question> questionList() {
+		//may need to sort by enabled into new list
 		return questionRepo.findAll();
 	}
 
