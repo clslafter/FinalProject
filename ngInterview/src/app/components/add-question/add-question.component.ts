@@ -32,24 +32,7 @@ export class AddQuestionComponent implements OnInit {
 
 
 
-  //need an addQuestion function
-  // createAnswer(){
-  //   if (this.selectedQuestion){
-  //     this.answerService.create(this.newAnswer, this.selectedQuestion.id).subscribe({
-  //       next: (data: any) => {
-  //         this.newAnswer = new Answer();
-  //         this.newAnswer.enabled = true;
-  //         this.newAnswer.user;
 
-  //         this.returnToParent.emit(data);
-  //       },
-  //       error: (err: any) => {
-  //         console.error('createAnswer: error creating answer:');
-  //         console.error(err);
-  //       }
-  //     })
-  //   }
-  //   }
   loadCategories () {
     this.categoryService.index().subscribe({
       next: (data) => {
@@ -65,7 +48,7 @@ export class AddQuestionComponent implements OnInit {
     })
   }
 
-
+//add error messages for required fields
     createQuestion() {
       this.newQuestion.categories = [];
       for (let i = 0; i < this.selectedCategories.length; i++) {
