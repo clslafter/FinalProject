@@ -1,1 +1,25 @@
-<p>edit-answer works!</p>
+
+
+<!-- Cancel button should return to edit detail. Save button saves edits into the database and returns to question detail.-->
+
+<div *ngIf="updateAnswer">
+  <form>
+    <textarea
+    class="form-control"
+    id="question"
+    type="text"
+    name="question"
+    rows="3"
+    [(ngModel)]="updateAnswer.answer"
+    >{{updateAnswer.answer}}</textarea>
+
+    <!-- <input
+    class="btn btn-secondary"
+    type="submit"
+    name="updateAnswer"
+    value="Save"
+    (click)="answerToUpdate(answer)"
+  /> -->
+  </form>
+
+</div>
