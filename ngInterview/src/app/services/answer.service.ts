@@ -56,4 +56,28 @@ export class AnswerService {
         })
       );
       }
+
+      sortAnswersByRating(a1: Answer, a2: Answer): number {
+        if (a1 && a2) {
+          let i = 0;
+          let r1 = a1.ratings?.reduce(
+            (a, c) => a + (c.upvote ? 1 : c.upvote === null ? 0 : -1),
+            i
+          );
+          i = 0;
+          let r2 = a2.ratings?.reduce(
+            (a, c) => a + (c.upvote ? 1 : c.upvote === null ? 0 : -1),
+            i
+          );
+          if(r1 && r2){
+          return r2 - r1;
+          }
+          else{
+            return 0;
+          }
+        }
+        else{
+          return 0;
+        }
+      }
   }
