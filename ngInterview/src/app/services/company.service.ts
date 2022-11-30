@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { Company } from '../models/company';
 import { Question } from '../models/question';
 import { AuthService } from './auth.service';
 
@@ -24,8 +25,8 @@ export class CompanyService {
       return options;
     }
 
-  index(): Observable<Question[]> {
-    return this.http.get<Question[]>(this.url + "/companies", this.getHttpOptions()).pipe(
+  index(): Observable<Company[]> {
+    return this.http.get<Company[]>(this.url + "/companies", this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -35,4 +36,16 @@ export class CompanyService {
       })
     );
   }
+
+  show(cId: number): Observable<Company> {
+    return this.http.get<Company>(this.baseUrl+ 'api/companies/' +cId, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('CompanyService.index(): error retrieving company: ' + err)
+        );
+      })
+    );
+  }
+
 }
