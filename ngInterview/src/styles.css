@@ -3,3 +3,7 @@ a:hover{
   color: yellowgreen !important;
   text-decoration: underline;
 }
+
+.error {
+  color: red !important;
+}

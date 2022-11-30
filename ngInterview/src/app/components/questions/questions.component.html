@@ -17,6 +17,7 @@
         <th>Id</th>
         <th>User</th>
         <th>Question</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -24,7 +25,13 @@
         <td>{{ question.id }}</td>
         <td><a class="nav-link" [routerLink]="['/userProfile', question.user?.id]">{{ question.user?.username }}</a></td>
         <td><a class="nav-link" [routerLink]="['/questionDetail', question.id]">{{ question.question }}</a></td>
+        <td>
+          <button *ngIf="user.id === question.user?.id" class="btn btn-danger" (click)="deleteQuestion(question.id)">
+            X
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
+
 
