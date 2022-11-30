@@ -11,6 +11,7 @@
 <div>
   <h5>Questions for this company:</h5>
   <ul *ngFor="let question of selected?.questions;">
-    <li> {{question.question}} </li>
+    <li><a class="nav-link" [routerLink]="['/questionDetail', question.id]">{{ question.question }}</a></li>
+    <!-- <li> {{question.question}} </li> -->
   </ul>
 </div>
