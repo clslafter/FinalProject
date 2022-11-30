@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'questions', component: QuestionsComponent },
   { path: 'questionDetail/:id', component: QuestionDetailComponent },
   { path: 'editQuestion/:id', component: EditQuestionComponent },
-  { path: 'company', component: CompanyComponent },
+  { path: 'companies', component: CompanyComponent },
   { path: 'admin', component: AdminComponent },
 
   { path: '**', component: NotFoundComponent }
