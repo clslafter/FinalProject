@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/app/models/category';
 import { Question } from 'src/app/models/question';
 import { AuthService } from 'src/app/services/auth.service';
+import { CategoryService } from 'src/app/services/category.service';
 import { QuestionService } from 'src/app/services/question-service';
 
 @Component({
@@ -14,16 +16,27 @@ export class EditQuestionComponent implements OnInit {
 
 
   editQuestion: Question | null = null;
+  categories: Category[] = [];
 
-  constructor(private questionService: QuestionService, private route: ActivatedRoute, private router: Router) { }
+   selectedCategories: boolean[] = [];
+
+  constructor(private questionService: QuestionService, private route: ActivatedRoute, private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.loadQuestion();
+    this.loadCategories();
   }
 
 
   clearEditQuestion(): void {
     this.editQuestion = null;
+  }
+
+  backToDetail () {
+    this.router.navigateByUrl(`/questionDetail/${this.editQuestion?.id}`);
+    this.clearEditQuestion();
+
+
   }
 
   loadQuestion(){
@@ -48,7 +61,34 @@ export class EditQuestionComponent implements OnInit {
     }
     }
 
+    loadCategories () {
+      this.categoryService.index().subscribe({
+        next: (data) => {
+          this.categories = data;
+          this.categories.forEach(category => {
+            this.selectedCategories.push(false);
+          });
+        },
+        error: (fail) => {
+          console.error('EditQuestionComponent.loadCategories: error getting categories');
+          console.error(fail);
+        }
+      })
+    }
+
     updateQuestion(question: Question): void {
+      if (this.editQuestion) {
+      this.editQuestion.categories = [];
+    }
+      for (let i = 0; i < this.selectedCategories.length; i++) {
+
+        if(this.selectedCategories[i]) {
+          this.editQuestion?.categories?.push(this.categories[i]);
+        }
+
+      }
+      console.log(this.editQuestion);
+
       this.questionService.update(question).subscribe({
           next: (data: any) => {
               this.editQuestion = data;
@@ -65,6 +105,7 @@ export class EditQuestionComponent implements OnInit {
       }
 
 }
+
 
 
 

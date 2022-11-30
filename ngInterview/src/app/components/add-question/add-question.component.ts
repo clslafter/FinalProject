@@ -42,7 +42,7 @@ export class AddQuestionComponent implements OnInit {
         });
       },
       error: (fail) => {
-        console.error('QuestionComponent.loadCategories: error getting categories');
+        console.error('AddQuestionComponent.loadCategories: error getting categories');
         console.error(fail);
       }
     })
@@ -67,7 +67,7 @@ export class AddQuestionComponent implements OnInit {
 
         },
         error: (fail) => {
-          console.error('TodoListComponent.reload: error creating todo');
+          console.error('AddQuestionComponent.reload: error creating question');
           console.error(fail);
         }
 
