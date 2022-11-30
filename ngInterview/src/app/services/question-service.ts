@@ -58,4 +58,28 @@ export class QuestionService {
     );
   }
 
+  update(question: Question): Observable<Question> {
+    return this.http.put<Question>(this.url + '/' + question.id, question, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+           () => new Error( 'QuestionService.update(): error updating question: ' + err )
+        );
+      })
+    );
+    }
+
+
+
+  destroy(id: number): Observable<void> {
+    return this.http.delete<void>(this.url + '/' + id, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+           () => new Error( 'QuestionService.destroy(): error deleting question: ' + err )
+        );
+      })
+    );
+  }
+
 }

@@ -10,18 +10,25 @@ import { QuestionService } from 'src/app/services/question-service';
 })
 export class EditQuestionComponent implements OnInit {
 
-
+  question: Question = new Question;
   selectedQuestion: Question | null = null;
+  editQuestion: Question | null = null;
 
   constructor(private questionService: QuestionService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.loadPage();
+    this.loadQuestion();
   }
 
+  setEditQuestion(): void {
+    this.editQuestion = Object.assign({}, this.question);
+  }
 
+  clearEditQuestion(): void {
+    this.editQuestion = null;
+  }
 
-  loadPage(){
+  loadQuestion(){
     let routeId = this.route.snapshot.paramMap.get('id');
     console.log(routeId);
     if (!this.selectedQuestion && routeId) {
@@ -42,4 +49,5 @@ export class EditQuestionComponent implements OnInit {
     }
     }
 }
+
 
