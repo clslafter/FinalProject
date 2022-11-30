@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Company {
@@ -39,8 +40,8 @@ public class Company {
 	
 	//@JsonBackReference()
 	//@JsonManagedReference()
-	//@JsonIgnoreProperties({"companies"})
-	@JsonIgnore
+	@JsonIgnoreProperties({"companies"})
+	//@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "company_has_question", joinColumns = @JoinColumn(name = "company_id"), inverseJoinColumns = @JoinColumn(name = "question_id"))
 	private List<Question> questions;

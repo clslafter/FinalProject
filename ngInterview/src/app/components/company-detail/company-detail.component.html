@@ -1,5 +1,6 @@
 <h1>Detail page for {{selected?.name}}</h1>
 <h4>Description: {{selected?.description}}</h4>
+
 <div *ngIf="selected?.address">
 <h4>Address:</h4>
 <p>{{selected?.address?.street}}</p>
@@ -10,7 +11,7 @@
 <div>
   <h5>Questions for this company:</h5>
   <ul *ngFor="let question of selected?.questions;">
-    <li> {{question.question}} </li>
-    <li>test</li>
+    <li><a class="nav-link" [routerLink]="['/questionDetail', question.id]">{{ question.question }}</a></li>
+    <!-- <li> {{question.question}} </li> -->
   </ul>
 </div>
