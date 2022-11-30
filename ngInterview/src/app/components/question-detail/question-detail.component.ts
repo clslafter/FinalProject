@@ -56,6 +56,7 @@ export class QuestionDetailComponent implements OnInit {
     this.questionService.show(this.selected.id).subscribe({
       next: (data) => {
         this.selected = data;
+        this.addAnswer = false;
       },
       error: (fail) => {
         console.error('QuestionDetailComponent.ngOnInit: question not found');
