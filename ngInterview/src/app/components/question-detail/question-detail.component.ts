@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Answer } from 'src/app/models/answer';
 import { AnswerRating } from 'src/app/models/answer-rating';
 import { Question } from 'src/app/models/question';
+import { AnswerRatingService } from 'src/app/services/answer-rating.service';
 import { QuestionService } from 'src/app/services/question-service';
 
 @Component({
@@ -18,7 +19,7 @@ export class QuestionDetailComponent implements OnInit {
 
 
 
-  constructor(private questionService: QuestionService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private questionService: QuestionService, private answerRatingService: AnswerRatingService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.loadPage();
@@ -76,22 +77,62 @@ determineRatingValue(answer: Answer){
         up++;
       }
       else {
-        down++;
+        up--;
       }
     }
 
   }
-  return up - down;
+  return up;
 }
 
 voteUp(answer: Answer){
   console.log("vote up clicked");
-
+  let ar = new AnswerRating();
+  ar.upvote = true;
+  this.answerRatingService.upvote(ar, answer.id).subscribe({
+    next: (data) => {
+      ar = data;
+      if(this.selected?.id)
+      this.questionService.show(this.selected?.id).subscribe({
+        next: (data) => {
+          this.selected = data;
+        },
+        error: (fail) => {
+          console.error('QuestionDetailComponent.ngOnInit: question not found');
+          this.router.navigateByUrl('questionNotFound'); //doesn't exist
+        }
+      });
+    },
+    error: (fail) => {
+      console.error('Answer: not found');
+      this.router.navigateByUrl('AnswerNotFound'); //doesn't exist
+    }
+  })
 }
 
 voteDown(answer: Answer){
   console.log("vote down clicked");
-
+  let ar = new AnswerRating();
+  ar.upvote = false;
+  this.answerRatingService.upvote(ar, answer.id).subscribe({
+    next: (data) => {
+      ar = data;
+      if(this.selected?.id)
+      this.questionService.show(this.selected?.id).subscribe({
+        next: (data) => {
+          this.selected = data;
+        },
+        error: (fail) => {
+          console.error('QuestionDetailComponent.ngOnInit: question not found');
+          this.router.navigateByUrl('questionNotFound'); //doesn't exist
+        }
+      });
+    },
+    error: (fail) => {
+      console.error('Answer: not found');
+      this.router.navigateByUrl('AnswerNotFound'); //doesn't exist
+    }
+  })
 }
 }
 

@@ -26,6 +26,22 @@ public class AnswerRatingId implements Serializable {
 		super();
 	}
 
+	public int getAnswerId() {
+		return answerId;
+	}
+
+	public void setAnswerId(int answerId) {
+		this.answerId = answerId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(answerId, userId);
