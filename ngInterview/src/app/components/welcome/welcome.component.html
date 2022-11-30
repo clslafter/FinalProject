@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let question of questions">
+      <tr *ngFor="let question of questions | enabledQuestion">
         <td><a class="nav-link" [routerLink]="['/register']">{{ question.question }}</a></td>
       </tr>
     </tbody>
