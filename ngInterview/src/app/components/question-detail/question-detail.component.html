@@ -18,7 +18,7 @@
 <ul *ngFor="let answer of selected?.answers;">
   <li> {{answer.answer}} <br> <button class="btn btn-outline-primary" (click)="voteUp(answer)">UpVote</button> <button class="btn btn-outline-danger" (click)="voteDown(answer)">DownVote</button> </li>
   <li *ngIf="answer.ratings">{{determineRatingValue(answer)}}</li>
-  <li><button class="btn btn-outline-primary" (click)="updateAnswer()">Edit Answer</button></li>
+  <!-- <li><button class="btn btn-outline-primary" (click)="updateAnswer(answer)">Edit Answer</button></li> -->
 
   <ul>
     <li> <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]">{{answer.user?.username}}</a> Created On {{answer.dateCreated | date: 'short'}}</li>
