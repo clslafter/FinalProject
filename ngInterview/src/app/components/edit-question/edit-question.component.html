@@ -1,3 +1,45 @@
-<p>edit-question works!</p>
 
-<!-- Cancel button shoudl return to edit detail. Save button saves edits into the database and returns to question detail. -->
+
+<!-- Cancel button should return to edit detail. Save button saves edits into the database and returns to question detail.-->
+
+<div *ngIf="editQuestion">
+  <form>
+
+    <div class="form-group">
+      <div class="mb-3">
+        <div >
+          <label for="question" class="form-label"><b>Edit Question: </b></label>
+        </div>
+        <div >
+          <textarea
+          class="form-control"
+          id="question"
+          type="text"
+          name="question"
+          rows="3"
+          [(ngModel)]="editQuestion.question"
+          >{{editQuestion.question}}</textarea>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input
+
+      type="hidden"
+      name="enabled"
+
+      [(ngModel)]="editQuestion.enabled"
+    />
+    </div>
+
+    <input
+    class="btn btn-secondary"
+    type="submit"
+    name="editQuestion"
+    value="Save"
+    (click)="updateQuestion(editQuestion)"
+  />
+
+  </form>
+
+</div>

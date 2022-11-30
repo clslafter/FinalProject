@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Answer } from 'src/app/models/answer';
 import { AnswerRating } from 'src/app/models/answer-rating';
 import { Question } from 'src/app/models/question';
+import { User } from 'src/app/models/user';
 import { AnswerRatingService } from 'src/app/services/answer-rating.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { AnswerService } from 'src/app/services/answer.service';
 import { QuestionService } from 'src/app/services/question-service';
 
@@ -15,17 +17,46 @@ import { QuestionService } from 'src/app/services/question-service';
 export class QuestionDetailComponent implements OnInit {
 
   selected: Question | null = null;
+  user: User = new User;
 
-  constructor(private questionService: QuestionService, private answerRatingService: AnswerRatingService, private answerService: AnswerService ,private route: ActivatedRoute, private router: Router) { }
+
+  constructor(private questionService: QuestionService, private answerRatingService: AnswerRatingService, private answerService: AnswerService ,private route: ActivatedRoute, private router: Router, private auth: AuthService) { }
+
 
   ngOnInit(): void {
     this.loadPage();
+    this.loadUser();
   }
 
   addAnswer: boolean = false;
 
   setAddAnswer(){
   this.addAnswer = true;
+  }
+
+  //method to compare logged in user against the selected qustions user
+  loadUser () {
+
+    // if (this.selected) {
+    // let question: Question = this.selected;
+
+    this.auth.getLoggedInUser().subscribe({
+      next: (data) => {
+        this.user = data;
+        // if(question.user && this.user.id === question.user.id){
+        //   return true;
+        // }
+        // return false;
+      },
+      error: (fail) => {
+        console.error('UserComponent.reload: error getting user');
+        console.error(fail);
+      }
+    });
+
+  // }
+
+
   }
 
   loadPage(){

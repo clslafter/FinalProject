@@ -1,7 +1,7 @@
 <h5>Details for: {{selected?.question}}</h5>
 <!-- Buttons for edit and delete next to question.
   If the selected question's user is the same as the logged in user, the buttons show up -->
-  <button [routerLink]="['/editQuestion', selected?.id]"> Edit this Question</button>
+  <button *ngIf="user.id === selected?.user?.id" [routerLink]="['/editQuestion', selected?.id]"> Edit this Question</button>
 <p> Submitted by <a class="nav-link" [routerLink]="['/userProfile', selected?.user?.id]">{{selected?.user?.username}}</a> on {{selected?.dateCreated | date: 'short'}}</p>
 <!-- Add a date updated -->
 <!-- Can anyone add a company to a question, or just the user? -->
@@ -29,4 +29,6 @@
 <div id="addAnswerFormDiv" >
   <app-answer-form *ngIf="addAnswer && addAnswer != null" [selectedQuestion]="selected" (returnToParent)="loadNewAnswer()"> </app-answer-form>
 </div>
+
+
 
