@@ -33,10 +33,15 @@ export class QuestionDetailComponent implements OnInit {
     this.loadUser();
   }
 
+  updateAnswer: boolean = false;
   addAnswer: boolean = false;
 
   setAddAnswer() {
     this.addAnswer = true;
+  }
+
+  setUpdateAnswer(){
+    this.updateAnswer = true;
   }
 
   //method to compare logged in user against the selected qustions user
