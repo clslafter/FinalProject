@@ -1,1 +1,16 @@
-<p>company-detail works!</p>
+<h1>Detail page for {{selected?.name}}</h1>
+<h4>Description: {{selected?.description}}</h4>
+<div *ngIf="selected?.address">
+<h4>Address:</h4>
+<p>{{selected?.address?.street}}</p>
+<p *ngIf="selected?.address?.street2"> {{selected?.address?.street2}}</p>
+<p> {{selected?.address?.city}},  {{selected?.address?.state}}   {{selected?.address?.zip}}</p>
+</div>
+
+<div>
+  <h5>Questions for this company:</h5>
+  <ul *ngFor="let question of selected?.questions;">
+    <li> {{question.question}} </li>
+    <li>test</li>
+  </ul>
+</div>

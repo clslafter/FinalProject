@@ -10,8 +10,7 @@
     <tbody>
       <tr *ngFor="let company of companies">
         <td>{{ company.id }}</td>
-        <!-- <td><a class="nav-link" [routerLink]="['/userProfile', question.user?.id]">{{ question.user?.username }}</a></td> -->
-        <td>{{ company.name }}</td>
+        <td><a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{ company.name }}</a></td>
       </tr>
     </tbody>
   </table>
