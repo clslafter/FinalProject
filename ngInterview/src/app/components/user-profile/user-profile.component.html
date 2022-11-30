@@ -5,10 +5,12 @@
 <p>Your avatar: {{selectedUser?.avatarUrl}}</p>
 
 <!-- Add conditional to only show if array contains objects -->
+<div *ngIf="selectedUser && selectedUser.questions">
 <p>This User's Questions: </p>
-<ul *ngFor="let question of selectedUser?.questions">
+<ul *ngFor="let question of selectedUser.questions | enabledQuestion">
 <li><a class="nav-link" [routerLink]="['/questionDetail', question.id]">{{question.question}}</a></li>
 </ul>
+</div>
 
 
 <!-- Add conditional to only show if array contains objects -->

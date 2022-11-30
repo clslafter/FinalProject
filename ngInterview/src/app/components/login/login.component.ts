@@ -20,13 +20,14 @@ export class LoginComponent implements OnInit {
   }
 
   login(user: User) {
+    this.errorMessage = '';
     console.log('Logging user:');
     console.log(user);
     if(!user.username) {
-      this.errorMessage += 'Username is Required ';
+      this.errorMessage += '*Username is Required* ';
     }
     if(!user.password) {
-      this.errorMessage += 'Password is Required';
+      this.errorMessage += ' *Password is Required*';
     }
     if(this.errorMessage) {
       return;
@@ -40,9 +41,12 @@ export class LoginComponent implements OnInit {
       error: (fail) => {
         console.error('LoginComponent.login(): Error logging in account');
         console.error(fail);
-        this.errorMessage = 'Invalid username or password';
+        this.errorMessage = '*Invalid username or password*';
       }
     });
   }
 
 }
+
+
+
