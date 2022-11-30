@@ -33,16 +33,35 @@ export class QuestionDetailComponent implements OnInit {
     this.loadUser();
   }
 
-  updateAnswer: boolean = false;
+  updateAnswer: Answer | null = null;
   addAnswer: boolean = false;
 
   setAddAnswer() {
     this.addAnswer = true;
   }
 
-  setUpdateAnswer(){
-    this.updateAnswer = true;
+  setUpdateAnswer(answer: Answer){
+    this.updateAnswer = Object.assign({},answer);
+
   }
+
+  answerToUpdate(answer: Answer){
+    console.log("clicked")
+    if(this.updateAnswer){
+      delete this.updateAnswer.user;
+    this.answerService.update(this.updateAnswer, this.updateAnswer.id).subscribe({
+      next: (data: any) => {
+          this.updateAnswer = data;
+        },
+      error: (fail: any) => {
+        console.error(
+          'EditAnswerComponent.updateAnswer(): error updating answer:'
+        );
+        console.error(fail);
+      },
+    });
+  }
+}
 
   //method to compare logged in user against the selected qustions user
   loadUser() {

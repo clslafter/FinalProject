@@ -15,20 +15,46 @@
   <li > {{category.name}} </li>
 </ul>
 <h5>Answers:</h5>
+<Div *ngIf="!updateAnswer">
+
+
 <ul *ngFor="let answer of selected?.answers;">
+
   <li> {{answer.answer}} <br> <button class="btn btn-outline-primary" (click)="voteUp(answer)">UpVote</button> <button class="btn btn-outline-danger" (click)="voteDown(answer)">DownVote</button> </li>
   <li *ngIf="answer.ratings">{{determineRatingValue(answer)}}</li>
-  <li><button class="btn btn-outline-primary" (click)="setUpdateAnswer()">Edit Answer</button></li>
 
-  <app-edit-answer *ngIf="updateAnswer && updateAnswer != null "></app-edit-answer>
+
+  <li><button class="btn btn-outline-primary" *ngIf="user.id === answer?.user?.id" (click)="setUpdateAnswer(answer)">Edit Answer</button></li>
+  <!-- <app-edit-answer *ngIf="updateAnswer && updateAnswer != null" [selectedAnswer]="answer" (returnToParent)="loadNewAnswer()"></app-edit-answer> -->
+
 
 
   <ul>
     <li> <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]">{{answer.user?.username}}</a> Created On {{answer.dateCreated | date: 'short'}}</li>
   </ul>
 </ul>
-<button class="btn btn-outline-primary" (click)="setAddAnswer()">add an answer</button>
+</Div>
+<div *ngIf="updateAnswer">
+  <form>
+    <textarea
+    class="form-control"
+    id="answer"
+    type="text"
+    name="answer"
+    rows="3"
+    [(ngModel)]="updateAnswer.answer"
+    >{{updateAnswer.answer}}</textarea>
 
+    <input
+    class="btn btn-secondary"
+    type="submit"
+    name="updateAnswer"
+    value="Save"
+    (click)="answerToUpdate(updateAnswer)"
+  />
+  </form>
+</div>
+<button class="btn btn-outline-primary" (click)="setAddAnswer()">add an answer</button>
 <div id="addAnswerFormDiv" >
   <app-answer-form *ngIf="addAnswer && addAnswer != null" [selectedQuestion]="selected" (returnToParent)="loadNewAnswer()"> </app-answer-form>
 </div>
