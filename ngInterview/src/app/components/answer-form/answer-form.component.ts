@@ -29,29 +29,6 @@ export class AnswerFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-//   loadQuestion(){this.questionService.index().subscribe({
-//     next: (data) => {
-//       this.questions = data;
-//     },
-//     error: (fail) => {
-//       console.error('QuestionComponent.loadQuestions: error getting questions');
-//       console.error(fail);
-//     }
-//   })
-// }
-
-//   loadAnswers(){
-//     this.answerService.index().subscribe({
-//       next: (data) => {
-//         this.answers = data;
-//       },
-//       error: (fail) => {
-//         console.error('AnswerComponent.loadAnswers: error getting questions');
-//         console.error(fail);
-//       }
-//     })
-//   }
-
   createAnswer(){
   if (this.selectedQuestion){
     this.answerService.create(this.newAnswer, this.selectedQuestion.id).subscribe({

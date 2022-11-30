@@ -45,4 +45,15 @@ export class AnswerService {
       })
     );
     }
+
+    update(answer: Answer): Observable<Answer> {
+      return this.http.put<Answer>(this.url + '/' + answer.id, answer, this.getHttpOptions()).pipe(
+        catchError((err: any) => {
+          console.error(err);
+          return throwError(
+             () => new Error( 'AnswerService.update(): error updating answer: ' + err )
+          );
+        })
+      );
+      }
   }

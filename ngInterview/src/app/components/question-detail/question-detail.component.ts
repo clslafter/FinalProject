@@ -4,6 +4,7 @@ import { Answer } from 'src/app/models/answer';
 import { AnswerRating } from 'src/app/models/answer-rating';
 import { Question } from 'src/app/models/question';
 import { AnswerRatingService } from 'src/app/services/answer-rating.service';
+import { AnswerService } from 'src/app/services/answer.service';
 import { QuestionService } from 'src/app/services/question-service';
 
 @Component({
@@ -15,11 +16,7 @@ export class QuestionDetailComponent implements OnInit {
 
   selected: Question | null = null;
 
-
-
-
-
-  constructor(private questionService: QuestionService, private answerRatingService: AnswerRatingService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private questionService: QuestionService, private answerRatingService: AnswerRatingService, private answerService: AnswerService ,private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.loadPage();
@@ -96,6 +93,7 @@ voteUp(answer: Answer){
       this.questionService.show(this.selected?.id).subscribe({
         next: (data) => {
           this.selected = data;
+          // this.selected.answers?.sort(this.sortAnswersByRating);
         },
         error: (fail) => {
           console.error('QuestionDetailComponent.ngOnInit: question not found');
@@ -109,6 +107,20 @@ voteUp(answer: Answer){
     }
   })
 }
+
+// sortAnswersByRating(a1: Answer, a2: Answer) :number {
+// if(a1 && a2){
+// let i = 0;
+// let r1 = a1.ratings?.reduce((a,c) =>
+// a + (c.upvote ? 1 : c.upvote === null ? 0 : -1), i
+// );
+// i = 0;
+// let r2 = a2.ratings?.reduce((a,c) =>
+// a + (c.upvote ? 1 : c.upvote === null ? 0 : -1), i
+// );
+// return r2 - r1;
+// }
+// }
 
 voteDown(answer: Answer){
   console.log("vote down clicked");
@@ -134,5 +146,10 @@ voteDown(answer: Answer){
     }
   })
 }
+
+updateAnswer(){
+
+}
+
 }
 
