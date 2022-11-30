@@ -22,6 +22,7 @@ import { AnswerFormComponent } from './components/answer-form/answer-form.compon
 import { AddQuestionComponent } from './components/add-question/add-question.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { EditQuestionComponent } from './components/edit-question/edit-question.component';
+import { CompanyComponent } from './components/company/company.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { EditQuestionComponent } from './components/edit-question/edit-question.
     AnswerFormComponent,
     AddQuestionComponent,
     AdminComponent,
-    EditQuestionComponent
+    EditQuestionComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,
