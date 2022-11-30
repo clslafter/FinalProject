@@ -39,6 +39,22 @@ export class EditQuestionComponent implements OnInit {
 
   }
 
+  loadQuestionCategories() {
+    if (this.editQuestion?.categories) {
+    for (let i = 0; i < this.editQuestion.categories.length; i++) {
+      for (let j = 0; j < this.categories.length; j++) {
+        if(this.editQuestion.categories[i].name === this.categories[j].name) {
+          this.selectedCategories[j] = true;
+        }
+
+      }
+
+
+    }
+
+  }
+  }
+
   loadQuestion(){
     let routeId = this.route.snapshot.paramMap.get('id');
     console.log(routeId);
@@ -59,15 +75,16 @@ export class EditQuestionComponent implements OnInit {
         });
       }
     }
-    }
+  }
 
-    loadCategories () {
-      this.categoryService.index().subscribe({
-        next: (data) => {
-          this.categories = data;
-          this.categories.forEach(category => {
-            this.selectedCategories.push(false);
-          });
+  loadCategories () {
+    this.categoryService.index().subscribe({
+      next: (data) => {
+        this.categories = data;
+        this.categories.forEach(category => {
+          this.selectedCategories.push(false);
+        });
+        this.loadQuestionCategories();
         },
         error: (fail) => {
           console.error('EditQuestionComponent.loadCategories: error getting categories');
@@ -76,10 +93,9 @@ export class EditQuestionComponent implements OnInit {
       })
     }
 
-    updateQuestion(question: Question): void {
+    updateQuestion(): void {
       if (this.editQuestion) {
       this.editQuestion.categories = [];
-    }
       for (let i = 0; i < this.selectedCategories.length; i++) {
 
         if(this.selectedCategories[i]) {
@@ -89,19 +105,21 @@ export class EditQuestionComponent implements OnInit {
       }
       console.log(this.editQuestion);
 
-      this.questionService.update(question).subscribe({
-          next: (data: any) => {
-              this.editQuestion = data;
-              this.router.navigateByUrl(`/questionDetail/${this.editQuestion?.id}`);
-              this.clearEditQuestion();
-            },
-          error: (fail: any) => {
-            console.error(
-              'EditQuestionComponent.updateQuestion(): error updating question:'
+      this.questionService.update(this.editQuestion).subscribe({
+        next: (data: any) => {
+          this.editQuestion = data;
+          this.router.navigateByUrl(`/questionDetail/${this.editQuestion?.id}`);
+          this.clearEditQuestion();
+
+        },
+        error: (fail: any) => {
+          console.error(
+            'EditQuestionComponent.updateQuestion(): error updating question:'
             );
             console.error(fail);
           },
         });
+      }
       }
 
 }

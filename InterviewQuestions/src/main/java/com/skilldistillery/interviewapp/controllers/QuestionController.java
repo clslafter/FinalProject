@@ -76,6 +76,9 @@ public class QuestionController {
 			res.setStatus(400);
 			question = null;
 		}
+		System.out.println("*************************");
+		System.out.println(question.getCategories());
+		System.out.println("*************************");
 		return question;
 	}
 	
