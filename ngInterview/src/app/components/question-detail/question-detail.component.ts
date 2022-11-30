@@ -19,6 +19,7 @@ export class QuestionDetailComponent implements OnInit {
   selected: Question | null = null;
   user: User = new User;
 
+
   constructor(private questionService: QuestionService, private answerRatingService: AnswerRatingService, private answerService: AnswerService ,private route: ActivatedRoute, private router: Router, private auth: AuthService) { }
 
 
