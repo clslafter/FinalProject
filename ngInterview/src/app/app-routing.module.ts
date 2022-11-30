@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
+import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
 import { CompanyComponent } from './components/company/company.component';
 import { EditQuestionComponent } from './components/edit-question/edit-question.component';
 import { LoginComponent } from './components/login/login.component';
@@ -22,8 +23,9 @@ const routes: Routes = [
   { path: 'questions', component: QuestionsComponent },
   { path: 'questionDetail/:id', component: QuestionDetailComponent },
   { path: 'editQuestion/:id', component: EditQuestionComponent },
-  { path: 'company', component: CompanyComponent },
+  { path: 'companies', component: CompanyComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'companyDetail/:id', component: CompanyDetailComponent },
 
   { path: '**', component: NotFoundComponent }
 ];
