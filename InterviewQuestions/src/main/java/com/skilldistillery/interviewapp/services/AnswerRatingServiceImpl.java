@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.interviewapp.entities.Answer;
 import com.skilldistillery.interviewapp.entities.AnswerRating;
+import com.skilldistillery.interviewapp.entities.User;
 import com.skilldistillery.interviewapp.repositories.AnswerRatingRepository;
 import com.skilldistillery.interviewapp.repositories.AnswerRepository;
 import com.skilldistillery.interviewapp.repositories.UserRepository;
@@ -29,18 +30,18 @@ public class AnswerRatingServiceImpl implements AnswerRatingService {
 	}
 
 	@Override
-	public AnswerRating answerRatingUpVote(boolean up, int answerId) {
-		List <AnswerRating> answerToUpVote = answerRatingRepo.findByAnswerId(answerId);
-		
-		return null;
+	public AnswerRating answerRatingUpVote(boolean up, int answerId, String username) {
+		User user = userRepo.findByUsername(username);
+		System.out.println(user);
+		Answer answer = answerRepo.findById(answerId);
+		System.out.println(answer);
+		AnswerRating answerRating = answerRatingRepo.findByAnswerAndUser(answer, user);
+//		answerRating.setId(new AnswerRatingId(1,1));
+		answerRating.setAnswer(answerRepo.findById(2));
+		answerRating.setUpvote(up);
+		answerRating.setUser(userRepo.findByUsername(username));
+		System.out.println(answerRating);
+		return answerRatingRepo.saveAndFlush(answerRating);
 	}
-
-	@Override
-	public AnswerRating answerRatingDownVote(boolean down, int answerId) {
-		List <AnswerRating> answerToDownVote = answerRatingRepo.findByAnswerId(answerId);
-		return null;
-	}
-
-	
 
 }

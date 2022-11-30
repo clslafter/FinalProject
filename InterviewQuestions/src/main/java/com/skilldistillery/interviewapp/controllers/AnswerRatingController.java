@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.interviewapp.entities.AnswerRating;
@@ -26,5 +28,23 @@ public class AnswerRatingController {
 	public List <AnswerRating> findRatingsOnQuestion(@PathVariable int answerId, Principal principal, 
 			HttpServletRequest req, HttpServletResponse res){
 		return answerRatingService.answerRatingsList(answerId);
+	}
+	
+	@PutMapping("api/answerrating/{answerId}")
+	public AnswerRating upvoteOrDownvoteQuestion(Principal principal, @PathVariable int answerId, @RequestBody AnswerRating answerRating, 
+			HttpServletResponse res, HttpServletRequest req ) {
+			answerRating = answerRatingService.answerRatingUpVote(answerRating.getUpvote(), answerId, principal.getName());
+			try {
+				if(answerRating == null) {
+					res.setStatus(404);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				res.setStatus(400);
+				answerRating = null;
+			}
+			
+		return answerRating;
+		
 	}
 }
