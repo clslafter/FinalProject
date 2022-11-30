@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Table(name = "answer_rating")
 @Entity
 public class AnswerRating {
@@ -19,7 +21,8 @@ public class AnswerRating {
 	private AnswerRatingId id;
 
 	private Boolean upvote;
-
+	
+	@CreationTimestamp
 	@Column(name = "rating_date")
 	private LocalDateTime ratingDate;
 
