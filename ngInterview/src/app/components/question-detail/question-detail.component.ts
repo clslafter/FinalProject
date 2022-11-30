@@ -72,7 +72,7 @@ export class QuestionDetailComponent implements OnInit {
         this.questionService.show(questionId).subscribe({
           next: (data) => {
             this.selected = data;
-            this.selected.answers?.sort(this.sortAnswersByRating);
+            this.selected.answers?.sort(this.answerService.sortAnswersByRating);
           },
           error: (fail) => {
             console.error(
@@ -91,7 +91,7 @@ export class QuestionDetailComponent implements OnInit {
         next: (data) => {
           this.selected = data;
           this.addAnswer = false;
-          this.selected.answers?.sort(this.sortAnswersByRating);
+          this.selected.answers?.sort(this.answerService.sortAnswersByRating);
         },
         error: (fail) => {
           console.error('QuestionDetailComponent.ngOnInit: question not found');
@@ -128,7 +128,7 @@ export class QuestionDetailComponent implements OnInit {
           this.questionService.show(this.selected?.id).subscribe({
             next: (data) => {
               this.selected = data;
-              this.selected.answers?.sort(this.sortAnswersByRating);
+              this.selected.answers?.sort(this.answerService.sortAnswersByRating);
             },
             error: (fail) => {
               console.error(
@@ -145,29 +145,29 @@ export class QuestionDetailComponent implements OnInit {
     });
   }
 
-  sortAnswersByRating(a1: Answer, a2: Answer): number {
-    if (a1 && a2) {
-      let i = 0;
-      let r1 = a1.ratings?.reduce(
-        (a, c) => a + (c.upvote ? 1 : c.upvote === null ? 0 : -1),
-        i
-      );
-      i = 0;
-      let r2 = a2.ratings?.reduce(
-        (a, c) => a + (c.upvote ? 1 : c.upvote === null ? 0 : -1),
-        i
-      );
-      if(r1 && r2){
-      return r2 - r1;
-      }
-      else{
-        return 0;
-      }
-    }
-    else{
-      return 0;
-    }
-  }
+  // sortAnswersByRating(a1: Answer, a2: Answer): number {
+  //   if (a1 && a2) {
+  //     let i = 0;
+  //     let r1 = a1.ratings?.reduce(
+  //       (a, c) => a + (c.upvote ? 1 : c.upvote === null ? 0 : -1),
+  //       i
+  //     );
+  //     i = 0;
+  //     let r2 = a2.ratings?.reduce(
+  //       (a, c) => a + (c.upvote ? 1 : c.upvote === null ? 0 : -1),
+  //       i
+  //     );
+  //     if(r1 && r2){
+  //     return r2 - r1;
+  //     }
+  //     else{
+  //       return 0;
+  //     }
+  //   }
+  //   else{
+  //     return 0;
+  //   }
+  // }
 
   voteDown(answer: Answer) {
     console.log('vote down clicked');
@@ -180,7 +180,7 @@ export class QuestionDetailComponent implements OnInit {
           this.questionService.show(this.selected?.id).subscribe({
             next: (data) => {
               this.selected = data;
-              this.selected.answers?.sort(this.sortAnswersByRating);
+              this.selected.answers?.sort(this.answerService.sortAnswersByRating);
             },
             error: (fail) => {
               console.error(

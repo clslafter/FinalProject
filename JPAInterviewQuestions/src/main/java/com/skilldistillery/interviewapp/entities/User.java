@@ -56,7 +56,7 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	@JsonIgnoreProperties({"user"})
+	@JsonIgnoreProperties({"user", "answers"})
 	@OneToMany(mappedBy = "user")
 	private List<Question> questions;
 
