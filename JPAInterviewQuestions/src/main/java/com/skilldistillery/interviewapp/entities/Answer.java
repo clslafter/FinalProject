@@ -39,7 +39,6 @@ public class Answer {
 
 	private String answer;
 
-//	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
