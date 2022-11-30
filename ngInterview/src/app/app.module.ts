@@ -21,6 +21,7 @@ import { QuestionDetailComponent } from './components/question-detail/question-d
 import { AnswerFormComponent } from './components/answer-form/answer-form.component';
 import { AddQuestionComponent } from './components/add-question/add-question.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { CompanyComponent } from './components/company/company.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AdminComponent } from './components/admin/admin.component';
     QuestionDetailComponent,
     AnswerFormComponent,
     AddQuestionComponent,
-    AdminComponent
+    AdminComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,
