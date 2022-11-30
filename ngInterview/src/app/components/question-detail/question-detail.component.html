@@ -1,10 +1,15 @@
 <h5>Details for: {{selected?.question}}</h5>
+<!-- Buttons for edit and delete next to question.
+  If the selected question's user is the same as the logged in user, the buttons show up -->
+  <button [routerLink]="['/editQuestion', selected?.id]"> Edit this Question</button>
 <p> Submitted by <a class="nav-link" [routerLink]="['/userProfile', selected?.user?.id]">{{selected?.user?.username}}</a> on {{selected?.dateCreated | date: 'short'}}</p>
-
+<!-- Add a date updated -->
+<!-- Can anyone add a company to a question, or just the user? -->
 <h5>Companies that have asked similar questions:</h5>
 <ul *ngFor="let company of selected?.companies;">
   <li> {{company.name}} </li>
 </ul>
+<!-- Can anyone select new categories for a question, or just the user? -->
 <h5>Applicable Categories:</h5>
 <ul *ngFor="let category of selected?.categories;">
   <li > {{category.name}} </li>
