@@ -223,4 +223,25 @@ export class QuestionDetailComponent implements OnInit {
       },
     });
   }
+
+
+  deleteQuestion(id: number){
+    if(confirm("Are you sure you want to delete your question?")){
+    this.questionService.destroy(id).subscribe({
+      next: (data: any) => {
+        this.selected = null;
+        this.router.navigateByUrl('questions')
+        },
+      error: (fail: any) => {
+        console.error(
+          'QuestionDetailComponent.disableQuestion(): error disabling question:'
+        );
+        console.error(fail);
+      },
+    });
+  }
+  }
+
 }
+
+
