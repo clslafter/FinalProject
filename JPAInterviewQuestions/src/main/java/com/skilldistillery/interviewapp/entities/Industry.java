@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Industry {
 
@@ -21,6 +23,7 @@ public class Industry {
 
 	private boolean enabled;
 
+	@JsonIgnoreProperties({"industries"})
 	@ManyToMany(mappedBy = "industries")
 	private List<Company> companies;
 

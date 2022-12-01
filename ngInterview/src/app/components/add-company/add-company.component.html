@@ -16,22 +16,22 @@
       </div>
     </div>
   </div>
-  <!-- Add checkboxes for list of categories to select
+  <!-- Add checkboxes for list of industries to select -->
   <div class="form-group">
     <div class="row">
       <div class="col-auto">
-        <label for="categories"><b>Categories: </b></label>
+        <label for="industries"><b>Industries: </b></label>
       </div>
-      <div class="col col-auto" *ngFor="let category of categories; let i = index" [attr.data-index]="i">
-        <label for="{{category.name}}">{{category.name}}</label><br>
+      <div class="col col-auto" *ngFor="let industry of industries; let i = index" [attr.data-index]="i">
+        <label for="{{industry.name}}">{{industry.name}}</label><br>
         <input
           type="checkbox"
-          name="{{category.name}}"
-          [(ngModel)]="selectedCategories[i]"
+          name="{{industry.name}}"
+          [(ngModel)]="selectedIndustries[i]"
         />
       </div>
     </div>
-  </div> -->
+  </div>
   <div class="form-group">
     <div class="row">
       <div class="col-auto">
@@ -141,3 +141,5 @@
     Submit Company
   </button>
 </form>
+
+
