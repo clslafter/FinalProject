@@ -22,6 +22,7 @@ export class QuestionDetailComponent implements OnInit {
   answer: Answer | null = null;
   companies: Company [] = [];
   selectedCompanyID: number = 0;
+  // selectedCompanies: Company [] = [];
 
   constructor(
     private questionService: QuestionService,
@@ -37,6 +38,7 @@ export class QuestionDetailComponent implements OnInit {
     this.loadPage();
     this.loadUser();
     this.loadCompanies();
+
   }
 
   updateAnswer: Answer | null = null;
@@ -72,6 +74,12 @@ export class QuestionDetailComponent implements OnInit {
     });
   }
 }
+
+// setSelectedCompanies () {
+//   if(this.selected) {
+//     this.selected.companies = this.selectedCompanies;
+//   }
+// }
 
   //method to compare logged in user against the selected qustions user
   loadUser() {
@@ -110,6 +118,7 @@ export class QuestionDetailComponent implements OnInit {
             console.log(this.selected)
             console.log('********************')
             this.selected.answers?.sort(this.answerService.sortAnswersByRating);
+            // this.setSelectedCompanies();
           },
           error: (fail) => {
             console.error(
