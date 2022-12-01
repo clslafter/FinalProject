@@ -14,6 +14,11 @@
 <p> {{selected?.address?.city}},  {{selected?.address?.state}}   {{selected?.address?.zip}}</p>
 </div>
 
+<h5>Applicable Industries:</h5>
+<ul *ngFor="let industry of selected?.industries;">
+  <li > {{industry.name}} </li>
+</ul>
+
 <div>
   <h5>Questions for this company:</h5>
   <ul *ngFor="let question of selected?.questions;">
@@ -21,4 +26,5 @@
     <!-- <li> {{question.question}} </li> -->
   </ul>
 </div>
+
 
