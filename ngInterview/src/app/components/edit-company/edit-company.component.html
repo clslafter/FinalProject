@@ -44,6 +44,23 @@
     <div class="form-group">
       <div class="row">
         <div class="col-auto">
+          <label for="industries"><b>Industries: </b></label>
+        </div>
+        <div class="col col-auto" *ngFor="let industry of industries; let i = index" [attr.data-index]="i">
+          <label for="{{industry.name}}">{{industry.name}}</label><br>
+          <input
+            type="checkbox"
+            name="{{industry.name}}"
+            [(ngModel)]="selectedIndustries[i]"
+          />
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
           <label for="street"><b>Street Address: </b></label>
         </div>
         <div class="col col-auto">
@@ -135,4 +152,5 @@
 </form>
 
 </div>
+
 
