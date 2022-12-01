@@ -11,6 +11,7 @@
 <h5>Companies that have asked similar questions:</h5>
 <ul *ngFor="let company of selected?.companies;">
   <li> <a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{ company.name }}</a> </li>
+  <button class="btn btn-outline-danger" (click)="unassociateQuestionWithCompany(company.id)">Delete</button>
 </ul>
 
 <!-- Associating Different Companies with Same question -->

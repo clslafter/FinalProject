@@ -274,9 +274,9 @@ associateQuestionWithCompany(){
 }
 }
 
-unassociateQuestionWithCompany(){
+unassociateQuestionWithCompany(companyId: number){
   if(this.selected?.id){
-  this.questionService.removeQuestionFromCompany(this.selected?.id, this.selectedCompanyID).subscribe({
+  this.questionService.removeQuestionFromCompany(this.selected?.id, companyId).subscribe({
     next: (data: any) => {
       this.loadNewAnswer();
       },
