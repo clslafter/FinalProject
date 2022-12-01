@@ -17,7 +17,6 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -52,6 +51,10 @@ public class Answer {
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerRating> ratings;
 
+	@JsonIgnoreProperties({"answer", "user"})
+	@OneToMany(mappedBy = "answer")
+	private List<AnswerComment> comments;
+	
 	public Answer() {
 		super();
 	}
@@ -119,6 +122,14 @@ public class Answer {
 
 	public void setRatings(List<AnswerRating> ratings) {
 		this.ratings = ratings;
+	}
+
+	public List<AnswerComment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<AnswerComment> comments) {
+		this.comments = comments;
 	}
 
 	public void addRating(AnswerRating rating) {

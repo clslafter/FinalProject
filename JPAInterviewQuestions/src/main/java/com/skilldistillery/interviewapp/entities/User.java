@@ -63,6 +63,10 @@ public class User {
 	@JsonIgnoreProperties({"user"})
 	@OneToMany(mappedBy = "user")
 	private List<Answer> answers;
+	
+	@JsonIgnoreProperties({"user"})
+	@OneToMany(mappedBy = "user")
+	private List<AnswerComment> answerComments;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
@@ -182,6 +186,14 @@ public class User {
 
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
+	}
+
+	public List<AnswerComment> getAnswerComments() {
+		return answerComments;
+	}
+
+	public void setAnswerComments(List<AnswerComment> answerComments) {
+		this.answerComments = answerComments;
 	}
 
 	public void addAnswer(Answer answer) {
