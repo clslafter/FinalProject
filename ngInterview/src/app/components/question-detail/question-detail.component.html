@@ -13,7 +13,7 @@
   <li> <a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{ company.name }}</a>
     <button class="btn btn-outline-danger" (click)="unassociateQuestionWithCompany(company.id)">Delete</button>  </li>
     <br>
-    <a class="nav-link" [routerLink]="['/companyDetail', company.id]"><img [src]="company.logoURL" alt="" style="width:128px;height:128px;"> </a>
+    <a class="nav-link" [routerLink]="['/companyDetail', company.id]"><img [src]="company.logoURL" alt="companyPic" style="width:128px;height:128px;"> </a>
 <br>
 </ul>
 
@@ -56,7 +56,6 @@
 
 <div *ngFor="let answer of selected?.answers;">
 <ul *ngIf="answer.enabled">
-
   <li> {{answer.answer}} <br> <button class="btn btn-outline-primary" (click)="voteUp(answer)">UpVote</button> <button class="btn btn-outline-danger" (click)="voteDown(answer)">DownVote</button> </li>
   <li *ngIf="answer.ratings">{{determineRatingValue(answer)}}</li>
 
@@ -66,11 +65,12 @@
   <div *ngIf="answer">
     <li><button class="btn btn-outline-danger" *ngIf="user.id === answer?.user?.id || user.role === 'ADMIN'" (click)="deleteAnswer(answer.id)">Delete This Answer </button></li>
   </div>
+  <!-- <img [src]="answer.user?.avatarUrl" alt="" style="width:80px;height:80px;"> -->
 
   <!-- <app-edit-answer *ngIf="updateAnswer && updateAnswer != null" [selectedAnswer]="answer" (returnToParent)="loadNewAnswer()"></app-edit-answer> -->
 
   <ul>
-    <li> <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]">{{answer.user?.username}}</a> Created On {{answer.dateCreated | date: 'short'}}</li>
+    <li> <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]">{{answer.user?.username}} <img [src]="answer.user?.avatarUrl" alt="avatarPic" style="width:80px;height:80px;"></a> Created On {{answer.dateCreated | date: 'short'}}</li>
   </ul>
 </ul>
 </div>
