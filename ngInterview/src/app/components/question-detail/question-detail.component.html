@@ -12,6 +12,35 @@
 <ul *ngFor="let company of selected?.companies;">
   <li> <a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{ company.name }}</a> </li>
 </ul>
+
+<!-- Associating Different Companies with Same question -->
+<div>
+
+  <form>
+
+    <select
+    id="addCompany"
+    class="form-select"
+    name="company.id"
+    [(ngModel)]="selectedCompanyID"
+    >
+
+    <option
+    name="company.name"
+    value="{{ company.id }}"
+    *ngFor="let company of companies"
+    >
+    {{ company.name }}
+  </option>
+</select>
+
+<button class="btn btn-secondary" (click)="associateQuestionWithCompany()">Save</button>
+
+</form>
+
+</div>
+<br>
+
 <!-- Can anyone select new categories for a question, or just the user? -->
 <h5>Applicable Categories:</h5>
 <ul *ngFor="let category of selected?.categories;">

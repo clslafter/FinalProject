@@ -81,6 +81,20 @@ public class CompanyController {
 		}
 		return company;
 	}
+	
+	@PutMapping("companies/{companyId}/question/{questionId}")
+	public Company addCompanyToQuestion(HttpServletRequest req, HttpServletResponse res,
+			@PathVariable int companyId, @PathVariable int questionId, Principal principal) {
+		companyService.addCompanyToQuestion(companyId, questionId);
+		
+//		if (company == null) {
+//			res.setStatus(404);
+//		}
+//
+		return null;
+	}
+	
+	
 
 	@DeleteMapping("companies/{cid}")
 	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid, Principal principal) {
