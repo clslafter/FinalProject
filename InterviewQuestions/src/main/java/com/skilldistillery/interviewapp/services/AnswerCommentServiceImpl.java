@@ -26,7 +26,7 @@ public class AnswerCommentServiceImpl implements AnswerCommentService {
 	}
 
 	@Override
-	public AnswerComment create(AnswerComment answerComment, User user) {
+	public AnswerComment create(AnswerComment answerComment) {
 		return answerCommentRepo.saveAndFlush(answerComment);
 	}
 
