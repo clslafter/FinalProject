@@ -27,6 +27,7 @@ import { CompanyDetailComponent } from './components/company-detail/company-deta
 import { EditAnswerComponent } from './components/edit-answer/edit-answer.component';
 import { AlphabetizePipe } from './pipes/alphabetize.pipe';
 import { EnabledQuestionPipe } from './pipes/enabled-question.pipe';
+import { AddCompanyComponent } from './components/add-company/add-company.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { EnabledQuestionPipe } from './pipes/enabled-question.pipe';
     CompanyDetailComponent,
     EditAnswerComponent,
     AlphabetizePipe,
-    EnabledQuestionPipe
+    EnabledQuestionPipe,
+    AddCompanyComponent
   ],
   imports: [
     BrowserModule,
