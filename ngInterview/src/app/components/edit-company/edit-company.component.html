@@ -1,1 +1,138 @@
-<p>edit-company works!</p>
+<div *ngIf="editCompany && editCompany.address">
+  <form>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="name"><b>Name: </b></label>
+        </div>
+        <div class="col col-auto">
+          <input
+            id="name"
+            type="text"
+            name="name"
+            [(ngModel)]="editCompany.name"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="description">Description </label>
+        </div>
+        <div class="col col-auto">
+          <input type="text" name="description" [(ngModel)]="editCompany.description" />
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="logoURL">Logo URL</label>
+        </div>
+        <div class="col col-auto">
+          <input type="text" name="logoURL" [(ngModel)]="editCompany.logoURL" /> <br />
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="street"><b>Street Address: </b></label>
+        </div>
+        <div class="col col-auto">
+          <input
+            id="street"
+            type="text"
+            name="street"
+            [(ngModel)]="editCompany.address.street"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="street2"><b>Unit:  </b></label>
+        </div>
+        <div class="col col-auto">
+           <input
+            id="street2"
+            type="text"
+            name="street2"
+            [(ngModel)]="editCompany.address.street2"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="city"><b>City:  </b></label>
+        </div>
+        <div class="col col-auto">
+           <input
+            id="city"
+            type="text"
+            name="city"
+            [(ngModel)]="editCompany.address.city"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="state"><b>State:  </b></label>
+        </div>
+        <div class="col col-auto">
+           <input
+            id="state"
+            type="text"
+            name="state"
+            [(ngModel)]="editCompany.address.state"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-auto">
+          <label for="zip"><b>Zip Code:  </b></label>
+        </div>
+        <div class="col col-auto">
+           <input
+            id="zip"
+            type="text"
+            name="zip"
+            [(ngModel)]="editCompany.address.zip"
+          />
+        </div>
+      </div>
+    </div>
+
+
+    <input
+    class="btn btn-outline-danger"
+    type="submit"
+    value="Cancel"
+    (click)="backToCompanyDetail()"/>
+
+  <input
+  class="btn btn-secondary"
+  type="submit"
+  name="editCompany"
+  value="Save"
+  (click)="updateCompany()"
+/>
+
+</form>
+
+</div>
+
