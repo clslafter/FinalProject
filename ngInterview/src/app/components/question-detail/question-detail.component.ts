@@ -242,6 +242,22 @@ export class QuestionDetailComponent implements OnInit {
   }
   }
 
+  deleteAnswer(id: number){
+  if(confirm("Are you sure you want to delete your Answer?")){
+    this.answerService.destroy(id).subscribe({
+      next: (data: any) => {
+        this.answer = null;
+        this.router.navigateByUrl('answers')
+        },
+      error: (fail: any) => {
+        console.error(
+          'QuestionDetailComponent.disableAnswer(): error disabling answer:'
+        );
+        console.error(fail);
+      },
+    });
+  }
+}
 }
 
 

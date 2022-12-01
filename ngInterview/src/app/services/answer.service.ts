@@ -57,6 +57,17 @@ export class AnswerService {
       );
       }
 
+      destroy(id: number): Observable<void> {
+        return this.http.delete<void>(this.baseUrl+'api/answers/' + id, this.getHttpOptions()).pipe(
+          catchError((err: any) => {
+            console.error(err);
+            return throwError(
+               () => new Error( 'AnswerService.destroy(): error deleting answer: ' + err )
+            );
+          })
+        );
+      }
+
       sortAnswersByRating(a1: Answer, a2: Answer): number {
         if (a1 && a2) {
           let i = 0;

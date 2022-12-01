@@ -18,16 +18,22 @@
   <li > {{category.name}} </li>
 </ul>
 <h5>Answers:</h5>
-<Div *ngIf="!updateAnswer">
+<div *ngIf="!updateAnswer">
 
 
-<ul *ngFor="let answer of selected?.answers;">
+<div *ngFor="let answer of selected?.answers;">
+<ul *ngIf="answer.enabled">
 
   <li> {{answer.answer}} <br> <button class="btn btn-outline-primary" (click)="voteUp(answer)">UpVote</button> <button class="btn btn-outline-danger" (click)="voteDown(answer)">DownVote</button> </li>
   <li *ngIf="answer.ratings">{{determineRatingValue(answer)}}</li>
 
 
   <li><button class="btn btn-outline-primary" *ngIf="user.id === answer?.user?.id" (click)="setUpdateAnswer(answer)">Edit Answer</button></li>
+
+  <div *ngIf="answer">
+    <li><button class="btn btn-outline-danger" *ngIf="user.id === answer?.user?.id" (click)="deleteAnswer(answer.id)">Delete This Answer </button></li>
+  </div>
+
   <!-- <app-edit-answer *ngIf="updateAnswer && updateAnswer != null" [selectedAnswer]="answer" (returnToParent)="loadNewAnswer()"></app-edit-answer> -->
 
 
@@ -36,7 +42,9 @@
     <li> <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]">{{answer.user?.username}}</a> Created On {{answer.dateCreated | date: 'short'}}</li>
   </ul>
 </ul>
-</Div>
+</div>
+</div>
+
 <div *ngIf="updateAnswer">
   <form>
     <textarea

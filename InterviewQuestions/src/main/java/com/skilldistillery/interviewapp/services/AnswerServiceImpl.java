@@ -58,7 +58,7 @@ public class AnswerServiceImpl implements AnswerService {
 		if (updatedAnswer.getUser().getUsername().equals(username)) {
 			if (updatedAnswer != null) {
 				updatedAnswer.setAnswer(answer.getAnswer());
-				updatedAnswer.setEnabled(answer.isEnabled());
+				updatedAnswer.setEnabled(answer.getEnabled());
 				return answerRepo.save(updatedAnswer);
 			}
 		}
@@ -68,15 +68,17 @@ public class AnswerServiceImpl implements AnswerService {
 	@Override
 	public boolean delete(String username, int aId) {
 		Answer answerToDelete = answerRepo.findById(aId);
+		System.out.println(aId);
+		System.out.println(answerToDelete);
 		if (answerToDelete != null) {
 
 			answerToDelete.setEnabled(false);
 
 			answerRepo.save(answerToDelete);
 
-			return !answerToDelete.isEnabled();
+			return !answerToDelete.getEnabled();
 		}
-		return !answerRepo.findById(aId).isEnabled();
+		return true;
 	}
 
 	@Override
