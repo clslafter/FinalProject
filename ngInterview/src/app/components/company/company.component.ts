@@ -11,6 +11,8 @@ export class CompanyComponent implements OnInit {
 
   companies: Company [] = [];
 
+  addCompany: boolean = false;
+
   constructor(private companyService: CompanyService) { }
 
   ngOnInit(): void {
@@ -29,5 +31,17 @@ export class CompanyComponent implements OnInit {
     })
   }
 
+  companyAdded() {
+    this.loadCompanies();
+    // this.loadCategories();
+    this.addCompany = false;
+  }
+
+  setAddCompany(){
+    this.addCompany = true;
+    }
+
 }
+
+
 
