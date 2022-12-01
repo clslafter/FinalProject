@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { Answer } from '../models/answer';
 import { Question } from '../models/question';
 import { AuthService } from './auth.service';
 
@@ -24,6 +25,28 @@ export class QuestionService {
       };
       return options;
     }
+
+  addQuestionToCompany(questionId: number, companyId: number){
+  return this.http.put(this.baseUrl + 'api/companies/' + companyId + '/question/' + questionId, null, this.getHttpOptions()).pipe(
+    catchError((err: any) => {
+      console.log(err);
+      return throwError(
+        () => new Error('QustionService.index(): error retrieving question: ' + err)
+      );
+    })
+  );
+}
+
+removeQuestionFromCompany(questionId: number, companyId: number){
+  return this.http.put(this.baseUrl + 'api/companies/' + companyId + '/question/' + questionId, null, this.getHttpOptions()).pipe(
+    catchError((err: any) => {
+      console.log(err);
+      return throwError(
+        () => new Error('QustionService.index(): error retrieving question: ' + err)
+      );
+    })
+  );
+}
 
   index(): Observable<Question[]> {
     return this.http.get<Question[]>(this.url).pipe(

@@ -8,6 +8,8 @@ import { AnswerRatingService } from 'src/app/services/answer-rating.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AnswerService } from 'src/app/services/answer.service';
 import { QuestionService } from 'src/app/services/question-service';
+import { CompanyService } from 'src/app/services/company.service';
+import { Company } from 'src/app/models/company';
 
 @Component({
   selector: 'app-question-detail',
@@ -18,6 +20,8 @@ export class QuestionDetailComponent implements OnInit {
   selected: Question | null = null;
   user: User = new User();
   answer: Answer | null = null;
+  companies: Company [] = [];
+  selectedCompanyID: number = 0;
 
   constructor(
     private questionService: QuestionService,
@@ -25,12 +29,14 @@ export class QuestionDetailComponent implements OnInit {
     private answerService: AnswerService,
     private route: ActivatedRoute,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private companyService: CompanyService
   ) {}
 
   ngOnInit(): void {
     this.loadPage();
     this.loadUser();
+    this.loadCompanies();
   }
 
   updateAnswer: Answer | null = null;
@@ -176,29 +182,17 @@ export class QuestionDetailComponent implements OnInit {
     });
   }
 
-  // sortAnswersByRating(a1: Answer, a2: Answer): number {
-  //   if (a1 && a2) {
-  //     let i = 0;
-  //     let r1 = a1.ratings?.reduce(
-  //       (a, c) => a + (c.upvote ? 1 : c.upvote === null ? 0 : -1),
-  //       i
-  //     );
-  //     i = 0;
-  //     let r2 = a2.ratings?.reduce(
-  //       (a, c) => a + (c.upvote ? 1 : c.upvote === null ? 0 : -1),
-  //       i
-  //     );
-  //     if(r1 && r2){
-  //     return r2 - r1;
-  //     }
-  //     else{
-  //       return 0;
-  //     }
-  //   }
-  //   else{
-  //     return 0;
-  //   }
-  // }
+  loadCompanies(){
+    this.companyService.index().subscribe({
+      next: (data: any) => {
+        this.companies = data;
+      },
+      error: (fail: any) => {
+        console.error('QuestionComponent.loadQuestions: error getting questions');
+        console.error(fail);
+      }
+    })
+  }
 
   voteDown(answer: Answer) {
     console.log('vote down clicked');
@@ -262,6 +256,38 @@ export class QuestionDetailComponent implements OnInit {
       },
     });
   }
+}
+
+associateQuestionWithCompany(){
+  if(this.selected?.id){
+  this.questionService.addQuestionToCompany(this.selected?.id, this.selectedCompanyID).subscribe({
+    next: (data: any) => {
+      this.loadNewAnswer();
+      },
+    error: (fail: any) => {
+      console.error(
+        'QuestionDetailComponent.associateQuestionWithCompany(): error associating:'
+      );
+      console.error(fail);
+    },
+  });
+}
+}
+
+unassociateQuestionWithCompany(){
+  if(this.selected?.id){
+  this.questionService.removeQuestionFromCompany(this.selected?.id, this.selectedCompanyID).subscribe({
+    next: (data: any) => {
+      this.loadNewAnswer();
+      },
+    error: (fail: any) => {
+      console.error(
+        'QuestionDetailComponent.associateQuestionWithCompany(): error unassociating:'
+      );
+      console.error(fail);
+    },
+  });
+}
 }
 }
 

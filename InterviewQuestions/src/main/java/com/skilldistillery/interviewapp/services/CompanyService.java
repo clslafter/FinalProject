@@ -15,6 +15,10 @@ public interface CompanyService {
 	public Company update(int uid, Company company);
 
 	boolean delete(int cid);
+	
+	public void addCompanyToQuestion(int companyId, int questionId);
+	
+	public void removeCompanyFromQuestion(int companyId, int questionId);
 
 	
 }
