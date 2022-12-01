@@ -38,7 +38,7 @@ export class QuestionService {
 }
 
 removeQuestionFromCompany(questionId: number, companyId: number){
-  return this.http.put(this.baseUrl + 'api/companies/' + companyId + '/question/' + questionId, null, this.getHttpOptions()).pipe(
+  return this.http.put(this.baseUrl + 'api/companies/' + companyId + '/question/' + questionId + '/remove', null, this.getHttpOptions()).pipe(
     catchError((err: any) => {
       console.log(err);
       return throwError(

@@ -95,10 +95,10 @@ public class CompanyController {
 		return null;
 	}
 
-	@PutMapping("companies/{companyId}/question/{questionId}")
-	public Company removeCompanyToQuestion(HttpServletRequest req, HttpServletResponse res, @PathVariable int companyId,
-			@PathVariable int questionId, Principal principal) {
-		companyService.removeCompanyFromQuestion(companyId, questionId);
+	@PutMapping("companies/{cId}/question/{qId}/remove")
+	public Company removeCompanyToQuestion(HttpServletRequest req, HttpServletResponse res, @PathVariable int cId,
+			@PathVariable int qId, Principal principal) {
+		companyService.removeCompanyFromQuestion(cId, qId);
 
 //		if (company == null) {
 //			res.setStatus(404);
