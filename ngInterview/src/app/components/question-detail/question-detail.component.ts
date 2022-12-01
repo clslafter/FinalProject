@@ -247,7 +247,8 @@ export class QuestionDetailComponent implements OnInit {
     this.answerService.destroy(id).subscribe({
       next: (data: any) => {
         this.answer = null;
-        this.router.navigateByUrl('answers')
+        this.loadNewAnswer();
+
         },
       error: (fail: any) => {
         console.error(
