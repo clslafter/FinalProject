@@ -62,7 +62,9 @@ export class QuestionDetailComponent implements OnInit {
       delete this.updateAnswer.user;
     this.answerService.update(this.updateAnswer, this.updateAnswer.id).subscribe({
       next: (data: any) => {
-          this.updateAnswer = data;
+          this.updateAnswer = null;
+          this.loadNewAnswer();
+
         },
       error: (fail: any) => {
         console.error(
