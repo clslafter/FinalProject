@@ -31,12 +31,10 @@
   <li><button class="btn btn-outline-primary" *ngIf="user.id === answer?.user?.id" (click)="setUpdateAnswer(answer)">Edit Answer</button></li>
 
   <div *ngIf="answer">
-    <li><button class="btn btn-outline-danger" *ngIf="user.id === answer?.user?.id" (click)="deleteAnswer(answer.id)">Delete This Answer </button></li>
+    <li><button class="btn btn-outline-danger" *ngIf="user.id === answer?.user?.id || user.role === 'ADMIN'" (click)="deleteAnswer(answer.id)">Delete This Answer </button></li>
   </div>
 
   <!-- <app-edit-answer *ngIf="updateAnswer && updateAnswer != null" [selectedAnswer]="answer" (returnToParent)="loadNewAnswer()"></app-edit-answer> -->
-
-
 
   <ul>
     <li> <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]">{{answer.user?.username}}</a> Created On {{answer.dateCreated | date: 'short'}}</li>
@@ -62,7 +60,16 @@
     name="updateAnswer"
     value="Save"
     (click)="answerToUpdate(updateAnswer)"
-  />
+    />
+
+    <input
+    class="btn btn-secondary"
+    type="submit"
+    name="cancelAnswer"
+    value="Cancel"
+    (click)="updateAnswer"
+    />
+
   </form>
 </div>
 <button class="btn btn-outline-primary" (click)="setAddAnswer()">add an answer</button>
