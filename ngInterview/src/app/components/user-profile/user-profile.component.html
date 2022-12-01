@@ -2,7 +2,7 @@
 
 <p>About {{selectedUser?.username}}: {{selectedUser?.aboutMe}}</p>
 <p>Member since: {{selectedUser?.dateCreated}}</p>
-<p>Your avatar: {{selectedUser?.avatarUrl}}</p>
+<img [src]="selectedUser?.avatarUrl" alt="avatarPic" style="width:120px;height:120px;">
 
 <!-- Add conditional to only show if array contains objects -->
 <div *ngIf="selectedUser && selectedUser.questions">
