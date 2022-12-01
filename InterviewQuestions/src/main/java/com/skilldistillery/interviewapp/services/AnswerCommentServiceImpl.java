@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.interviewapp.entities.AnswerComment;
-import com.skilldistillery.interviewapp.entities.Company;
 import com.skilldistillery.interviewapp.entities.User;
 import com.skilldistillery.interviewapp.repositories.AnswerCommentRepository;
 
@@ -53,10 +52,10 @@ public class AnswerCommentServiceImpl implements AnswerCommentService {
 
 			 answerCommentRepo.save(managed);
 			// returns true if company was disabled
-			return !managed.isEnabled();
+			return !managed.getEnabled();
 		}
 		// returns false if company is enabled
-		return !answerCommentRepo.findById(aid).isEnabled();
+		return !answerCommentRepo.findById(aid).getEnabled();
 	}
 
 }

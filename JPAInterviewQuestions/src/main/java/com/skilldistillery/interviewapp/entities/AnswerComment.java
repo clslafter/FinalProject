@@ -86,6 +86,16 @@ public class AnswerComment{
 	public void setAnswer(Answer answer) {
 		this.answer = answer;
 	}
+	
+	
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	@Override
 	public int hashCode() {
