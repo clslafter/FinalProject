@@ -26,7 +26,7 @@
         <td><a class="nav-link" [routerLink]="['/userProfile', question.user?.id]">{{ question.user?.username }}</a></td>
         <td><a class="nav-link" [routerLink]="['/questionDetail', question.id]">{{ question.question }}</a></td>
         <td>
-          <button *ngIf="user.id === question.user?.id" class="btn btn-danger" (click)="deleteQuestion(question.id)">
+          <button *ngIf="user.id === question.user?.id || user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteQuestion(question.id)">
             X
           </button>
         </td>
