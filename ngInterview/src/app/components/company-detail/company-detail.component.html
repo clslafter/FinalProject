@@ -4,7 +4,9 @@
   <button *ngIf="user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteCompany(selected.id)"> Delete this Company</button>
 </div>
   <button [routerLink]="['/editCompany', selected?.id]"> Edit this Company</button>
-
+  <br>
+  <br>
+<img [src]="selected?.logoURL" alt="avatarPic" style="width:80px;height:80px;">
 <h4>Description: {{selected?.description}}</h4>
 
 <div *ngIf="selected?.address">
