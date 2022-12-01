@@ -10,8 +10,8 @@
 <!-- Can anyone add a company to a question, or just the user? -->
 <h5>Companies that have asked similar questions:</h5>
 
-<!-- <ul *ngFor="let company of selected?.companies| enabledCompany"> -->
-<ul *ngFor="let company of selected?.companies">
+<ul *ngFor="let company of selected!.companies| enabledCompany">
+<!-- <ul *ngFor="let company of selected?.companies"> -->
   <li> <a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{ company.name }}</a>
     <br>
     <a class="nav-link" [routerLink]="['/companyDetail', company.id]"><img [src]="company.logoURL" alt="companyPic" style="width:128px;height:128px;"> </a>
