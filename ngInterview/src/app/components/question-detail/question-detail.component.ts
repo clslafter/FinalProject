@@ -259,7 +259,35 @@ export class QuestionDetailComponent implements OnInit {
 }
 
 associateQuestionWithCompany(){
+  if(this.selected?.id){
+  this.questionService.addQuestionToCompany(this.selected?.id, this.selectedCompanyID).subscribe({
+    next: (data: any) => {
+      this.loadNewAnswer();
+      },
+    error: (fail: any) => {
+      console.error(
+        'QuestionDetailComponent.associateQuestionWithCompany(): error associating:'
+      );
+      console.error(fail);
+    },
+  });
+}
+}
 
+unassociateQuestionWithCompany(){
+  if(this.selected?.id){
+  this.questionService.removeQuestionFromCompany(this.selected?.id, this.selectedCompanyID).subscribe({
+    next: (data: any) => {
+      this.loadNewAnswer();
+      },
+    error: (fail: any) => {
+      console.error(
+        'QuestionDetailComponent.associateQuestionWithCompany(): error unassociating:'
+      );
+      console.error(fail);
+    },
+  });
+}
 }
 }
 

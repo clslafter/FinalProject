@@ -45,7 +45,8 @@ public class CompanyController {
 	}
 
 	@PostMapping("companies")
-	public Company create(HttpServletRequest req, HttpServletResponse res, @RequestBody Company company, Principal principal) {
+	public Company create(HttpServletRequest req, HttpServletResponse res, @RequestBody Company company,
+			Principal principal) {
 		try {
 			if (company == null) {
 				res.setStatus(401);
@@ -66,8 +67,8 @@ public class CompanyController {
 	}
 
 	@PutMapping("companies/{cid}")
-	public Company update(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid, @RequestBody Company company,
-			Principal principal) {
+	public Company update(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid,
+			@RequestBody Company company, Principal principal) {
 		try {
 			// company = companyService.update(principal.getName(), cid, company);
 			company = companyService.update(cid, company);
@@ -81,20 +82,30 @@ public class CompanyController {
 		}
 		return company;
 	}
-	
+
 	@PutMapping("companies/{companyId}/question/{questionId}")
-	public Company addCompanyToQuestion(HttpServletRequest req, HttpServletResponse res,
-			@PathVariable int companyId, @PathVariable int questionId, Principal principal) {
+	public Company addCompanyToQuestion(HttpServletRequest req, HttpServletResponse res, @PathVariable int companyId,
+			@PathVariable int questionId, Principal principal) {
 		companyService.addCompanyToQuestion(companyId, questionId);
-		
+
 //		if (company == null) {
 //			res.setStatus(404);
 //		}
 //
 		return null;
 	}
-	
-	
+
+	@PutMapping("companies/{companyId}/question/{questionId}")
+	public Company removeCompanyToQuestion(HttpServletRequest req, HttpServletResponse res, @PathVariable int companyId,
+			@PathVariable int questionId, Principal principal) {
+		companyService.removeCompanyFromQuestion(companyId, questionId);
+
+//		if (company == null) {
+//			res.setStatus(404);
+//		}
+//
+		return null;
+	}
 
 	@DeleteMapping("companies/{cid}")
 	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid, Principal principal) {
