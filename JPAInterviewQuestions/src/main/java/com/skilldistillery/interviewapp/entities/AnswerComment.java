@@ -29,6 +29,8 @@ public class AnswerComment{
 	@Column(name="comment_text")
 	private String commentText;
 	
+	private Boolean enabled;
+	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
