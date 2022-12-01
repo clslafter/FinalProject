@@ -19,7 +19,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Autowired
 	private AddressRepository addressRepo;
-	
+
 	@Autowired
 	private QuestionRepository questionRepo;
 
@@ -65,10 +65,10 @@ public class CompanyServiceImpl implements CompanyService {
 			managed.setEnabled(false);
 
 			companyRepo.save(managed);
-			//returns true if company was disabled
+			// returns true if company was disabled
 			return !managed.isEnabled();
 		}
-		//returns false if company is enabled
+		// returns false if company is enabled
 		return !companyRepo.findById(cid).isEnabled();
 	}
 
@@ -78,16 +78,34 @@ public class CompanyServiceImpl implements CompanyService {
 		managedCompany = companyRepo.findById(companyId);
 		Question managedQuestion = null;
 		managedQuestion = questionRepo.findById(questionId);
-		
+
 		if (managedCompany != null) {
 			managedCompany.addQuestion(managedQuestion);
 			companyRepo.saveAndFlush(managedCompany);
 		}
-		
+
 		if (managedQuestion != null) {
 			managedQuestion.addCompany(managedCompany);
 			questionRepo.saveAndFlush(managedQuestion);
 		}
-		
+
+	}
+
+	@Override
+	public void removeCompanyFromQuestion(int companyId, int questionId) {
+		Company managedCompany = null;
+		managedCompany = companyRepo.findById(companyId);
+		Question managedQuestion = null;
+		managedQuestion = questionRepo.findById(questionId);
+
+		if (managedCompany != null) {
+			managedCompany.removeQuestion(managedQuestion);
+			companyRepo.saveAndFlush(managedCompany);
+		}
+
+		if (managedQuestion != null) {
+			managedQuestion.removeCompany(managedCompany);
+			questionRepo.saveAndFlush(managedQuestion);
+		}
 	}
 }
