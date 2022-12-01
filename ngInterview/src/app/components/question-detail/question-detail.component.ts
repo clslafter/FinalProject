@@ -40,6 +40,10 @@ export class QuestionDetailComponent implements OnInit {
     this.addAnswer = true;
   }
 
+  cancelAddAnswer() {
+    this.addAnswer = false;
+  }
+
   setUpdateAnswer(answer: Answer){
     this.updateAnswer = Object.assign({},answer);
 
