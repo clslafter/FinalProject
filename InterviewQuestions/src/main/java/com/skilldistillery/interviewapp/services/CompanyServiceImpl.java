@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.interviewapp.entities.Company;
+import com.skilldistillery.interviewapp.entities.Question;
 import com.skilldistillery.interviewapp.repositories.AddressRepository;
 import com.skilldistillery.interviewapp.repositories.CompanyRepository;
+import com.skilldistillery.interviewapp.repositories.QuestionRepository;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
@@ -17,6 +19,9 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Autowired
 	private AddressRepository addressRepo;
+	
+	@Autowired
+	private QuestionRepository questionRepo;
 
 	@Override
 	public List<Company> index() {
@@ -65,5 +70,24 @@ public class CompanyServiceImpl implements CompanyService {
 		}
 		//returns false if company is enabled
 		return !companyRepo.findById(cid).isEnabled();
+	}
+
+	@Override
+	public void addCompanyToQuestion(int companyId, int questionId) {
+		Company managedCompany = null;
+		managedCompany = companyRepo.findById(companyId);
+		Question managedQuestion = null;
+		managedQuestion = questionRepo.findById(questionId);
+		
+		if (managedCompany != null) {
+			managedCompany.addQuestion(managedQuestion);
+			companyRepo.saveAndFlush(managedCompany);
+		}
+		
+		if (managedQuestion != null) {
+			managedQuestion.addCompany(managedCompany);
+			questionRepo.saveAndFlush(managedQuestion);
+		}
+		
 	}
 }
