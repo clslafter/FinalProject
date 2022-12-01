@@ -9,7 +9,9 @@
 <!-- Add a date updated -->
 <!-- Can anyone add a company to a question, or just the user? -->
 <h5>Companies that have asked similar questions:</h5>
-<ul *ngFor="let company of selected?.companies;">
+
+<ul *ngFor="let company of selected!.companies| enabledCompany">
+<!-- <ul *ngFor="let company of selected?.companies"> -->
   <li> <a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{ company.name }}</a>
     <br>
     <a class="nav-link" [routerLink]="['/companyDetail', company.id]"><img [src]="company.logoURL" alt="companyPic" style="width:128px;height:128px;"> </a>
@@ -17,6 +19,7 @@
     <button class="btn btn-outline-danger" (click)="unassociateQuestionWithCompany(company.id)">Delete Company</button>  </li>
 <br>
 </ul>
+
 
 <!-- Associating Different Companies with Same question -->
 <div>
@@ -33,7 +36,7 @@
     <option
     name="company.name"
     value="{{ company.id }}"
-    *ngFor="let company of companies"
+    *ngFor="let company of companies | enabledCompany"
     >
     {{ company.name }}
   </option>
@@ -114,6 +117,8 @@
   <div id="addAnswerFormDiv" >
     <app-answer-form *ngIf="addAnswer && addAnswer != null" [selectedQuestion]="selected" (returnToParent)="loadNewAnswer()"> </app-answer-form>
 </div>
+
+
 
 
 

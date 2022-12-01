@@ -12,12 +12,12 @@ export class Question {
   user?: User;
   answers?: Answer[];
   categories?: Category[];
-  companies?: Company[];
+  companies: Company[];
 
   constructor(
     id: number = 0, dateCreated: string = '', dateUpdated: string = '',
-    question: string = '', enabled: boolean = true, user?: User,
-    answers?: Answer[], categories?: Category[], companies?: Company[]
+    question: string = '', enabled: boolean = true, companies: Company[] = [], user?: User,
+    answers?: Answer[], categories?: Category[]
   ){
     this.id = id;
     this.dateCreated = dateCreated;
