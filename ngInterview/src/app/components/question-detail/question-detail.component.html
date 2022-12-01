@@ -2,7 +2,7 @@
 <!-- Buttons for edit and delete next to question.
   If the selected question's user is the same as the logged in user, the buttons show up -->
  <div *ngIf="selected">
-  <button *ngIf="user.id === selected?.user?.id" class="btn btn-danger" (click)="deleteQuestion(selected.id)"> Delete this Question</button>
+  <button *ngIf="user.id === selected?.user?.id || user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteQuestion(selected.id)"> Delete this Question</button>
 </div>
   <button *ngIf="user.id === selected?.user?.id" [routerLink]="['/editQuestion', selected?.id]"> Edit this Question</button>
 <p> Submitted by <a class="nav-link" [routerLink]="['/userProfile', selected?.user?.id]">{{selected?.user?.username}}</a> on {{selected?.dateCreated | date: 'short'}}</p>
