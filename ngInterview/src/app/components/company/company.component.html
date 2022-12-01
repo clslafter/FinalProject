@@ -13,8 +13,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let company of companies | alphabetize:'name'">
-        <td>{{ company.id }}</td>
-        <td><a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{ company.name }}</a></td>
+        <td *ngIf="company.enabled">{{ company.id }}</td>
+        <td *ngIf="company.enabled"><a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{ company.name }}</a></td>
       </tr>
     </tbody>
   </table>
