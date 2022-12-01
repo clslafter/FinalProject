@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.interviewapp.entities.Address;
 import com.skilldistillery.interviewapp.entities.Company;
 import com.skilldistillery.interviewapp.repositories.AddressRepository;
 import com.skilldistillery.interviewapp.repositories.CompanyRepository;
@@ -17,6 +18,9 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Autowired
 	private AddressRepository addressRepo;
+	
+	
+	
 
 	@Override
 	public List<Company> index() {
@@ -46,6 +50,19 @@ public class CompanyServiceImpl implements CompanyService {
 			managed.setName(company.getName());
 			managed.setDescription(company.getDescription());
 			managed.setLogoURL(company.getLogoURL());
+			
+			if (company.getAddress() != null) {
+				Address updatedAddress = company.getAddress();
+				Address managedAddress = addressRepo.findById(updatedAddress.getId());
+				managedAddress.setStreet(updatedAddress.getStreet());
+				managedAddress.setStreet2(updatedAddress.getStreet2());
+				managedAddress.setCity(updatedAddress.getCity());
+				managedAddress.setState(updatedAddress.getState());
+				managedAddress.setZip(updatedAddress.getZip());
+				managedAddress.setEnabled(true);
+				managed.setAddress(managedAddress);
+			}
+			
 			return companyRepo.saveAndFlush(managed);
 		}
 		return managed;
