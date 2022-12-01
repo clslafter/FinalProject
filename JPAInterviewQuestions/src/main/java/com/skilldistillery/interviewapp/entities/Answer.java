@@ -17,7 +17,6 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -52,6 +51,10 @@ public class Answer {
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerRating> ratings;
 
+	@JsonIgnoreProperties({"answer", "user"})
+	@OneToMany(mappedBy = "answer")
+	private List<AnswerComment> comments;
+	
 	public Answer() {
 		super();
 	}
@@ -121,6 +124,14 @@ public class Answer {
 		this.ratings = ratings;
 	}
 
+	public List<AnswerComment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<AnswerComment> comments) {
+		this.comments = comments;
+	}
+
 	public void addRating(AnswerRating rating) {
 		if (ratings == null) {
 			ratings = new ArrayList<>();
@@ -138,6 +149,26 @@ public class Answer {
 		rating.setAnswer(null);
 		if (ratings != null) {
 			ratings.remove(rating);
+		}
+	}
+	
+	public void addAnswerComment(AnswerComment answerComment) {
+		if (comments== null) {
+			comments = new ArrayList<>();
+		}
+		if (!comments.contains(answerComment)) {
+			comments.add(answerComment);
+			if (answerComment.getAnswer() != null) {
+				answerComment.getAnswer().getComments().remove(answerComment);
+			}
+			answerComment.setAnswer(this);
+		}
+	}
+
+	public void removeQuestion(AnswerComment answerComment) {
+		answerComment.setAnswer(null);
+		if (comments != null) {
+			comments.remove(answerComment);
 		}
 	}
 

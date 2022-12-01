@@ -44,7 +44,17 @@ class AnswerCommentTest {
 	void test_AnswerComment_entity_mapping() {
 		assertNotNull(answerComment);
 		assertEquals("thanks!", answerComment.getCommentText());
-		
-		
+	}
+	
+	@Test
+	void test_AnswerComment_to_user_mapping() {
+		assertNotNull(answerComment);
+		assertEquals("admin", answerComment.getUser().getFirstName());
+	}
+	
+	@Test
+	void test_AnswerComment_to_answer_mapping() {
+		assertNotNull(answerComment);
+		assertEquals("You can start a tech school or get hired by an electrical company", answerComment.getAnswer().getAnswer());
 	}
 }

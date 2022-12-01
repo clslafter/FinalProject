@@ -8,9 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Table(name="answer_comment")
 @Entity
@@ -26,6 +30,18 @@ public class AnswerComment{
 	
 	@Column(name="comment_text")
 	private String commentText;
+	
+	private Boolean enabled;
+	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "answer_id")
+	private Answer answer;
 	
 	//METHODS
 
@@ -55,6 +71,33 @@ public class AnswerComment{
 
 	public void setCommentText(String commentText) {
 		this.commentText = commentText;
+	}
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+
+	public Answer getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(Answer answer) {
+		this.answer = answer;
+	}
+	
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	@Override
