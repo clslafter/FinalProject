@@ -35,7 +35,7 @@ public class Answer {
 	@Column(name = "date_updated")
 	private LocalDateTime dateUpdated;
 
-	private boolean enabled;
+	private Boolean enabled;
 
 	private String answer;
 
@@ -80,11 +80,12 @@ public class Answer {
 		this.dateUpdated = dateUpdated;
 	}
 
-	public boolean isEnabled() {
+
+	public Boolean getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(boolean enabled) {
+	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 

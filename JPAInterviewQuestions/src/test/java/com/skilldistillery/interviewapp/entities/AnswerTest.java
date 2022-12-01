@@ -48,7 +48,7 @@ class AnswerTest {
 	void test_Answer_entity_mapping() {
 		assertNotNull(answer);
 		assertEquals("You can start a tech school or get hired by an electrical company",answer.getAnswer());
-		assertTrue(answer.isEnabled());
+		assertTrue(answer.getEnabled());
 	}
 	
 	@Test
