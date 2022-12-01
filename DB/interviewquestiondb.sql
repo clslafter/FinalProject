@@ -308,6 +308,7 @@ CREATE TABLE IF NOT EXISTS `answer_comment` (
   `user_id` INT NOT NULL,
   `answer_id` INT NOT NULL,
   `in_reply_to_id` INT NULL,
+  `enabled` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_answer_comment_user1_idx` (`user_id` ASC),
   INDEX `fk_answer_comment_answer1_idx` (`answer_id` ASC),
@@ -504,7 +505,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `answer_comment` (`id`, `comment_date`, `comment_text`, `user_id`, `answer_id`, `in_reply_to_id`) VALUES (1, NULL, 'thanks!', 1, 1, 1);
+INSERT INTO `answer_comment` (`id`, `comment_date`, `comment_text`, `user_id`, `answer_id`, `in_reply_to_id`, `enabled`) VALUES (1, NULL, 'thanks!', 1, 1, 1, 1);
 
 COMMIT;
 
