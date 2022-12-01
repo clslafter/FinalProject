@@ -46,9 +46,9 @@ public class Company {
 	@JoinTable(name = "company_has_question", joinColumns = @JoinColumn(name = "company_id"), inverseJoinColumns = @JoinColumn(name = "question_id"))
 	private List<Question> questions;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({"companies"})
 	@ManyToMany
-	@JoinTable(name = "industry_has_company", joinColumns = @JoinColumn(name = "industry_id"), inverseJoinColumns = @JoinColumn(name = "company_id"))
+	@JoinTable(name = "industry_has_company", joinColumns = @JoinColumn(name = "company_id"), inverseJoinColumns = @JoinColumn(name = "industry_id"))
 	private List<Industry> industries;
 
 	@JsonIgnore

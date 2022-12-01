@@ -50,6 +50,14 @@ public class CompanyServiceImpl implements CompanyService {
 
 			company.setAddress(addressRepo.saveAndFlush(company.getAddress()));
 		}
+		System.out.println(company);
+		
+		for (Industry industry: company.getIndustries()) {
+			Industry newIndustry = industryRepo.queryById(industry.getId());
+			newIndustry.addCompany(company);
+			industryRepo.saveAndFlush(newIndustry);
+		}
+		
 		return companyRepo.saveAndFlush(company);
 	}
 
