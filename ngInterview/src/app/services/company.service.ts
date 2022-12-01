@@ -48,4 +48,41 @@ export class CompanyService {
     );
   }
 
+  create(company: Company): Observable<Company> {
+    return this.http.post<Company>(this.baseUrl+'api/companies/', company, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+           () => new Error( 'CompanyService.create(): error creating company: ' + err )
+        );
+      })
+    );
+  }
+
+  update(company: Company): Observable<Company> {
+    return this.http.put<Company>(this.baseUrl+'api/companies/' + company.id, company, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+           () => new Error( 'CompanyService.update(): error updating company: ' + err )
+        );
+      })
+    );
+    }
+
+
+
+  destroy(id: number): Observable<void> {
+    return this.http.delete<void>(this.baseUrl+'api/companies/' + id, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.error(err);
+        return throwError(
+           () => new Error( 'CompanyService.destroy(): error deleting company: ' + err )
+        );
+      })
+    );
+  }
+
+
 }
+
