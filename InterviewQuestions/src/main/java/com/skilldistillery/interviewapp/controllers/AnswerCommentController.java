@@ -44,15 +44,15 @@ public class AnswerCommentController {
 		return answerComment;
 	}
 
-	@PostMapping("comments")
+	@PostMapping("comments/{answerId}")
 	public AnswerComment create(HttpServletRequest req, HttpServletResponse res, @RequestBody AnswerComment comment,
-			Principal principal) {
+			@PathVariable int answerId ,Principal principal) {
 		try {
 			if (comment == null) {
 				res.setStatus(401);
 				return comment;
 			}
-			comment = answerCommentService.create(comment);
+			comment = answerCommentService.create(principal.getName(), comment, answerId);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(comment.getId());

@@ -151,6 +151,26 @@ public class Answer {
 			ratings.remove(rating);
 		}
 	}
+	
+	public void addAnswerComment(AnswerComment answerComment) {
+		if (comments== null) {
+			comments = new ArrayList<>();
+		}
+		if (!comments.contains(answerComment)) {
+			comments.add(answerComment);
+			if (answerComment.getAnswer() != null) {
+				answerComment.getAnswer().getComments().remove(answerComment);
+			}
+			answerComment.setAnswer(this);
+		}
+	}
+
+	public void removeQuestion(AnswerComment answerComment) {
+		answerComment.setAnswer(null);
+		if (comments != null) {
+			comments.remove(answerComment);
+		}
+	}
 
 	@Override
 	public int hashCode() {

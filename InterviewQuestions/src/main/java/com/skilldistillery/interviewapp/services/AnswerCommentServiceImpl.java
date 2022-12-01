@@ -5,15 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.interviewapp.entities.Answer;
 import com.skilldistillery.interviewapp.entities.AnswerComment;
 import com.skilldistillery.interviewapp.entities.User;
 import com.skilldistillery.interviewapp.repositories.AnswerCommentRepository;
+import com.skilldistillery.interviewapp.repositories.AnswerRepository;
+import com.skilldistillery.interviewapp.repositories.UserRepository;
 
 @Service
 public class AnswerCommentServiceImpl implements AnswerCommentService {
 
 	@Autowired
 	private AnswerCommentRepository answerCommentRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Autowired
+	private AnswerRepository answerRepo;
 
 	@Override
 	public List<AnswerComment> index() {
@@ -26,8 +35,17 @@ public class AnswerCommentServiceImpl implements AnswerCommentService {
 	}
 
 	@Override
-	public AnswerComment create(AnswerComment answerComment) {
-		return answerCommentRepo.saveAndFlush(answerComment);
+	public AnswerComment create(String username, AnswerComment answerComment, int answerId) {
+		User user = userRepo.findByUsername(username);
+		if (user != null) {
+			Answer answer = answerRepo.findById(answerId);
+			answerComment.setAnswer(answer);
+			answer.addAnswerComment(answerComment);
+			user.addAnswerComment(answerComment);
+			answerComment.setUser(user);
+			return answerCommentRepo.saveAndFlush(answerComment);
+		}
+		return null;
 	}
 
 	@Override

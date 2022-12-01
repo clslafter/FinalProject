@@ -11,7 +11,7 @@ public interface AnswerCommentService {
 
 	public AnswerComment show(int aid);
 
-	public AnswerComment create(AnswerComment answerComment);
+	public AnswerComment create(String username, AnswerComment answerComment, int answerId);
 
 	public AnswerComment update(int aid, AnswerComment answerComment);
 

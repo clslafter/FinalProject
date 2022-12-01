@@ -215,6 +215,26 @@ public class User {
 			answers.remove(answer);
 		}
 	}
+	
+	public void addAnswerComment(AnswerComment answerComment) {
+		if (answerComments == null) {
+			answerComments = new ArrayList<>();
+		}
+		if (!answerComments.contains(answerComment)) {
+			answerComments.add(answerComment);
+			if (answerComment.getUser() != null) {
+				answerComment.getUser().getAnswerComments().remove(answerComment);
+			}
+			answerComment.setUser(this);
+		}
+	}
+
+	public void removeAnswerComment(AnswerComment answerComment) {
+		answerComment.setUser(null);
+		if (answerComments != null) {
+			answerComments.remove(answerComment);
+		}
+	}
 
 	public void addQuestion(Question question) {
 		if (questions == null) {

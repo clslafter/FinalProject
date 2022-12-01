@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Table(name="answer_comment")
 @Entity
 public class AnswerComment{
@@ -31,10 +33,12 @@ public class AnswerComment{
 	
 	private Boolean enabled;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "answer_id")
 	private Answer answer;
@@ -86,7 +90,6 @@ public class AnswerComment{
 	public void setAnswer(Answer answer) {
 		this.answer = answer;
 	}
-	
 	
 
 	public Boolean getEnabled() {
