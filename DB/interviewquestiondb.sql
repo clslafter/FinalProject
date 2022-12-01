@@ -415,10 +415,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (1, 'CEC', 'Electrical company ', NULL, 1, 1);
-INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (2, 'Weyland-Yutani Corporation', 'Building better worlds', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Favp.fandom.com%2Fwiki%2FWeyland-Yutani_Corporation&psig=AOvVaw0T51L50kjsTKwvtoEhRQVT&ust=1669581733593000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCNCDlePazPsCFQAAAAAdAAAAABAE', 1, 2);
-INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (3, 'Omni Consumer Products', 'Global Mega-Corporation', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.crunchbase.com%2Forganization%2Fomni-consumer-products&psig=AOvVaw0Mz2tC5EWpvAHmMHPly5UI&ust=1669581781991000&source=images&cd=vfe&ved=0CA4QjRxqFwoTCPjJ0PnazPsCFQAAAAAdAAAAABAE', 1, 3);
-INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (4, 'SIlver Shamrock Novelties', 'A factory that builds masks', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fvillains.fandom.com%2Fwiki%2FSilver_Shamrock&psig=AOvVaw1FkbhmZz1sN3KYhJKmCAUh&ust=1669582046846000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCKjAyPjbzPsCFQAAAAAdAAAAABAE', 1, 4);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (1, 'CEC', 'Electrical company ', 'http://www.clker.com/cliparts/1/8/9/8/1516236652318426954static-electricity-clipart-free.hi.png', 1, 1);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (2, 'Weyland-Yutani Corporation', 'Building better worlds', 'https://i.pinimg.com/originals/13/e6/d8/13e6d839bffdfe7342918c86ac9a9d2f.png', 1, 2);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (3, 'Omni Consumer Products', 'Global Mega-Corporation', 'https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/v1403899023/lhzyyrdlcrsl8y8jy2dx.png', 1, 3);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (4, 'SIlver Shamrock Novelties', 'A factory that builds masks', 'https://1.bp.blogspot.com/-sse_Kf1ZkVo/YEF2FF4b_zI/AAAAAAAASVQ/_YGHzyWPRFQtB_towdCR8f3d8Y4Iaz1WQCLcBGAsYHQ/s514/Halloween-III-Silver-Shamrock-Novelties-art-v1%2540guttergarbs.com.png', 1, 4);
 
 COMMIT;
 
