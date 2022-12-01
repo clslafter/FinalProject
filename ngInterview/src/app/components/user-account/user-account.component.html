@@ -8,7 +8,7 @@
   <p>email address: {{user.email}}</p>
   <p>About me: {{user.aboutMe}}</p>
   <p>Member since: {{user.dateCreated}}</p>
-  <p>Your avatar: {{user.avatarUrl}}</p>
+  <p>Your avatar: <img [src]="user?.avatarUrl" alt="avatarPic" style="width: 120px;height: 120px;"></p>
 
   <p>Your Address</p>
   <p>Street Address: {{user.address?.street}}</p>
