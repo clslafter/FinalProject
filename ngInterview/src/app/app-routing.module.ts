@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
 import { CompanyComponent } from './components/company/company.component';
+import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 import { EditQuestionComponent } from './components/edit-question/edit-question.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'companies', component: CompanyComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'companyDetail/:id', component: CompanyDetailComponent },
+  { path: 'editCompany/:id', component: EditCompanyComponent },
 
   { path: '**', component: NotFoundComponent }
 ];
