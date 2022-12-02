@@ -1,6 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 a:hover{
-  color: yellowgreen !important;
+  color: blue !important;
   text-decoration: underline;
 }
 
@@ -9,8 +9,12 @@ a:hover{
 }
 
 body{
-background-image: url("https://c.wallhere.com/photos/8b/4e/1440x900_px_digital_art_Super_Mario_video_games-716745.jpg!d");
-background-color: tan;
+/* background-image: url("https://c.wallhere.com/photos/8b/4e/1440x900_px_digital_art_Super_Mario_video_games-716745.jpg!d"); */
+/* background-image: url("https://wallpaperset.com/w/full/6/f/6/66628.jpg"); */
+background-image: url("https://wallpapercave.com/wp/TS0nkvL.jpg");
+background-blend-mode: color;
+/* background-color: tan; */
+background-color: rgba(255, 255, 255, 0.75);
 background-repeat: no-repeat;
 background-size: cover;
 }
