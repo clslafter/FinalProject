@@ -19,6 +19,8 @@ export class AddQuestionComponent implements OnInit {
 
    selectedCategories: boolean[] = [];
 
+   errorMessage = '';
+
    @Output() reloadParent = new EventEmitter<void>();
 
   constructor(private questionService: QuestionService, private router: Router,
@@ -50,6 +52,15 @@ export class AddQuestionComponent implements OnInit {
 
 //add error messages for required fields
     createQuestion() {
+      this.errorMessage = '';
+
+      if(!this.newQuestion.question) {
+        this.errorMessage += '*Please enter your question* ';
+      }
+
+      if(this.errorMessage) {
+        return;
+      }
       this.newQuestion.categories = [];
       for (let i = 0; i < this.selectedCategories.length; i++) {
 
@@ -64,6 +75,7 @@ export class AddQuestionComponent implements OnInit {
 
           this.newQuestion = new Question();
           this.reloadParent.emit();
+          this.errorMessage = '';
 
         },
         error: (fail) => {
@@ -78,6 +90,7 @@ export class AddQuestionComponent implements OnInit {
 
 
 }
+
 
 
 

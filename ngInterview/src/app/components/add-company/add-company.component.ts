@@ -24,6 +24,8 @@ industries: Industry[] = [];
 
    selectedIndustries: boolean[] = [];
 
+   errorMessage = '';
+
 
    @Output() reloadParent = new EventEmitter<void>();
 
@@ -51,6 +53,16 @@ industries: Industry[] = [];
 
   //add error messages for required fields
   createCompany() {
+    this.errorMessage = '';
+
+    if(!this.newCompany.name) {
+      this.errorMessage += '*Please enter the company name* ';
+    }
+
+    if(this.errorMessage) {
+      return;
+    }
+
     this.newCompany.industries = [];
     for (let i = 0; i < this.selectedIndustries.length; i++) {
 
@@ -75,6 +87,7 @@ industries: Industry[] = [];
 
             this.newCompany = new Company();
             this.reloadParent.emit();
+            this.errorMessage = '';
 
           },
           error: (fail) => {

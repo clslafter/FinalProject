@@ -1,7 +1,10 @@
-<button class="btn btn-outline-primary" (click)="setAddCompany()">add a company</button>
+<button *ngIf="!addCompany" class="btn btn-outline-primary" (click)="setAddCompany()">add a company</button>
 <div id="addAnswerFormDiv" >
   <app-add-company *ngIf="addCompany" (reloadParent)="companyAdded()"> </app-add-company>
 </div>
+<button *ngIf="addCompany" name="backToCompanyList" (click)="addCompany = false">
+  Cancel
+</button><br>
 
 <div>
   <table class="table table-striped table-hover">

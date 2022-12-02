@@ -1,7 +1,8 @@
 <h5>Details for: {{ selected?.question }}</h5>
 <!-- Buttons for edit and delete next to question.
   If the selected question's user is the same as the logged in user, the buttons show up -->
-<div *ngIf="selected">
+<div class="row">
+  <div *ngIf="selected" class="col col-auto">
   <button
     *ngIf="user.id === selected?.user?.id || user.role === 'ADMIN'"
     class="btn btn-danger"
@@ -10,23 +11,28 @@
     Delete this Question
   </button>
 </div>
+<div class="col col-auto">
 <button
+class="btn btn-primary"
   *ngIf="user.id === selected?.user?.id"
   [routerLink]="['/editQuestion', selected?.id]"
 >
   Edit this Question
 </button>
-<p>
-  Submitted by
-  <a class="nav-link" [routerLink]="['/userProfile', selected?.user?.id]"
-    >{{ selected?.user?.username }}
+</div>
+</div>
+<br>
+
+  <p> <small> by
+<a [routerLink]="['/userProfile', selected?.user?.id]">{{ selected?.user?.username }}
     <img
       [src]="selected?.user?.avatarUrl"
       alt="avatarPic"
-      style="width: 80px; height: 80px"
+      style="width: 30px; height: 30px"
   /></a>
-  on {{ selected?.dateCreated | date: "short" }}
+  on {{ selected?.dateCreated | date: "short" }}</small>
 </p>
+
 <!-- Add a date updated -->
 <!-- Can anyone add a company to a question, or just the user? -->
 <h5>Companies that have asked similar questions:</h5>
@@ -97,36 +103,37 @@
       </div>
       <br />
       <button class="btn btn-outline-primary" (click)="voteUp(answer)">
-        UpVote
+        👍
       </button>
       <button class="btn btn-outline-danger" (click)="voteDown(answer)">
-        DownVote
+        👎
       </button>
       <br />
-      <button
+
+      <!-- <br /> -->
+      <!-- <div *ngIf="answer"> -->
+        <button
+          class="btn btn-outline-danger"
+          *ngIf="answer && user.id === answer?.user?.id || user.role === 'ADMIN'"
+          (click)="deleteAnswer(answer.id)"
+        >
+          Delete This Answer
+        </button>
+        <button
         class="btn btn-outline-primary"
         *ngIf="user.id === answer?.user?.id"
         (click)="setUpdateAnswer(answer)"
       >
         Edit Answer
       </button>
-      <br />
-      <div *ngIf="answer">
-        <button
-          class="btn btn-outline-danger"
-          *ngIf="user.id === answer?.user?.id || user.role === 'ADMIN'"
-          (click)="deleteAnswer(answer.id)"
-        >
-          Delete This Answer
-        </button>
-      </div>
+      <!-- </div> -->
       <br />
       <!-- <img [src]="answer.user?.avatarUrl" alt="" style="width:80px;height:80px;"> -->
 
       <!-- <app-edit-answer *ngIf="updateAnswer && updateAnswer != null" [selectedAnswer]="answer" (returnToParent)="loadNewAnswer()"></app-edit-answer> -->
 
       <ul>
-        <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]"
+        <a [routerLink]="['/userProfile', answer.user?.id]"
           >{{ answer.user?.username }}
           <img
             [src]="answer.user?.avatarUrl"
@@ -157,6 +164,17 @@
         </p>
 
         <br />
+
+        <!-- <br /> -->
+        <!-- <div *ngIf="comment"> -->
+          <button
+          class="btn btn-outline-danger"
+          *ngIf="comment && user.id === comment?.user?.id || user.role === 'ADMIN'"
+            (click)="deleteAnswerComment(comment.id)"
+          >
+            Delete This Comment
+          </button>
+        <!-- </div> -->
         <button
         class="btn btn-outline-primary"
         *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'"
@@ -164,16 +182,6 @@
         >
           Edit Comment
         </button>
-        <br />
-        <div *ngIf="comment">
-          <button
-          class="btn btn-outline-danger"
-          *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'"
-            (click)="deleteAnswerComment(comment.id)"
-          >
-            Delete This Comment
-          </button>
-        </div>
 
         <div *ngIf="updateAnswerComment">
           <form>
