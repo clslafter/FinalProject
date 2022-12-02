@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Answer } from '../models/answer';
 import { Question } from '../models/question';
 import { AuthService } from './auth.service';
@@ -10,8 +11,10 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class QuestionService {
-  private baseUrl = 'http://localhost:8090/';
-  private url = this.baseUrl + 'questions';
+
+  private url2 = environment.baseUrl + 'api/questions';
+
+  private url = environment.baseUrl + 'questions';
 
   constructor(private http: HttpClient, private auth: AuthService
     ) { }
@@ -27,7 +30,7 @@ export class QuestionService {
     }
 
   addQuestionToCompany(questionId: number, companyId: number){
-  return this.http.put(this.baseUrl + 'api/companies/' + companyId + '/question/' + questionId, null, this.getHttpOptions()).pipe(
+  return this.http.put( environment.baseUrl + 'api' + '/companies/' + companyId + '/question/' + questionId, null, this.getHttpOptions()).pipe(
     catchError((err: any) => {
       console.log(err);
       return throwError(
@@ -38,7 +41,7 @@ export class QuestionService {
 }
 
 removeQuestionFromCompany(questionId: number, companyId: number){
-  return this.http.put(this.baseUrl + 'api/companies/' + companyId + '/question/' + questionId + '/remove', null, this.getHttpOptions()).pipe(
+  return this.http.put(environment.baseUrl + 'api/companies/' + companyId + '/question/' + questionId + '/remove', null, this.getHttpOptions()).pipe(
     catchError((err: any) => {
       console.log(err);
       return throwError(
@@ -60,7 +63,7 @@ removeQuestionFromCompany(questionId: number, companyId: number){
     );
   }
   show(qId: number): Observable<Question> {
-    return this.http.get<Question>(this.baseUrl+ 'api/questions/' +qId, this.getHttpOptions()).pipe(
+    return this.http.get<Question>(this.url2 + '/' + qId, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -71,7 +74,7 @@ removeQuestionFromCompany(questionId: number, companyId: number){
   }
 
   create(question: Question): Observable<Question> {
-    return this.http.post<Question>(this.baseUrl+'api/questions/', question, this.getHttpOptions()).pipe(
+    return this.http.post<Question>( this.url2, question, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(
@@ -82,7 +85,7 @@ removeQuestionFromCompany(questionId: number, companyId: number){
   }
 
   update(question: Question): Observable<Question> {
-    return this.http.put<Question>(this.baseUrl+'api/questions/' + question.id, question, this.getHttpOptions()).pipe(
+    return this.http.put<Question>(this.url2 + '/' + question.id, question, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(
@@ -95,7 +98,7 @@ removeQuestionFromCompany(questionId: number, companyId: number){
 
 
   destroy(id: number): Observable<void> {
-    return this.http.delete<void>(this.baseUrl+'api/questions/' + id, this.getHttpOptions()).pipe(
+    return this.http.delete<void>(this.url2 + '/' + id, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(

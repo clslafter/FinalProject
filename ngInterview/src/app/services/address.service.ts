@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Address } from '../models/address';
 import { User } from '../models/user';
 import { AuthService } from './auth.service';
@@ -9,8 +10,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AddressService {
-  private baseUrl = 'http://localhost:8090/api/';
-  private url = this.baseUrl + 'addresses';
+
+  private url = environment.baseUrl + 'api/addresses';
 
   constructor(private http: HttpClient,
     private auth: AuthService) { }
