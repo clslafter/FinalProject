@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Table(name="answer_comment")
 @Entity
@@ -33,7 +34,7 @@ public class AnswerComment{
 	
 	private Boolean enabled;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({"answers", "address", "questions", "answerComments"})
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;

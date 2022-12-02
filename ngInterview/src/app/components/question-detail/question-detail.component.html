@@ -80,7 +80,11 @@
 </ul>
 
 <h3>Add answer comments here</h3>
+<div *ngFor="let comment of answer.comments">
+  <p>Comment: {{comment.commentText}}</p>
+  <p>Created By: <a class="nav-link" [routerLink]="['/userProfile', comment.user?.id]">{{comment.user}} <img [src]="comment.user?.avatarUrl" alt="avatarPic" style="width:80px;height:80px;"></a> on {{comment.commentDate}}</p>
 
+</div>
 
 </div>
 </div>
