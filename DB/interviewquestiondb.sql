@@ -350,6 +350,8 @@ INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabl
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (2, '90212 East West Drive', NULL, 'Pueblo', 'Colorado', '80001', 1);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (3, '8923 Blood Meridian ave ', NULL, 'Westminister', 'Colorado', '72569', 1);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (4, '98321 Old Man & the Sea Drive', NULL, 'Thornton', 'Colorado', '78321', 1);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (5, 'Bowsers Castle Drive', NULL, 'Koopa Kingdom', 'Antarctica', '65234', 1);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (6, 'Mushroom Kingdom Drive', NULL, 'Toad Town', 'Mushroom Kingdom', '66352', 1);
 
 COMMIT;
 
@@ -359,12 +361,16 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (1, 'admin', 'admin', 1, 'ADMIN', 'admin', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'admin@gmail.com', 'I\'m an Admin', NULL, 1, 'https://i0.wp.com/www.horrorhomeroom.com/wp-content/uploads/2021/03/11.jpg?fit=1000%2C668');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (2, 'user', 'user', 1, 'USER', 'user', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'user@gmail.com', 'I\'m a User', NULL, NULL, 'https://cdn.vox-cdn.com/thumbor/37vATMlbuUE_d8wh5b8j5kCfm2Q=/0x0:1914x1079/1200x800/filters:focal(804x387:1110x693)/cdn.vox-cdn.com/uploads/chorus_image/image/70972539/image_2022_06_13_170932655.0.png');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (3, 'Ethan', 'Lauzon', 1, 'ADMIN', 'ethanlauzon', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'ethanlauzon@gmail.com', 'SD Graduate', NULL, NULL, 'https://www.pngitem.com/pimgs/m/145-1459441_3000-x-3786-my-little-pony-spike-scared.png');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (4, 'Josh', 'Ingram', 1, 'ADMIN', 'joshingram', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'joshingram@gmail.com', 'SD Graduate', NULL, NULL, 'https://www.nicepng.com/png/detail/864-8645991_applejack-my-little-pony-apple-jack-angry.png');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (5, 'Celicia', 'Slafter', 1, 'ADMIN', 'celiciaslafter', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'celiciaslafter@gmail.com', 'SD Graduate', NULL, NULL, 'https://www.nicepng.com/png/detail/225-2259758_my-little-pony-the-movie-pinkie-pie-my.png');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (6, 'Steve', 'Dave', 1, 'USER', 'stevedave', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'stevedave@gmail.com', 'Construction Worker', NULL, NULL, 'https://pophorror.com/wp-content/uploads/2018/01/ichi_the_killer_banner.jpg');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (1, 'Mario', 'Mario', 1, 'ADMIN', 'mariomario', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'MarioMario@gmail.com', 'It\'s a-me, Mario!', NULL, 1, 'http://img3.wikia.nocookie.net/__cb20131025223058/fantendo/images/2/25/Mario_Artwork_-_Super_Mario_3D_World.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (2, 'King', 'Bowser', 1, 'USER', 'kingbowser', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'KingBowser@gmail.com', 'Hear this! I will kidnap Peach OVER and OVER until I pull it off! And no one can stop me! Losing is not an option! And neither is giving up!', NULL, 5, 'https://styles.redditmedia.com/t5_2r3bv/styles/communityIcon_h3gz0gscg4o71.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (3, 'Princess', 'Peach', 1, 'USER', 'princesspeach', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'princesspeach@gmail.com', 'Princess of the Mushroom Kingdom', NULL, NULL, 'https://static-new.miraheze.org/greatcharacterswiki/thumb/e/e2/Peach.png/290px-Peach.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (4, 'Dry', 'Bones', 1, 'USER', 'drybones', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'drybones@gmail.com', 'My bones are so dry', NULL, NULL, 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/new-super-mario-bros-u/2/23/Dry-Bones-nintendo-villains-9411346-600-600.jpeg');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (5, 'Lugi', 'Mario', 1, 'USER', 'lugimario', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'lugimario@gmail.com', 'Brother of Mario', NULL, NULL, 'https://pbs.twimg.com/media/EegRMg2XgAE85VH?format=jpg&name=large');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (6, 'Toad', NULL, 1, 'USER', 'toad', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'toad@gmail.com', 'Attendant of Princess Peach', NULL, NULL, 'https://www.nicepng.com/png/detail/967-9670418_toad-mario-clipart-toad-mario-bros-super-mario.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (7, 'Toadette', NULL, 1, 'USER', 'toadette', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, NULL, NULL, 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e738c17-7f3c-422e-8225-f8c782b08626/deg7wm3-a463e506-f80a-4095-bf0f-ba34ba6629a0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBlNzM4YzE3LTdmM2MtNDIyZS04MjI1LWY4Yzc4MmIwODYyNlwvZGVnN3dtMy1hNDYzZTUwNi1mODBhLTQwOTUtYmYwZi1iYTM0YmE2NjI5YTAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Kv3KDyG4P3bibJZRAmWqEHkn_SnoD2-n_RNVcSMIl_U');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (8, 'Yoshi', NULL, 1, 'USER', 'yoshi', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, NULL, NULL, 'https://e1.pngegg.com/pngimages/649/608/png-clipart-3d-yoshi-yoshi-3d-illustration.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (9, 'Wario', NULL, 1, 'USER', 'wario', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, NULL, NULL, 'https://i.redd.it/p7s4igeq58291.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (10, 'Shyguy', NULL, 1, 'USER', 'shyguy', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, NULL, NULL, 'https://www.clipartmax.com/png/middle/106-1061323_mario-kart-shy-guy.png');
 
 COMMIT;
 
@@ -375,14 +381,25 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (1, 1, NULL, NULL, 'How do I start my apprenticeship?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (2, 3, NULL, NULL, 'Is Java \"pass by reference\" or \"pass by value\"?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (3, 4, NULL, NULL, 'Name and describe the four pillars of OOP', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (4, 5, NULL, NULL, 'Describe various data structures (stacks, queues, maps, linked list)', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (5, 6, NULL, NULL, 'why are you interested in this company?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (6, 3, NULL, NULL, 'what\'s a weakness of yours?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (7, 4, NULL, NULL, 'what questions do you have for the company?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (8, 5, NULL, NULL, 'What happens when you hit enter on your browser?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (9, 6, NULL, NULL, 'Define \"Referential Integrity\"', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (2, 2, NULL, NULL, 'Is Java \"pass by reference\" or \"pass by value\"?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (3, 3, NULL, NULL, 'Name and describe the four pillars of OOP', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (4, 4, NULL, NULL, 'Describe various data structures (stacks, queues, maps, linked list)', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (5, 5, NULL, NULL, 'why are you interested in this company?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (6, 6, NULL, NULL, 'what\'s a weakness of yours?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (7, 7, NULL, NULL, 'what questions do you have for the company?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (8, 8, NULL, NULL, 'What happens when you hit enter on your browser?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (9, 9, NULL, NULL, 'Define \"Referential Integrity\"', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (10, 10, NULL, NULL, 'What is encapsulation', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (11, 1, NULL, NULL, 'Explain the difference between Public and Private access modifiers', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (12, 2, NULL, NULL, 'What are Constructors in Java?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (13, 3, NULL, NULL, 'What are access modifiers in Java', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (14, 4, NULL, NULL, 'What is the difference between a local variable and an instance variable?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (15, 5, NULL, NULL, 'What is the difference between break and continue statements?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (16, 6, NULL, NULL, 'What is inheritance in Java', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (17, 7, NULL, NULL, 'Can you overrive a private or static method in Java?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (18, 8, NULL, NULL, 'Define Wrapper Classes in Java.', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (19, 9, NULL, NULL, 'What is the final keyword in Java?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (20, 10, NULL, NULL, 'Explain ‘this’ keyword in Java.', 1);
 
 COMMIT;
 
@@ -406,7 +423,6 @@ USE `interviewquestiondb`;
 INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (1, 'Construction', 1);
 INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (2, 'Manufacturing', 1);
 INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (3, 'Tech', 1);
-INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (4, 'blah', 0);
 
 COMMIT;
 
@@ -416,10 +432,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (1, 'CEC', 'Electrical company ', 'http://www.clker.com/cliparts/1/8/9/8/1516236652318426954static-electricity-clipart-free.hi.png', 1, 1);
-INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (2, 'Weyland-Yutani Corporation', 'Building better worlds', 'https://i.pinimg.com/originals/13/e6/d8/13e6d839bffdfe7342918c86ac9a9d2f.png', 1, 2);
-INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (3, 'Omni Consumer Products', 'Global Mega-Corporation', 'https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/v1403899023/lhzyyrdlcrsl8y8jy2dx.png', 1, 3);
-INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (4, 'SIlver Shamrock Novelties', 'A factory that builds masks', 'https://1.bp.blogspot.com/-sse_Kf1ZkVo/YEF2FF4b_zI/AAAAAAAASVQ/_YGHzyWPRFQtB_towdCR8f3d8Y4Iaz1WQCLcBGAsYHQ/s514/Halloween-III-Silver-Shamrock-Novelties-art-v1%2540guttergarbs.com.png', 1, 4);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (1, 'Mario Brothers Plumbing', 'Construction Company', 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f35fb770-7717-41ec-a9d6-0f1d73aba11a/d6u90ok-4c950a64-bd75-4c3f-9b5f-b2f160c4887f.png/v1/fill/w_1024,h_768,q_80,strp/mario_bros__plumbing_by_blazbaros_d6u90ok-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzY4IiwicGF0aCI6IlwvZlwvZjM1ZmI3NzAtNzcxNy00MWVjLWE5ZDYtMGYxZDczYWJhMTFhXC9kNnU5MG9rLTRjOTUwYTY0LWJkNzUtNGMzZi05YjVmLWIyZjE2MGM0ODg3Zi5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.eBSyAKIBV_W1U--9W1PYPFzXblujRfb6b7OSOVVWfcs', 1, 1);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (2, 'Diamond Software', 'Building better worlds', 'https://cdn.shopify.com/s/files/1/2703/8128/files/ezgif-frame-001_780x.jpg?v=1661265317', 1, 2);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (3, 'Mario Toy Company', 'Global Mega-Corporation', 'https://www.godisageek.com/wp-content/uploads/mario-feature.jpg', 1, 3);
+INSERT INTO `company` (`id`, `name`, `description`, `logo_url`, `enabled`, `address_id`) VALUES (4, 'WarioWare, Inc.', 'Game Developer', 'https://nerdbacon.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-25-at-11.01.59-AM-542x300.png', 1, 4);
 
 COMMIT;
 
@@ -471,19 +487,23 @@ START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (1, 1);
 INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (7, 4);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `industry_has_company`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `interviewquestiondb`;
-INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (1, 1);
-INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (2, 3);
-INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (2, 4);
-INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (3, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (3, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (4, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (5, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (6, 4);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (8, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (9, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (10, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (11, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (12, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (13, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (14, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (15, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (16, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (17, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (18, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (19, 2);
+INSERT INTO `question_has_category` (`question_id`, `category_id`) VALUES (20, 2);
 
 COMMIT;
 
@@ -494,8 +514,13 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 2, 1, NULL);
-INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (2, 3, 1, NULL);
-INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (2, 6, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 3, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 6, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 4, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 5, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 7, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 8, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 9, 1, NULL);
 
 COMMIT;
 
