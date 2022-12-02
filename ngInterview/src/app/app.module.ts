@@ -31,6 +31,7 @@ import { AddCompanyComponent } from './components/add-company/add-company.compon
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 import { EnabledCompanyPipe } from './pipes/enabled-company.pipe';
 import { AnswerCommentFormComponent } from './components/answer-comment-form/answer-comment-form.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { AnswerCommentFormComponent } from './components/answer-comment-form/ans
     AddCompanyComponent,
     EditCompanyComponent,
     EnabledCompanyPipe,
-    AnswerCommentFormComponent
+    AnswerCommentFormComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

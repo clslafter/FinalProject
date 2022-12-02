@@ -14,6 +14,8 @@ import { QuestionService } from 'src/app/services/question-service';
 })
 export class QuestionsComponent implements OnInit {
 
+  searchText: string = "";
+
   questions: Question[] = [];
 
   categories: Category[] = [];
