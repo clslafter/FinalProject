@@ -147,7 +147,7 @@
         <p>
           Created By:
           <a class="nav-link" [routerLink]="['/userProfile', comment.user?.id]"
-            >{{ comment.user }}
+            >{{ comment.user?.username }}
             <img
               [src]="comment.user?.avatarUrl"
               alt="avatarPic"
@@ -157,18 +157,20 @@
         </p>
 
         <br />
+        <!-- *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'" -->
         <button
           class="btn btn-outline-primary"
-          *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'"
+          *ngIf="user.id === comment?.user?.id"
           (click)="setUpdateAnswerComment(comment)"
         >
           Edit Comment
+          <!-- *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'" -->
         </button>
         <br />
         <div *ngIf="comment">
           <button
             class="btn btn-outline-danger"
-            *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'"
+            *ngIf="user.id === comment?.user?.id"
             (click)="deleteAnswerComment(comment.id)"
           >
             Delete This Comment
@@ -220,7 +222,7 @@
         cancel
       </button>
     </div>
-    <div id="addAnswerCommentFormDiv" (click)="toggleCommentForm()">
+    <div id="addAnswerCommentFormDiv">
       <app-answer-comment-form
         *ngIf="addAnswerComment && addAnswerComment != null"
         [selectedAnswer]="answerForComment"
@@ -276,3 +278,4 @@
   >
   </app-answer-form>
 </div>
+
