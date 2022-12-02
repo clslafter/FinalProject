@@ -180,6 +180,7 @@ answerCommentToUpdate(comment: AnswerComment){
           this.selected = data;
           this.addAnswer = false;
           this.selected.answers?.sort(this.answerService.sortAnswersByRating);
+          this.addAnswerComment = false;
         },
         error: (fail) => {
           console.error('QuestionDetailComponent.ngOnInit: question not found');
