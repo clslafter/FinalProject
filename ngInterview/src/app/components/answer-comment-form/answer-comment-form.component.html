@@ -1,0 +1,26 @@
+
+
+<form>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-auto">
+        <label for="answerComment"><b>ANSWER COMMENT: </b></label>
+      </div>
+      <div class="col col-auto">
+        <textarea
+          id="commentText"
+          type="text"
+          name="commentText"
+          rows="4"
+          cols="50"
+          placeholder="answerComment"
+          [(ngModel)]="newAnswerComment.commentText"
+        >
+        </textarea>
+        <br>
+        <button name="addAnswerCommentButton" (click)="createAnswerComment()">Submit Answer Comment</button>
+      </div>
+    </div>
+  </div>
+</form>
+

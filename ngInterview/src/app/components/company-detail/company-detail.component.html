@@ -1,18 +1,21 @@
-<h1>Detail page for {{selected?.name}}</h1>
+<h1>{{selected?.name}} Details</h1>
 
-<div *ngIf="selected">
-  <button *ngIf="user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteCompany(selected.id)"> Delete this Company</button>
-</div>
-  <button [routerLink]="['/editCompany', selected?.id]"> Edit this Company</button>
-
+<br>
+<br>
+<img [src]="selected?.logoURL" alt="avatarPic" style="width:120px;height:120px;">
 <h4>Description: {{selected?.description}}</h4>
 
 <div *ngIf="selected?.address">
-<h4>Address:</h4>
-<p>{{selected?.address?.street}}</p>
-<p *ngIf="selected?.address?.street2"> {{selected?.address?.street2}}</p>
-<p> {{selected?.address?.city}},  {{selected?.address?.state}}   {{selected?.address?.zip}}</p>
+  <h4>Address:</h4>
+  <p>{{selected?.address?.street}}</p>
+  <p *ngIf="selected?.address?.street2"> {{selected?.address?.street2}}</p>
+  <p> {{selected?.address?.city}},  {{selected?.address?.state}}   {{selected?.address?.zip}}</p>
 </div>
+
+<h5>Applicable Industries:</h5>
+<ul *ngFor="let industry of selected?.industries;">
+  <li > {{industry.name}} </li>
+</ul>
 
 <div>
   <h5>Questions for this company:</h5>
@@ -21,4 +24,10 @@
     <!-- <li> {{question.question}} </li> -->
   </ul>
 </div>
+<div *ngIf="selected">
+  <button *ngIf="user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteCompany(selected.id)"> Delete this Company</button>
+</div>
+<br>
+  <button class="btn btn-primary"[routerLink]="['/editCompany', selected?.id]"> Edit this Company</button>
+
 

@@ -10,6 +10,8 @@ import { AnswerService } from 'src/app/services/answer.service';
 import { QuestionService } from 'src/app/services/question-service';
 import { CompanyService } from 'src/app/services/company.service';
 import { Company } from 'src/app/models/company';
+import { AnswerComment } from 'src/app/models/answer-comment';
+import { AnswerCommentService } from 'src/app/services/answer-comment.service';
 
 @Component({
   selector: 'app-question-detail',
@@ -20,8 +22,10 @@ export class QuestionDetailComponent implements OnInit {
   selected: Question | null = null;
   user: User = new User();
   answer: Answer | null = null;
+  comment: AnswerComment | null = null;
   companies: Company [] = [];
   selectedCompanyID: number = 0;
+  isCommentDivOpen: boolean = false;
 
   constructor(
     private questionService: QuestionService,
@@ -30,17 +34,22 @@ export class QuestionDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private auth: AuthService,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private answerCommentService: AnswerCommentService
   ) {}
 
   ngOnInit(): void {
     this.loadPage();
     this.loadUser();
     this.loadCompanies();
+
   }
 
   updateAnswer: Answer | null = null;
   addAnswer: boolean = false;
+
+  updateAnswerComment: AnswerComment | null = null;
+  addAnswerComment: boolean = false;
 
   setAddAnswer() {
     this.addAnswer = true;
@@ -55,13 +64,20 @@ export class QuestionDetailComponent implements OnInit {
 
   }
 
+answerForComment: Answer | null = null;
+
+
+
+
   answerToUpdate(answer: Answer){
     console.log("clicked")
     if(this.updateAnswer){
       delete this.updateAnswer.user;
     this.answerService.update(this.updateAnswer, this.updateAnswer.id).subscribe({
       next: (data: any) => {
-          this.updateAnswer = data;
+          this.updateAnswer = null;
+          this.loadNewAnswer();
+
         },
       error: (fail: any) => {
         console.error(
@@ -73,18 +89,52 @@ export class QuestionDetailComponent implements OnInit {
   }
 }
 
+
+setAddAnswerComment(answer: Answer) {
+  this.addAnswerComment = true;
+  this.answerForComment = Object.assign({},answer);
+}
+
+cancelAddAnswerComment() {
+  this.addAnswerComment = false;
+}
+
+setUpdateAnswerComment(comment: AnswerComment){
+  this.updateAnswerComment = Object.assign({},comment);
+
+
+}
+
+answerCommentToUpdate(comment: AnswerComment){
+  console.log("clicked")
+  if(this.updateAnswerComment){
+    delete this.updateAnswerComment.user;
+  this.answerCommentService.update(this.updateAnswerComment, this.updateAnswerComment.id).subscribe({
+    next: (data: any) => {
+        this.updateAnswerComment = null;
+        // this.answerForComment = null;
+        this.loadNewAnswer();
+
+      },
+    error: (fail: any) => {
+      console.error(
+        'EditAnswerComponent.updateAnswer(): error updating answer:'
+      );
+      console.error(fail);
+    },
+  });
+}
+}
+
+
   //method to compare logged in user against the selected qustions user
   loadUser() {
-    // if (this.selected) {
-    // let question: Question = this.selected;
+
 
     this.auth.getLoggedInUser().subscribe({
       next: (data) => {
         this.user = data;
-        // if(question.user && this.user.id === question.user.id){
-        //   return true;
-        // }
-        // return false;
+
       },
       error: (fail) => {
         console.error('UserComponent.reload: error getting user');
@@ -110,6 +160,7 @@ export class QuestionDetailComponent implements OnInit {
             console.log(this.selected)
             console.log('********************')
             this.selected.answers?.sort(this.answerService.sortAnswersByRating);
+
           },
           error: (fail) => {
             console.error(
@@ -129,6 +180,8 @@ export class QuestionDetailComponent implements OnInit {
           this.selected = data;
           this.addAnswer = false;
           this.selected.answers?.sort(this.answerService.sortAnswersByRating);
+          this.addAnswerComment = false;
+          console.log(this.selected);
         },
         error: (fail) => {
           console.error('QuestionDetailComponent.ngOnInit: question not found');
@@ -258,6 +311,24 @@ export class QuestionDetailComponent implements OnInit {
   }
 }
 
+  deleteAnswerComment(id: number){
+  if(confirm("Are you sure you want to delete your Answer?")){
+    this.answerCommentService.destroy(id).subscribe({
+      next: (data: any) => {
+        this.comment = null;
+        this.loadNewAnswer();
+
+        },
+      error: (fail: any) => {
+        console.error(
+          'QuestionDetailComponent.disableAnswerComment(): error disabling comment:'
+        );
+        console.error(fail);
+      },
+    });
+  }
+}
+
 associateQuestionWithCompany(){
   if(this.selected?.id){
   this.questionService.addQuestionToCompany(this.selected?.id, this.selectedCompanyID).subscribe({
@@ -289,6 +360,14 @@ unassociateQuestionWithCompany(companyId: number){
   });
 }
 }
+
+toggleCommentForm () {
+  this.isCommentDivOpen = !this.isCommentDivOpen;
 }
+
+
+}
+
+
 
 

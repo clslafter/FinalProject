@@ -56,13 +56,17 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	@JsonIgnoreProperties({"user", "answers"})
+	@JsonIgnoreProperties(value = {"user"}, allowSetters=true)
 	@OneToMany(mappedBy = "user")
 	private List<Question> questions;
 
-	@JsonIgnoreProperties({"user"})
+	@JsonIgnoreProperties(value = {"user"}, allowSetters=true)
 	@OneToMany(mappedBy = "user")
 	private List<Answer> answers;
+	
+	@JsonIgnoreProperties(value = {"user"}, allowSetters=true)
+	@OneToMany(mappedBy = "user")
+	private List<AnswerComment> answerComments;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
@@ -184,6 +188,14 @@ public class User {
 		this.answers = answers;
 	}
 
+	public List<AnswerComment> getAnswerComments() {
+		return answerComments;
+	}
+
+	public void setAnswerComments(List<AnswerComment> answerComments) {
+		this.answerComments = answerComments;
+	}
+
 	public void addAnswer(Answer answer) {
 		if (answers == null) {
 			answers = new ArrayList<>();
@@ -201,6 +213,26 @@ public class User {
 		answer.setUser(null);
 		if (answers != null) {
 			answers.remove(answer);
+		}
+	}
+	
+	public void addAnswerComment(AnswerComment answerComment) {
+		if (answerComments == null) {
+			answerComments = new ArrayList<>();
+		}
+		if (!answerComments.contains(answerComment)) {
+			answerComments.add(answerComment);
+			if (answerComment.getUser() != null) {
+				answerComment.getUser().getAnswerComments().remove(answerComment);
+			}
+			answerComment.setUser(this);
+		}
+	}
+
+	public void removeAnswerComment(AnswerComment answerComment) {
+		answerComment.setUser(null);
+		if (answerComments != null) {
+			answerComments.remove(answerComment);
 		}
 	}
 

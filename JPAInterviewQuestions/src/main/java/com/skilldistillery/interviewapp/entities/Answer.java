@@ -17,7 +17,6 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -37,21 +36,29 @@ public class Answer {
 
 	private Boolean enabled;
 
+	
 	private String answer;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
+	@JsonIgnoreProperties(value = {"answers", "questions"}, allowSetters= true)
 	private User user;
 
-	@JsonIgnoreProperties({"answers", "categories", "companies", "user"})
+	@JsonIgnoreProperties(value = {"answers", "user"}, allowSetters= true)
 	@ManyToOne
 	@JoinColumn(name = "question_id")
 	private Question question;
 	
-	@JsonIgnoreProperties({"answer", "user"})
+	@JsonIgnoreProperties(value = {"answer", "user"}, allowSetters=true)
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerRating> ratings;
 
+
+	@JsonIgnoreProperties(value = {"answer"}, allowSetters=true)
+
+	@OneToMany(mappedBy = "answer")
+	private List<AnswerComment> comments;
+	
 	public Answer() {
 		super();
 	}
@@ -121,6 +128,14 @@ public class Answer {
 		this.ratings = ratings;
 	}
 
+	public List<AnswerComment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<AnswerComment> comments) {
+		this.comments = comments;
+	}
+
 	public void addRating(AnswerRating rating) {
 		if (ratings == null) {
 			ratings = new ArrayList<>();
@@ -138,6 +153,26 @@ public class Answer {
 		rating.setAnswer(null);
 		if (ratings != null) {
 			ratings.remove(rating);
+		}
+	}
+	
+	public void addAnswerComment(AnswerComment answerComment) {
+		if (comments== null) {
+			comments = new ArrayList<>();
+		}
+		if (!comments.contains(answerComment)) {
+			comments.add(answerComment);
+			if (answerComment.getAnswer() != null) {
+				answerComment.getAnswer().getComments().remove(answerComment);
+			}
+			answerComment.setAnswer(this);
+		}
+	}
+
+	public void removeQuestion(AnswerComment answerComment) {
+		answerComment.setAnswer(null);
+		if (comments != null) {
+			comments.remove(answerComment);
 		}
 	}
 

@@ -2,9 +2,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Address } from 'src/app/models/address';
 import { Company } from 'src/app/models/company';
+import { Industry } from 'src/app/models/industry';
 import { AddressService } from 'src/app/services/address.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { CompanyService } from 'src/app/services/company.service';
+import { IndustryService } from 'src/app/services/industry.service';
 
 @Component({
   selector: 'app-add-company',
@@ -18,29 +20,46 @@ export class AddCompanyComponent implements OnInit {
   addAddress = new Address();
 newAddress: Address | null = null
 
-  //  categories: Category[] = [];
+industries: Industry[] = [];
 
-  // selectedCategories: boolean[] = [];
+   selectedIndustries: boolean[] = [];
+
 
    @Output() reloadParent = new EventEmitter<void>();
 
   constructor(private companyService: CompanyService, private router: Router,
-    private auth: AuthService, private addressService: AddressService) { }
+    private auth: AuthService, private addressService: AddressService, private industryService: IndustryService) { }
 
   ngOnInit(): void {
+    this.loadIndustries();
+  }
+
+  loadIndustries () {
+    this.industryService.index().subscribe({
+      next: (data) => {
+        this.industries = data;
+        this.industries.forEach(industry => {
+          this.selectedIndustries.push(false);
+        });
+      },
+      error: (fail) => {
+        console.error('AddCompanyComponent.loadIndustries: error getting industries');
+        console.error(fail);
+      }
+    })
   }
 
   //add error messages for required fields
   createCompany() {
-    // this.newQuestion.categories = [];
-    // for (let i = 0; i < this.selectedCategories.length; i++) {
+    this.newCompany.industries = [];
+    for (let i = 0; i < this.selectedIndustries.length; i++) {
 
-    //   if(this.selectedCategories[i]) {
-    //     this.newQuestion.categories?.push(this.categories[i]);
-    //   }
+      if(this.selectedIndustries[i]) {
+        this.newCompany.industries?.push(this.industries[i]);
+      }
 
-    // }
-    // console.log(this.newQuestion);
+    }
+    console.log(this.newCompany);
 
     this.addressService.create(this.addAddress).subscribe({
       next: (addAddressData) => {
@@ -52,7 +71,7 @@ newAddress: Address | null = null
         this.newCompany.enabled = true;
 
         this.companyService.create(this.newCompany).subscribe({
-          next: (newCompnanyData) => {
+          next: (newCompanyData) => {
 
             this.newCompany = new Company();
             this.reloadParent.emit();
@@ -80,4 +99,6 @@ newAddress: Address | null = null
 
 
 }
+
+
 

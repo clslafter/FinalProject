@@ -4,13 +4,14 @@ import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Address } from '../models/address';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'http://localhost:8090/api/';
-  private url = this.baseUrl + 'users';
+
+  private url = environment.baseUrl + 'api/users';
 
   constructor(private http: HttpClient,
     private auth: AuthService

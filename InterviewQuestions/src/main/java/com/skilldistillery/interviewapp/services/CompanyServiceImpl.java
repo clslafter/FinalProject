@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.interviewapp.entities.Address;
+import com.skilldistillery.interviewapp.entities.Category;
 import com.skilldistillery.interviewapp.entities.Company;
+import com.skilldistillery.interviewapp.entities.Industry;
 import com.skilldistillery.interviewapp.entities.Question;
 import com.skilldistillery.interviewapp.repositories.AddressRepository;
 import com.skilldistillery.interviewapp.repositories.CompanyRepository;
+import com.skilldistillery.interviewapp.repositories.IndustryRepository;
 import com.skilldistillery.interviewapp.repositories.QuestionRepository;
 
 @Service
@@ -20,6 +23,9 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Autowired
 	private AddressRepository addressRepo;
+	
+	@Autowired
+	private IndustryRepository industryRepo;
 	
 	
 	
@@ -44,6 +50,14 @@ public class CompanyServiceImpl implements CompanyService {
 
 			company.setAddress(addressRepo.saveAndFlush(company.getAddress()));
 		}
+		System.out.println(company);
+		
+		for (Industry industry: company.getIndustries()) {
+			Industry newIndustry = industryRepo.queryById(industry.getId());
+			newIndustry.addCompany(company);
+			industryRepo.saveAndFlush(newIndustry);
+		}
+		
 		return companyRepo.saveAndFlush(company);
 	}
 
@@ -66,6 +80,21 @@ public class CompanyServiceImpl implements CompanyService {
 				managedAddress.setZip(updatedAddress.getZip());
 				managedAddress.setEnabled(true);
 				managed.setAddress(managedAddress);
+			}
+			
+			managed.setIndustries(company.getIndustries());
+			
+			List<Industry> allIndustries = industryRepo.findAll();
+			for (Industry industry : allIndustries) {
+				if(!managed.getIndustries().contains(industry) && industry.getCompanies().contains(managed)) {
+					industry.removeCompany(managed);
+				}
+			}
+			
+			for (int i = 0; i < managed.getIndustries().size(); i++) {
+				Industry managedIndustry = industryRepo.queryById(managed.getIndustries().get(i).getId());
+				managedIndustry.addCompany(managed);
+				managed.getIndustries().set(i, managedIndustry);
 			}
 			
 			return companyRepo.saveAndFlush(managed);
