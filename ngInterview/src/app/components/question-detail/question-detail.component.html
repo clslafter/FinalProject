@@ -97,7 +97,7 @@ class="btn btn-primary"
   <div *ngFor="let answer of selected?.answers; let i = index ">
     <ul *ngIf="answer.enabled">
       <br />
-      <li>{{ answer.answer }}</li>
+      <li >{{ answer.answer }}</li>
       <div *ngIf="answer.ratings">
         Rating: {{ determineRatingValue(answer) }}
       </div>
@@ -132,35 +132,69 @@ class="btn btn-primary"
 
       <!-- <app-edit-answer *ngIf="updateAnswer && updateAnswer != null" [selectedAnswer]="answer" (returnToParent)="loadNewAnswer()"></app-edit-answer> -->
 
-      <ul>
+      <ul><small> by
         <a [routerLink]="['/userProfile', answer.user?.id]"
           >{{ answer.user?.username }}
           <img
             [src]="answer.user?.avatarUrl"
             alt="avatarPic"
-            style="width: 80px; height: 80px"
+            style="width: 30px; height: 30px"
         /></a>
-        Created On
+        on
         {{
           answer.dateCreated | date: "short"
         }}
+      </small>
       </ul>
     </ul>
 
     <h3>Add answer comments here</h3>
     <div *ngFor="let comment of answer.comments">
       <div *ngIf="comment.enabled">
-        <p>Comment: {{ comment.commentText }}</p>
-        <p>
-          Created By:
-          <a class="nav-link" [routerLink]="['/userProfile', comment.user?.id]"
+        <p *ngIf="!updateAnswerComment">Comment: {{ comment.commentText }}</p>
+
+        <div *ngIf="updateAnswerComment">
+          <form>
+            <textarea
+              class="form-control"
+              id="commentText"
+              type="text"
+              name="commentText"
+              rows="3"
+              [(ngModel)]="updateAnswerComment.commentText"
+              >{{ updateAnswerComment.commentText }}</textarea
+            >
+            <input
+            class="btn btn-secondary"
+            type="submit"
+            name="cancelAnswerComment"
+            value="Cancel"
+            (click)="updateAnswerComment = null"
+          />
+
+            <input
+              class="btn btn-secondary"
+              type="submit"
+              name="updateAnswerComment"
+              value="Save"
+              (click)="answerCommentToUpdate(updateAnswerComment)"
+            />
+
+
+          </form>
+        </div>
+
+        <p><small>
+          by
+          <a [routerLink]="['/userProfile', comment.user?.id]"
             >{{ comment.user?.username }}
             <img
               [src]="comment.user?.avatarUrl"
               alt="avatarPic"
-              style="width: 80px; height: 80px"
+              style="width: 30px; height: 30px"
           /></a>
           on {{ comment.commentDate | date: 'short'}}
+        </small>
         </p>
 
         <br />
@@ -183,35 +217,7 @@ class="btn btn-primary"
           Edit Comment
         </button>
 
-        <div *ngIf="updateAnswerComment">
-          <form>
-            <textarea
-              class="form-control"
-              id="commentText"
-              type="text"
-              name="commentText"
-              rows="3"
-              [(ngModel)]="updateAnswerComment.commentText"
-              >{{ updateAnswerComment.commentText }}</textarea
-            >
 
-            <input
-              class="btn btn-secondary"
-              type="submit"
-              name="updateAnswerComment"
-              value="Save"
-              (click)="answerCommentToUpdate(updateAnswerComment)"
-            />
-
-            <input
-              class="btn btn-secondary"
-              type="submit"
-              name="cancelAnswerComment"
-              value="Cancel"
-              (click)="updateAnswerComment = null"
-            />
-          </form>
-        </div>
       </div>
     </div>
     <button
@@ -220,14 +226,7 @@ class="btn btn-primary"
     >
       add a comment
     </button>
-    <div *ngIf="addAnswerComment">
-      <button
-        class="btn btn-outline-primary"
-        (click)="cancelAddAnswerComment(); commentBoxDisplay[i] = false;"
-      >
-        cancel
-      </button>
-    </div>
+
     <div id="addAnswerCommentFormDiv">
       <app-answer-comment-form
         *ngIf="commentBoxDisplay[i]"
@@ -235,6 +234,15 @@ class="btn btn-primary"
         (returnToParent)="loadNewAnswer(); commentBoxDisplay[i] = false;"
       >
       </app-answer-comment-form>
+    </div>
+
+    <div *ngIf="addAnswerComment">
+      <button
+        class="btn btn-outline-danger"
+        (click)="cancelAddAnswerComment(); commentBoxDisplay[i] = false;"
+      >
+        cancel
+      </button>
     </div>
   </div>
 </div>
@@ -252,6 +260,14 @@ class="btn btn-primary"
     >
 
     <input
+    class="btn btn-secondary"
+    type="submit"
+    name="cancelAnswer"
+    value="Cancel"
+    (click)="updateAnswer = null"
+  />
+
+    <input
       class="btn btn-secondary"
       type="submit"
       name="updateAnswer"
@@ -259,23 +275,14 @@ class="btn btn-primary"
       (click)="answerToUpdate(updateAnswer)"
     />
 
-    <input
-      class="btn btn-secondary"
-      type="submit"
-      name="cancelAnswer"
-      value="Cancel"
-      (click)="updateAnswer = null"
-    />
+
   </form>
 </div>
-<button class="btn btn-outline-primary" (click)="setAddAnswer()">
+<br><br>
+<button *ngIf="!addAnswer" class="btn btn-outline-primary" (click)="setAddAnswer()">
   add an answer
 </button>
-<div *ngIf="addAnswer">
-  <button class="btn btn-outline-primary" (click)="cancelAddAnswer()">
-    cancel
-  </button>
-</div>
+
 <div id="addAnswerFormDiv">
   <app-answer-form
     *ngIf="addAnswer && addAnswer != null"
@@ -283,6 +290,11 @@ class="btn btn-primary"
     (returnToParent)="loadNewAnswer()"
   >
   </app-answer-form>
+</div>
+<div *ngIf="addAnswer">
+  <button class="btn btn-outline-danger" (click)="cancelAddAnswer()">
+    cancel
+  </button>
 </div>
 
 
