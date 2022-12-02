@@ -51,7 +51,7 @@ public class Answer {
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerRating> ratings;
 
-	@JsonIgnoreProperties({"answer", "user"})
+	@JsonIgnoreProperties({"answer"})
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerComment> comments;
 	
