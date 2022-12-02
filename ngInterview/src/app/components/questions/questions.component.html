@@ -3,6 +3,9 @@
 <div id="addAnswerFormDiv" >
   <app-add-question *ngIf="addQuestion" (reloadParent)="questionAdded()"> </app-add-question>
 </div>
+<!-- <button name="backToQuestionList" (click)="createQuestion()">
+  Back to Question List
+</button> -->
 
 
 <select name="categories" id="categories" [(ngModel)]="selectedCategory">
@@ -33,5 +36,6 @@
       </tr>
     </tbody>
   </table>
+
 
 

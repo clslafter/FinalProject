@@ -88,7 +88,7 @@
 </ul>
 <h5>Answers:</h5>
 <div *ngIf="!updateAnswer">
-  <div *ngFor="let answer of selected?.answers">
+  <div *ngFor="let answer of selected?.answers; let i = index ">
     <ul *ngIf="answer.enabled">
       <br />
       <li>{{ answer.answer }}</li>
@@ -208,23 +208,23 @@
     </div>
     <button
       class="btn btn-outline-primary"
-      (click)="setAddAnswerComment(answer)"
+      (click)="setAddAnswerComment(answer); commentBoxDisplay[i] = true;"
     >
       add a comment
     </button>
     <div *ngIf="addAnswerComment">
       <button
         class="btn btn-outline-primary"
-        (click)="cancelAddAnswerComment()"
+        (click)="cancelAddAnswerComment(); commentBoxDisplay[i] = false;"
       >
         cancel
       </button>
     </div>
     <div id="addAnswerCommentFormDiv">
       <app-answer-comment-form
-        *ngIf="addAnswerComment && addAnswerComment != null"
+        *ngIf="commentBoxDisplay[i]"
         [selectedAnswer]="answerForComment"
-        (returnToParent)="loadNewAnswer()"
+        (returnToParent)="loadNewAnswer(); commentBoxDisplay[i] = false;"
       >
       </app-answer-comment-form>
     </div>
@@ -276,4 +276,5 @@
   >
   </app-answer-form>
 </div>
+
 
