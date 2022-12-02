@@ -16,6 +16,8 @@ export class AnswerFormComponent implements OnInit {
 
   answers: Answer[] = [];
 
+  errorMessage = '';
+
   @Input() selectedQuestion: Question | null | undefined;
 
   @Output() returnToParent = new EventEmitter<Question|null>();
@@ -30,12 +32,22 @@ export class AnswerFormComponent implements OnInit {
   }
 
   createAnswer(){
+    this.errorMessage = '';
+
+      if(!this.newAnswer.answer) {
+        this.errorMessage += '*Please enter your answer* ';
+      }
+
+      if(this.errorMessage) {
+        return;
+      }
   if (this.selectedQuestion){
     this.answerService.create(this.newAnswer, this.selectedQuestion.id).subscribe({
       next: (data: any) => {
         this.newAnswer = new Answer();
         this.newAnswer.enabled = true;
         this.newAnswer.user;
+        this.errorMessage = '';
 
         this.returnToParent.emit(data);
       },

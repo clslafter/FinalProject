@@ -17,5 +17,8 @@
 <p>This User's Answers</p>
 <ul *ngFor="let answer of selectedUser?.answers">
   <!-- this link doesn't work because answer.question?.id is null? -->
-  <li><a class="nav-link" [routerLink]="['/questionDetail', answer.question?.id]">{{answer.answer}}</a></li>
-  </ul>
+  <div *ngIf="answer.enabled">
+  <li ><a class="nav-link" [routerLink]="['/questionDetail', answer.question?.id]">{{answer.answer}}</a></li>
+</div>
+</ul>
+
