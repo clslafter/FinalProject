@@ -36,22 +36,24 @@ public class Answer {
 
 	private Boolean enabled;
 
+	
 	private String answer;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
+	@JsonIgnoreProperties(value = {"answers", "questions"}, allowSetters= true)
 	private User user;
 
-	@JsonIgnoreProperties({"answers", "categories", "companies", "user"})
+	@JsonIgnoreProperties(value = {"answers", "user"}, allowSetters= true)
 	@ManyToOne
 	@JoinColumn(name = "question_id")
 	private Question question;
 	
-	@JsonIgnoreProperties({"answer", "user"})
+	@JsonIgnoreProperties(value = {"answer", "user"}, allowSetters=true)
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerRating> ratings;
 
-	@JsonIgnoreProperties({"answer", "user"})
+	@JsonIgnoreProperties(value = {"answer"}, allowSetters=true)
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerComment> comments;
 	

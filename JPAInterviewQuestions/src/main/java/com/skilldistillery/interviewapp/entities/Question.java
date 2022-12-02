@@ -42,21 +42,22 @@ public class Question {
 
 	
 	@ManyToOne
-	@JsonIgnoreProperties({"questions"})
+	@JsonIgnoreProperties(value = {"questions"}, allowSetters = true)
 	@JoinColumn(name = "user_id")
 	private User user;
 
 	//@JsonIgnore
 	@OneToMany(mappedBy = "question")
+	@JsonIgnoreProperties(value = {"questions"}, allowSetters = true)
 	private List<Answer> answers;
 
-	@JsonIgnoreProperties({"questions"})
+	@JsonIgnoreProperties(value = {"questions"}, allowSetters= true)
 	@ManyToMany(mappedBy = "questions")
 	private List<Category> categories;
 
 	//@JsonManagedReference()
 	//@JsonBackReference()
-	@JsonIgnoreProperties({"questions", "industries", "jobs"})
+	@JsonIgnoreProperties(value = {"questions"}, allowSetters = true)
 	//@JsonIgnore
 	@ManyToMany(mappedBy = "questions")
 	private List<Company> companies;
