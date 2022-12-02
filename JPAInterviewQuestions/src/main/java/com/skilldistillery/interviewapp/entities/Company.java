@@ -40,13 +40,13 @@ public class Company {
 	
 	//@JsonBackReference()
 	//@JsonManagedReference()
-	@JsonIgnoreProperties({"companies"})
+	@JsonIgnoreProperties(value = {"companies"}, allowSetters = true)
 	//@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "company_has_question", joinColumns = @JoinColumn(name = "company_id"), inverseJoinColumns = @JoinColumn(name = "question_id"))
 	private List<Question> questions;
 	
-	@JsonIgnoreProperties({"companies"})
+	@JsonIgnoreProperties(value = {"companies"}, allowSetters = true)
 	@ManyToMany
 	@JoinTable(name = "industry_has_company", joinColumns = @JoinColumn(name = "company_id"), inverseJoinColumns = @JoinColumn(name = "industry_id"))
 	private List<Industry> industries;

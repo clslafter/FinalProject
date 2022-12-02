@@ -56,15 +56,15 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	@JsonIgnoreProperties({"user", "answers"})
+	@JsonIgnoreProperties(value = {"user"}, allowSetters=true)
 	@OneToMany(mappedBy = "user")
 	private List<Question> questions;
 
-	@JsonIgnoreProperties({"user"})
+	@JsonIgnoreProperties(value = {"user"}, allowSetters=true)
 	@OneToMany(mappedBy = "user")
 	private List<Answer> answers;
 	
-	@JsonIgnoreProperties({"user"})
+	@JsonIgnoreProperties(value = {"user"}, allowSetters=true)
 	@OneToMany(mappedBy = "user")
 	private List<AnswerComment> answerComments;
 
