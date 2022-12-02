@@ -153,24 +153,22 @@
               alt="avatarPic"
               style="width: 80px; height: 80px"
           /></a>
-          on {{ comment.commentDate }}
+          on {{ comment.commentDate | date: 'short'}}
         </p>
 
         <br />
-        <!-- *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'" -->
         <button
-          class="btn btn-outline-primary"
-          *ngIf="user.id === comment?.user?.id"
+        class="btn btn-outline-primary"
+        *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'"
           (click)="setUpdateAnswerComment(comment)"
         >
           Edit Comment
-          <!-- *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'" -->
         </button>
         <br />
         <div *ngIf="comment">
           <button
-            class="btn btn-outline-danger"
-            *ngIf="user.id === comment?.user?.id"
+          class="btn btn-outline-danger"
+          *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'"
             (click)="deleteAnswerComment(comment.id)"
           >
             Delete This Comment
