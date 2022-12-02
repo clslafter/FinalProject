@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 import { Company } from '../models/company';
 import { Question } from '../models/question';
 import { AuthService } from './auth.service';
@@ -9,8 +11,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class CompanyService {
-  private baseUrl = 'http://localhost:8090/';
-  private url = this.baseUrl + 'api';
+
+  private url = environment.baseUrl + 'api/companies';
 
   constructor(private http: HttpClient, private auth: AuthService
     ) { }
@@ -26,7 +28,7 @@ export class CompanyService {
     }
 
   index(): Observable<Company[]> {
-    return this.http.get<Company[]>(this.url + "/companies", this.getHttpOptions()).pipe(
+    return this.http.get<Company[]>(this.url, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -38,7 +40,7 @@ export class CompanyService {
   }
 
   show(cId: number): Observable<Company> {
-    return this.http.get<Company>(this.baseUrl+ 'api/companies/' +cId, this.getHttpOptions()).pipe(
+    return this.http.get<Company>(this.url+ '/' + cId, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -49,7 +51,7 @@ export class CompanyService {
   }
 
   create(company: Company): Observable<Company> {
-    return this.http.post<Company>(this.baseUrl+'api/companies/', company, this.getHttpOptions()).pipe(
+    return this.http.post<Company>(this.url, company, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(
@@ -60,7 +62,7 @@ export class CompanyService {
   }
 
   update(company: Company): Observable<Company> {
-    return this.http.put<Company>(this.baseUrl+'api/companies/' + company.id, company, this.getHttpOptions()).pipe(
+    return this.http.put<Company>(this.url + '/' + company.id, company, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(
@@ -73,7 +75,7 @@ export class CompanyService {
 
 
   destroy(id: number): Observable<void> {
-    return this.http.delete<void>(this.baseUrl+'api/companies/' + id, this.getHttpOptions()).pipe(
+    return this.http.delete<void>(this.url + '/' + id, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.error(err);
         return throwError(

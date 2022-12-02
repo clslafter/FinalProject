@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Answer } from '../models/answer';
 import { AuthService } from './auth.service';
 
@@ -8,8 +9,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AnswerService {
-  private baseUrl = 'http://localhost:8090/';
-  private url = this.baseUrl + 'api/answers';
+
+  private url = environment.baseUrl + 'api/answers';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -58,7 +59,7 @@ export class AnswerService {
       }
 
       destroy(id: number): Observable<void> {
-        return this.http.delete<void>(this.baseUrl+'api/answers/' + id, this.getHttpOptions()).pipe(
+        return this.http.delete<void>(this.url + '/' + id, this.getHttpOptions()).pipe(
           catchError((err: any) => {
             console.error(err);
             return throwError(

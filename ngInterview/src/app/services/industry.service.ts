@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Industry } from '../models/industry';
 import { AuthService } from './auth.service';
 
@@ -9,8 +10,8 @@ import { AuthService } from './auth.service';
 })
 export class IndustryService {
 
-  private baseUrl = 'http://localhost:8090/';
-  private url = this.baseUrl + 'api/industries';
+
+  private url = environment.baseUrl + 'api/industries';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 

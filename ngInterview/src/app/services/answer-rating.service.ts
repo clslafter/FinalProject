@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { AnswerRating } from '../models/answer-rating';
 import { AuthService } from './auth.service';
 
@@ -8,8 +9,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AnswerRatingService {
-  private baseUrl = 'http://localhost:8090/';
-  private url = this.baseUrl + 'api/answerrating';
+
+  private url = environment.baseUrl + 'api/answerrating';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
