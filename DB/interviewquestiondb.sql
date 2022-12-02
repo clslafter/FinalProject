@@ -361,16 +361,18 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (1, 'Mario', 'Mario', 1, 'ADMIN', 'mariomario', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'MarioMario@gmail.com', 'It\'s a-me, Mario!', NULL, 1, 'http://img3.wikia.nocookie.net/__cb20131025223058/fantendo/images/2/25/Mario_Artwork_-_Super_Mario_3D_World.png');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (2, 'King', 'Bowser', 1, 'USER', 'kingbowser', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'KingBowser@gmail.com', 'Hear this! I will kidnap Peach OVER and OVER until I pull it off! And no one can stop me! Losing is not an option! And neither is giving up!', NULL, 5, 'https://styles.redditmedia.com/t5_2r3bv/styles/communityIcon_h3gz0gscg4o71.png');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (3, 'Princess', 'Peach', 1, 'USER', 'princesspeach', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'princesspeach@gmail.com', 'Princess of the Mushroom Kingdom', NULL, NULL, 'https://static-new.miraheze.org/greatcharacterswiki/thumb/e/e2/Peach.png/290px-Peach.png');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (4, 'Dry', 'Bones', 1, 'USER', 'drybones', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'drybones@gmail.com', 'My bones are so dry', NULL, NULL, 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/new-super-mario-bros-u/2/23/Dry-Bones-nintendo-villains-9411346-600-600.jpeg');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (5, 'Lugi', 'Mario', 1, 'USER', 'lugimario', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'lugimario@gmail.com', 'Brother of Mario', NULL, NULL, 'https://pbs.twimg.com/media/EegRMg2XgAE85VH?format=jpg&name=large');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (6, 'Toad', NULL, 1, 'USER', 'toad', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'toad@gmail.com', 'Attendant of Princess Peach', NULL, NULL, 'https://www.nicepng.com/png/detail/967-9670418_toad-mario-clipart-toad-mario-bros-super-mario.png');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (7, 'Toadette', NULL, 1, 'USER', 'toadette', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, NULL, NULL, 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e738c17-7f3c-422e-8225-f8c782b08626/deg7wm3-a463e506-f80a-4095-bf0f-ba34ba6629a0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBlNzM4YzE3LTdmM2MtNDIyZS04MjI1LWY4Yzc4MmIwODYyNlwvZGVnN3dtMy1hNDYzZTUwNi1mODBhLTQwOTUtYmYwZi1iYTM0YmE2NjI5YTAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Kv3KDyG4P3bibJZRAmWqEHkn_SnoD2-n_RNVcSMIl_U');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (8, 'Yoshi', NULL, 1, 'USER', 'yoshi', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, NULL, NULL, 'https://e1.pngegg.com/pngimages/649/608/png-clipart-3d-yoshi-yoshi-3d-illustration.png');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (9, 'Wario', NULL, 1, 'USER', 'wario', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, NULL, NULL, 'https://i.redd.it/p7s4igeq58291.png');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (10, 'Shyguy', NULL, 1, 'USER', 'shyguy', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, NULL, NULL, 'https://www.clipartmax.com/png/middle/106-1061323_mario-kart-shy-guy.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (1, 'Mario', 'Mario', 1, 'ADMIN', 'mariomario', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'MarioMario@gmail.com', 'It\'s a-me, Mario!', '1983-04-04 12:00:00', 1, 'http://img3.wikia.nocookie.net/__cb20131025223058/fantendo/images/2/25/Mario_Artwork_-_Super_Mario_3D_World.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (2, 'King', 'Bowser', 1, 'USER', 'kingbowser', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'KingBowser@gmail.com', 'Hear this! I will kidnap Peach OVER and OVER until I pull it off! And no one can stop me! Losing is not an option! And neither is giving up!', '1983-04-04 12:00:00', 5, 'https://styles.redditmedia.com/t5_2r3bv/styles/communityIcon_h3gz0gscg4o71.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (3, 'Princess', 'Peach', 1, 'USER', 'princesspeach', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'princesspeach@gmail.com', 'Princess of the Mushroom Kingdom', '1983-04-04 12:00:00', NULL, 'https://static-new.miraheze.org/greatcharacterswiki/thumb/e/e2/Peach.png/290px-Peach.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (4, 'Dry', 'Bones', 1, 'USER', 'drybones', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'drybones@gmail.com', 'My bones are so dry', '1983-04-04 12:00:00', NULL, 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/new-super-mario-bros-u/2/23/Dry-Bones-nintendo-villains-9411346-600-600.jpeg');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (5, 'Lugi', 'Mario', 1, 'USER', 'lugimario', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'lugimario@gmail.com', 'Brother of Mario', '1983-04-04 12:00:00', NULL, 'https://pbs.twimg.com/media/EegRMg2XgAE85VH?format=jpg&name=large');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (6, 'Toad', NULL, 1, 'USER', 'toad', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'toad@gmail.com', 'Attendant of Princess Peach', '1983-04-04 12:00:00', NULL, 'https://www.nicepng.com/png/detail/967-9670418_toad-mario-clipart-toad-mario-bros-super-mario.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (7, 'Toadette', NULL, 1, 'USER', 'toadette', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, '1983-04-04 12:00:00', NULL, 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e738c17-7f3c-422e-8225-f8c782b08626/deg7wm3-a463e506-f80a-4095-bf0f-ba34ba6629a0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBlNzM4YzE3LTdmM2MtNDIyZS04MjI1LWY4Yzc4MmIwODYyNlwvZGVnN3dtMy1hNDYzZTUwNi1mODBhLTQwOTUtYmYwZi1iYTM0YmE2NjI5YTAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Kv3KDyG4P3bibJZRAmWqEHkn_SnoD2-n_RNVcSMIl_U');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (8, 'Yoshi', NULL, 1, 'USER', 'yoshi', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, '1983-04-04 12:00:00', NULL, 'https://e1.pngegg.com/pngimages/649/608/png-clipart-3d-yoshi-yoshi-3d-illustration.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (9, 'Wario', NULL, 1, 'USER', 'wario', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, '1983-04-04 12:00:00', NULL, 'https://i.redd.it/p7s4igeq58291.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (10, 'Shyguy', NULL, 1, 'USER', 'shyguy', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, '1983-04-04 12:00:00', NULL, 'https://www.clipartmax.com/png/middle/106-1061323_mario-kart-shy-guy.png');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (11, 'admin', 'admin', 1, 'ADMIN', 'admin', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, '1983-04-04 12:00:00', NULL, NULL);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `enabled`, `role`, `username`, `password`, `email`, `about_me`, `date_created`, `address_id`, `avatar_url`) VALUES (12, 'user', 'user', 1, 'USER', 'user', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, '1983-04-04 12:00:00', NULL, NULL);
 
 COMMIT;
 
@@ -411,6 +413,9 @@ START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (1, 2, 1, 'You can start a tech school or get hired by an electrical company', NULL, NULL, 1);
 INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (2, 3, 7, 'Prior to your interview make sure you do some research on the company you are applying to and write down some questions you have for them. It shows your interest in the job and company.', NULL, NULL, 1);
+INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (3, 5, 3, 'Abstraction, Polymorphism, Inheritance, Encapsulation. APIE is a good way to remember it by.', '2022-12-02 16:00:00', NULL, 1);
+INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (4, 2, 3, 'Pillar one is kidnapping Princess Peach and Pillar two is defeating Mario. Their is no third or fourth pillar', '2022-12-02 16:30:12', NULL, 1);
+INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (5, 6, 3, 'All I know is that APIE\'s letters stand for something but I\'m not quite sure :/', '2022-12-01 14:30:9', NULL, 1);
 
 COMMIT;
 
@@ -422,7 +427,8 @@ START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (1, 'Construction', 1);
 INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (2, 'Manufacturing', 1);
-INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (3, 'Tech', 1);
+INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (3, 'Electrical Engineering', 1);
+INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (4, 'Utilities', 1);
 
 COMMIT;
 
@@ -509,6 +515,19 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `industry_has_company`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `interviewquestiondb`;
+INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (1, 1);
+INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (2, 2);
+INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (3, 3);
+INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (4, 3);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `answer_rating`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -521,6 +540,23 @@ INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VA
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 7, 1, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 8, 1, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 9, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 1, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 2, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 3, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 4, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 5, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 6, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 7, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 8, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 9, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 10, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 11, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 12, 0, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (3, 1, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (3, 2, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (3, 3, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (3, 4, 1, NULL);
+INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (5, 1, 0, NULL);
 
 COMMIT;
 
@@ -531,6 +567,7 @@ COMMIT;
 START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `answer_comment` (`id`, `comment_date`, `comment_text`, `user_id`, `answer_id`, `in_reply_to_id`, `enabled`) VALUES (1, NULL, 'thanks!', 1, 1, 1, 1);
+INSERT INTO `answer_comment` (`id`, `comment_date`, `comment_text`, `user_id`, `answer_id`, `in_reply_to_id`, `enabled`) VALUES (2, '2022-12-03 18:25:16', 'Close but not quite.', 8, 5, 2, 1);
 
 COMMIT;
 
