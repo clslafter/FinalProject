@@ -26,6 +26,7 @@ export class QuestionDetailComponent implements OnInit {
   companies: Company [] = [];
   selectedCompanyID: number = 0;
   isCommentDivOpen: boolean = false;
+  commentBoxDisplay: boolean [] = [];
 
   constructor(
     private questionService: QuestionService,
@@ -160,7 +161,11 @@ answerCommentToUpdate(comment: AnswerComment){
             console.log(this.selected)
             console.log('********************')
             this.selected.answers?.sort(this.answerService.sortAnswersByRating);
-
+            if(this.selected.answers) {
+            for (let index = 0; index < this.selected.answers.length; index++) {
+             this.commentBoxDisplay.push(false);
+            }
+          }
           },
           error: (fail) => {
             console.error(
