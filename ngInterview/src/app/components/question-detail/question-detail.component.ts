@@ -10,6 +10,8 @@ import { AnswerService } from 'src/app/services/answer.service';
 import { QuestionService } from 'src/app/services/question-service';
 import { CompanyService } from 'src/app/services/company.service';
 import { Company } from 'src/app/models/company';
+import { AnswerComment } from 'src/app/models/answer-comment';
+import { AnswerCommentService } from 'src/app/services/answer-comment.service';
 
 @Component({
   selector: 'app-question-detail',
@@ -20,6 +22,7 @@ export class QuestionDetailComponent implements OnInit {
   selected: Question | null = null;
   user: User = new User();
   answer: Answer | null = null;
+  comment: AnswerComment | null = null;
   companies: Company [] = [];
   selectedCompanyID: number = 0;
 
@@ -30,7 +33,8 @@ export class QuestionDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private auth: AuthService,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private answerCommentService: AnswerCommentService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +46,9 @@ export class QuestionDetailComponent implements OnInit {
 
   updateAnswer: Answer | null = null;
   addAnswer: boolean = false;
+
+  updateAnswerComment: AnswerComment | null = null;
+  addAnswerComment: boolean = false;
 
   setAddAnswer() {
     this.addAnswer = true;
@@ -55,6 +62,10 @@ export class QuestionDetailComponent implements OnInit {
     this.updateAnswer = Object.assign({},answer);
 
   }
+
+
+
+
 
   answerToUpdate(answer: Answer){
     console.log("clicked")
@@ -74,6 +85,40 @@ export class QuestionDetailComponent implements OnInit {
       },
     });
   }
+}
+
+
+setAddAnswerComment() {
+  this.addAnswerComment = true;
+}
+
+cancelAddAnswerComment() {
+  this.addAnswerComment = false;
+}
+
+setUpdateAnswerComment(comment: AnswerComment){
+  this.updateAnswerComment = Object.assign({},comment);
+
+}
+
+answerCommentToUpdate(comment: AnswerComment){
+  console.log("clicked")
+  if(this.updateAnswerComment){
+    delete this.updateAnswerComment.user;
+  this.answerCommentService.update(this.updateAnswerComment, this.updateAnswerComment.id).subscribe({
+    next: (data: any) => {
+        this.updateAnswerComment = null;
+        this.loadNewAnswer();
+
+      },
+    error: (fail: any) => {
+      console.error(
+        'EditAnswerComponent.updateAnswer(): error updating answer:'
+      );
+      console.error(fail);
+    },
+  });
+}
 }
 
 
@@ -252,6 +297,24 @@ export class QuestionDetailComponent implements OnInit {
       error: (fail: any) => {
         console.error(
           'QuestionDetailComponent.disableAnswer(): error disabling answer:'
+        );
+        console.error(fail);
+      },
+    });
+  }
+}
+
+  deleteAnswerComment(id: number){
+  if(confirm("Are you sure you want to delete your Answer?")){
+    this.answerCommentService.destroy(id).subscribe({
+      next: (data: any) => {
+        this.comment = null;
+        this.loadNewAnswer();
+
+        },
+      error: (fail: any) => {
+        console.error(
+          'QuestionDetailComponent.disableAnswerComment(): error disabling comment:'
         );
         console.error(fail);
       },

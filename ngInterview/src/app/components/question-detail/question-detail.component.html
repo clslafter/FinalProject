@@ -81,8 +81,56 @@
 
 <h3>Add answer comments here</h3>
 <div *ngFor="let comment of answer.comments">
+  <div *ngIf="comment.enabled">
   <p>Comment: {{comment.commentText}}</p>
   <p>Created By: <a class="nav-link" [routerLink]="['/userProfile', comment.user?.id]">{{comment.user}} <img [src]="comment.user?.avatarUrl" alt="avatarPic" style="width:80px;height:80px;"></a> on {{comment.commentDate}}</p>
+
+  <br>
+  <button class="btn btn-outline-primary" *ngIf="user.id === comment?.user?.id" (click)="setUpdateAnswerComment(comment)">Edit Comment</button>
+<br>
+  <div *ngIf="comment">
+    <button class="btn btn-outline-danger" *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'" (click)="deleteAnswerComment(comment.id)">Delete This Comment </button>
+
+  </div>
+
+  <div *ngIf="updateAnswerComment">
+    <form>
+      <textarea
+      class="form-control"
+      id="commentText"
+      type="text"
+      name="commentText"
+      rows="3"
+      [(ngModel)]="updateAnswerComment.commentText"
+      >{{updateAnswerComment.commentText}}</textarea>
+
+      <input
+      class="btn btn-secondary"
+      type="submit"
+      name="updateAnswerComment"
+      value="Save"
+      (click)="answerCommentToUpdate(updateAnswerComment)"
+      />
+
+      <input
+      class="btn btn-secondary"
+      type="submit"
+      name="cancelAnswerComment"
+      value="Cancel"
+      (click)="updateAnswerComment = null"
+      />
+
+    </form>
+  </div>
+
+  <button class="btn btn-outline-primary" (click)="setAddAnswerComment()">add a comment</button>
+  <div *ngIf="addAnswerComment">
+    <button class="btn btn-outline-primary" (click)="cancelAddAnswerComment()">cancel</button>
+  </div>
+  <div id="addAnswerCommentFormDiv" >
+    <app-answer-comment-form *ngIf="addAnswerComment && addAnswerComment != null" [selectedQuestion]="selected" (returnToParent)="loadNewAnswer()"> </app-answer-comment-form>
+  </div>
+  </div>
 
 </div>
 
