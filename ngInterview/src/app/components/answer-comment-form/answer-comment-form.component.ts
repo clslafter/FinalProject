@@ -19,11 +19,11 @@ export class AnswerCommentFormComponent implements OnInit {
 
   answerComments: AnswerComment[] = [];
 
-  newAnswerComment: AnswerComment = new AnswerComment();
-
   @Input() selectedQuestion: Question | null | undefined;
 
   @Output() returnToParent = new EventEmitter<Question|null>();
+
+  newAnswerComment: AnswerComment = new AnswerComment();
 
   constructor(private questionService: QuestionService,
     private answerService: AnswerService,
@@ -33,6 +33,7 @@ export class AnswerCommentFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   createAnswerComment(){
     if (this.selectedQuestion){
       this.answerCommentService.create(this.newAnswerComment, this.selectedQuestion.id).subscribe({
