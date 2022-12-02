@@ -74,5 +74,11 @@ class UserTest {
 		assertNotNull(user);
 		assertTrue(user.getJobs().size() > 0);
 	}
+	
+	@Test
+	void test_user_mapping_answerComment() {
+		assertNotNull(user);
+		assertTrue(user.getAnswerComments().size() > 0);
+	}
 
 }

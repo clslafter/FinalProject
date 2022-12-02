@@ -68,6 +68,11 @@ class AnswerTest {
 		assertNotNull(answer);
 		assertTrue(answer.getRatings().size() > 0);
 	}
-
+	
+	@Test
+	void test_Answer_mapping_AnswerComment() {
+		assertNotNull(answer);
+		assertTrue(answer.getComments().size() > 0);
+	}
 
 }

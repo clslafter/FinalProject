@@ -78,6 +78,14 @@
      <a class="nav-link" [routerLink]="['/userProfile', answer.user?.id]">{{answer.user?.username}} <img [src]="answer.user?.avatarUrl" alt="avatarPic" style="width:80px;height:80px;"></a> Created On {{answer.dateCreated | date: 'short'}}
   </ul>
 </ul>
+
+<h3>Add answer comments here</h3>
+<div *ngFor="let comment of answer.comments">
+  <p>Comment: {{comment.commentText}}</p>
+  <p>Created By: <a class="nav-link" [routerLink]="['/userProfile', comment.user?.id]">{{comment.user}} <img [src]="comment.user?.avatarUrl" alt="avatarPic" style="width:80px;height:80px;"></a> on {{comment.commentDate}}</p>
+
+</div>
+
 </div>
 </div>
 
@@ -105,7 +113,7 @@
     type="submit"
     name="cancelAnswer"
     value="Cancel"
-    (click)="updateAnswer"
+    (click)="updateAnswer = null"
     />
 
   </form>
