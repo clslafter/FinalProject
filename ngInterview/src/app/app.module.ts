@@ -30,6 +30,7 @@ import { EnabledQuestionPipe } from './pipes/enabled-question.pipe';
 import { AddCompanyComponent } from './components/add-company/add-company.component';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 import { EnabledCompanyPipe } from './pipes/enabled-company.pipe';
+import { AnswerCommentFormComponent } from './components/answer-comment-form/answer-comment-form.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { EnabledCompanyPipe } from './pipes/enabled-company.pipe';
     EnabledQuestionPipe,
     AddCompanyComponent,
     EditCompanyComponent,
-    EnabledCompanyPipe
+    EnabledCompanyPipe,
+    AnswerCommentFormComponent
   ],
   imports: [
     BrowserModule,

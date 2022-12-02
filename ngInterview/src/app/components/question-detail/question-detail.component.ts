@@ -25,6 +25,7 @@ export class QuestionDetailComponent implements OnInit {
   comment: AnswerComment | null = null;
   companies: Company [] = [];
   selectedCompanyID: number = 0;
+  isCommentDivOpen: boolean = false;
 
   constructor(
     private questionService: QuestionService,
@@ -63,6 +64,7 @@ export class QuestionDetailComponent implements OnInit {
 
   }
 
+answerForComment: Answer | null = null;
 
 
 
@@ -88,8 +90,9 @@ export class QuestionDetailComponent implements OnInit {
 }
 
 
-setAddAnswerComment() {
+setAddAnswerComment(answer: Answer) {
   this.addAnswerComment = true;
+  this.answerForComment = Object.assign({},answer);
 }
 
 cancelAddAnswerComment() {
@@ -98,6 +101,7 @@ cancelAddAnswerComment() {
 
 setUpdateAnswerComment(comment: AnswerComment){
   this.updateAnswerComment = Object.assign({},comment);
+
 
 }
 
@@ -108,6 +112,7 @@ answerCommentToUpdate(comment: AnswerComment){
   this.answerCommentService.update(this.updateAnswerComment, this.updateAnswerComment.id).subscribe({
     next: (data: any) => {
         this.updateAnswerComment = null;
+        // this.answerForComment = null;
         this.loadNewAnswer();
 
       },
@@ -353,6 +358,14 @@ unassociateQuestionWithCompany(companyId: number){
   });
 }
 }
+
+toggleCommentForm () {
+  this.isCommentDivOpen = !this.isCommentDivOpen;
 }
+
+
+}
+
+
 
 
