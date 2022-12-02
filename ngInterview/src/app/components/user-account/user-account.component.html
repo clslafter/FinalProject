@@ -1,21 +1,23 @@
 <div id="userData" *ngIf="!editUser">
 
-<H2>Welcome {{user.firstName}}, this is your user account data:</H2>
+<H2>User account data for {{user.firstName}}</H2>
 
-  <p>User Name: {{user.username}}</p>
-  <p>First Name: {{user.firstName}}</p>
-  <p>Last Name: {{user.lastName}}</p>
-  <p>email address: {{user.email}}</p>
-  <p>About me: {{user.aboutMe}}</p>
-  <p>Member since: {{user.dateCreated}}</p>
-  <p>Your avatar: <img [src]="user?.avatarUrl" alt="avatarPic" style="width: 120px;height: 120px;"></p>
-
-  <p>Your Address</p>
-  <p>Street Address: {{user.address?.street}}</p>
-  <p>Unit: {{user.address?.street2}}</p>
-  <p>City: {{user.address?.city}}</p>
-  <p>State: {{user.address?.state}}</p>
-  <p>Zip Code: {{user.address?.zip}}</p>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="user.avatarUrl" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
+        <p class="card-text">{{user.email}}</p>
+        <p class="card-text">{{user.aboutMe}}</p>
+        <p class="card-text">{{user.address?.street}} {{user.address?.city}}, {{user.address?.state}}  {{user.address?.zip}}</p>
+        <p class="card-text"><small class="text-muted">Member since: {{user.dateCreated}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
 
   <button class="btn btn-outline-primary" (click)="setEditUser()">Edit your info</button>
   <button class="btn btn-outline-danger" (click)="deleteUserAccount()">Delete your account</button>
@@ -26,10 +28,6 @@
 <div id="userDataEdit" *ngIf="editUser">
   <h2>Edit your account information:</h2>
   <form>
-    <!-- <label for="username">User Name </label>
-    <input type="text" name="username" [(ngModel)]="editUser.username" /> <br /> -->
-    <!-- <label for="password">Password</label>
-    <input type="text" name="password" [(ngModel)]="editUser.password" /> <br /> -->
     <label for="firstName">First Name </label>
     <input type="text" name="firstName" [(ngModel)]="editUser.firstName" /> <br />
     <label for="lastName">Last Name </label>
