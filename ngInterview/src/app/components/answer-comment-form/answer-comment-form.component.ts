@@ -45,7 +45,7 @@ export class AnswerCommentFormComponent implements OnInit {
 
           this.returnToParent.emit(data);
 
-          window.location.reload();
+          // window.location.reload();
         },
         error: (err: any) => {
           console.error('createAnswerComment: error creating answerComment:');

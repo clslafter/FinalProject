@@ -53,6 +53,7 @@ public class Answer {
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerRating> ratings;
 
+
 	@JsonIgnoreProperties(value = {"answer"}, allowSetters=true)
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerComment> comments;
