@@ -19,6 +19,8 @@ export class AnswerCommentFormComponent implements OnInit {
 
   answerComments: AnswerComment[] = [];
 
+  errorMessage = '';
+
   @Input() selectedAnswer: Answer | null | undefined;
 
   @Output() returnToParent = new EventEmitter<Question|null>();
@@ -35,12 +37,23 @@ export class AnswerCommentFormComponent implements OnInit {
   }
 
   createAnswerComment(){
+    this.errorMessage = '';
+
+    if(!this.newAnswerComment.commentText) {
+      this.errorMessage += '*Please enter your comment* ';
+    }
+
+    if(this.errorMessage) {
+      return;
+    }
+
     if (this.selectedAnswer){
       this.answerCommentService.create(this.newAnswerComment, this.selectedAnswer.id).subscribe({
         next: (data: any) => {
           this.newAnswerComment = new AnswerComment();
           this.newAnswerComment.enabled = true;
           this.newAnswerComment.user;
+          this.errorMessage = '';
 
 
           this.returnToParent.emit(data);

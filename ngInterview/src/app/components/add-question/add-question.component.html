@@ -6,16 +6,18 @@
         <label for="question"><b>Question: </b></label>
       </div>
       <div class="col col-auto">
-        <input
-          id="question"
-          type="text"
-          name="question"
-          placeholder="question"
-          [(ngModel)]="newQuestion.question"
-        />
+      </div>
+      <div class="error">{{errorMessage}}</div>
+        <textarea
+        id="question"
+        type="text"
+        name="question"
+        placeholder="question"
+        [(ngModel)]="newQuestion.question"
+        rows="3"
+        ></textarea>
       </div>
     </div>
-  </div>
   <!-- Add checkboxes for list of categories to select -->
   <div class="form-group">
     <div class="row">
