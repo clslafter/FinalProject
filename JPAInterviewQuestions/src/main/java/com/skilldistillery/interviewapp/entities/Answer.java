@@ -55,6 +55,7 @@ public class Answer {
 
 
 	@JsonIgnoreProperties(value = {"answer"}, allowSetters=true)
+
 	@OneToMany(mappedBy = "answer")
 	private List<AnswerComment> comments;
 	
