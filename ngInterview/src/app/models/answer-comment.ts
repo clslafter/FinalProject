@@ -8,7 +8,9 @@ export class AnswerComment {
   enabled: boolean;
 
   constructor(
-    id: number = 0, commentDate: string = '', commentText: string = '', user?: User, enabled: boolean = true
+
+    id: number = 0, commentDate: string = '', commentText: string = '', enabled: boolean = true, user?: User
+
   ){
     this.id = id;
     this.commentDate = commentDate;
@@ -17,3 +19,4 @@ export class AnswerComment {
     this.enabled = enabled;
   }
 }
+

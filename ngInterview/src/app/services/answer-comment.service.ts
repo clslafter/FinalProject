@@ -35,8 +35,8 @@ export class AnswerCommentService {
     );
   }
 
-  create(answer: AnswerComment, answerId: number) {
-    return this.http.post<AnswerComment>(this.url + "/" + answerId, answer, this.getHttpOptions()).pipe(
+  create(comment: AnswerComment, answerId: number) {
+    return this.http.post<AnswerComment>(this.url + "/" + answerId, comment, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
