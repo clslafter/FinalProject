@@ -5,6 +5,7 @@ import { Question } from 'src/app/models/question';
 import { QuestionService } from 'src/app/services/question-service';
 import { NavigationComponent } from '../navigation/navigation.component';
 
+
 @Component({
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
