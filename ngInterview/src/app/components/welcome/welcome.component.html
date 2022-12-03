@@ -16,16 +16,18 @@
       </tbody>
     </table>
 </div>
+
+
 <!-- <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="1000">
-      <img src="https://t4.ftcdn.net/jpg/04/07/62/79/360_F_407627976_rQNmJ6fhNNDsgAjXB2TWTAIvQpyX8DTp.jpg" class="d-block w-100" alt="blah">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item" data-bs-interval="1000">
-      <img src="https://i.pinimg.com/originals/99/bb/69/99bb69e4680b0bc9c4c806f5f0f87ad5.png" class="d-block w-100" alt="blah">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg/1024px-Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item" data-bs-interval="1000">
-      <img src="https://i.pinimg.com/originals/b5/2b/3c/b52b3ccc3b542b8fe1725762d47f71fa.jpg" class="d-block w-100" alt="blah">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Siam_lilacpoint.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -38,15 +40,32 @@
   </button>
 </div> -->
 
-<!-- <ngb-carousel>
-  <ng-template ngbSlide *ngFor="let image of images">
-    <div class="wrapper">
-      <img [src]="image.src" alt="Random first slide">
-    </div>
-    <div class="carousel-caption">
-      <h3>{{ image.title }}</h3>
-      <p>{{ image.short }}</p>
-    </div>
-  </ng-template>
-</ngb-carousel> -->
-
+<ngb-carousel>
+	<ng-template ngbSlide>
+		<div class="picsum-img-wrapper">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Siam_lilacpoint.jpg" alt="Random first slide" />
+		</div>
+		<div class="carousel-caption">
+			<h3>First slide label</h3>
+			<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+		</div>
+	</ng-template>
+	<ng-template ngbSlide>
+		<div class="picsum-img-wrapper">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg" alt="Random second slide" />
+		</div>
+		<div class="carousel-caption">
+			<h3>Second slide label</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		</div>
+	</ng-template>
+	<ng-template ngbSlide>
+		<div class="picsum-img-wrapper">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg/1024px-Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg" alt="Random third slide" />
+		</div>
+		<div class="carousel-caption">
+			<h3>Third slide label</h3>
+			<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+		</div>
+	</ng-template>
+</ngb-carousel>
