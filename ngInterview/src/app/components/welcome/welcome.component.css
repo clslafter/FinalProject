@@ -1,0 +1,32 @@
+div.css_slide {
+  width: auto;
+  height: 250px;
+  min-width:100px;
+  min-height:100px;
+  max-width:3000px;
+  max-height:1120px;
+  display:block;
+  border-color: rgb(194, 226, 202);
+  border-style: ridge;
+  background-color: rgba(255, 255, 255, 0.712);
+  background-blend-mode: color;
+
+}
+
+div.text-center{
+  color: rgb(0, 0, 0);
+
+ text-align: center;
+
+}
+#cardimg{
+  max-height:225px;
+
+}
+
+
+
+#headimgs{
+  margin: auto;
+  display:block
+}
