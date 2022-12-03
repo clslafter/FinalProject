@@ -9,6 +9,8 @@ import { CompanyService } from 'src/app/services/company.service';
 })
 export class CompanyComponent implements OnInit {
 
+  searchText: string = "";
+
   companies: Company [] = [];
 
   addCompany: boolean = false;
