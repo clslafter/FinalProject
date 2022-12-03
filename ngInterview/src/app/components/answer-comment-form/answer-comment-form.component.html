@@ -1,14 +1,10 @@
 
-
-<form>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
-        <label for="answerComment"><b>ANSWER COMMENT: </b></label>
-      </div>
+<div class="card" tyle="width: auto;">
+  <div class="card-body">
+    <h5 class="card-title">New Comment</h5>
+    <form>
       <div class="error">{{errorMessage}}</div>
-      <div class="col col-auto">
-        <textarea
+      <textarea
           id="commentText"
           type="text"
           name="commentText"
@@ -19,9 +15,7 @@
         >
         </textarea>
         <br>
-        <button class="btn btn-outline-primary" name="addAnswerCommentButton" (click)="createAnswerComment()">Submit Answer Comment</button>
-      </div>
+        <button class="btn btn-outline-primary" name="addAnswerCommentButton" (click)="createAnswerComment()">Submit  Comment</button>
+     </form>
     </div>
-  </div>
-</form>
-
+</div>
