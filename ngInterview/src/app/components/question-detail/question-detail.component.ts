@@ -27,6 +27,8 @@ export class QuestionDetailComponent implements OnInit {
   selectedCompanyID: number = 0;
   isCommentDivOpen: boolean = false;
   commentBoxDisplay: boolean [] = [];
+  editAnswerBoxDisplay: boolean [] = [];
+  editAnswerCommentBoxDisplay: boolean [] = [];
 
   constructor(
     private questionService: QuestionService,
@@ -164,6 +166,14 @@ answerCommentToUpdate(comment: AnswerComment){
             if(this.selected.answers) {
             for (let index = 0; index < this.selected.answers.length; index++) {
              this.commentBoxDisplay.push(false);
+             this.editAnswerBoxDisplay.push(false);
+             let answerComments = this.selected.answers[index].comments;
+             if(answerComments){
+             for (let j = 0; j < answerComments.length; j++) {
+              this.editAnswerCommentBoxDisplay.push(false);
+            }
+
+             }
             }
           }
           },
