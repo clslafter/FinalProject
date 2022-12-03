@@ -1,4 +1,4 @@
-<h1>Register a new Account Here</h1>
+<h1>Create New Account</h1>
 
 <div>
   <form>
@@ -9,6 +9,7 @@
         </div>
         <div class="col col-auto">
           <input
+          class="form-control"
             id="username"
             type="text"
             name="username"
@@ -25,6 +26,7 @@
         </div>
         <div class="col col-auto">
            <input
+           class="form-control"
             id="password"
             type="password"
             name="password"
@@ -36,10 +38,10 @@
     </div>
     <div class="error">{{errorMessage}}</div>
     <input
-      class="btn btn-secondary"
+      class="btn btn-primary"
       type="submit"
       name="newUser"
-      value="register"
+      value="Register"
       (click)="register(newUser)"
     />
   </form>
