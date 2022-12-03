@@ -13,5 +13,28 @@
       <tr *ngFor="let question of questions | enabledQuestion">
         <td><a class="nav-link" [routerLink]="['/register']">{{ question.question }}</a></td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+</div>
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="1000">
+      <img src="https://t4.ftcdn.net/jpg/04/07/62/79/360_F_407627976_rQNmJ6fhNNDsgAjXB2TWTAIvQpyX8DTp.jpg" class="d-block w-100" alt="blah">
+    </div>
+    <div class="carousel-item" data-bs-interval="1000">
+      <img src="https://i.pinimg.com/originals/99/bb/69/99bb69e4680b0bc9c4c806f5f0f87ad5.png" class="d-block w-100" alt="blah">
+    </div>
+    <div class="carousel-item" data-bs-interval="1000">
+      <img src="https://i.pinimg.com/originals/b5/2b/3c/b52b3ccc3b542b8fe1725762d47f71fa.jpg" class="d-block w-100" alt="blah">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
