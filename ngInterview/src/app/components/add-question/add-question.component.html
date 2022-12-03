@@ -1,4 +1,4 @@
-<h1>ADD Question Form</h1>
+
 <form>
   <div class="form-group">
     <div class="row">
@@ -9,6 +9,7 @@
       </div>
       <div class="error">{{errorMessage}}</div>
         <textarea
+        class="form-control"
         id="question"
         type="text"
         name="question"
@@ -34,9 +35,9 @@
       </div>
     </div>
   </div>
-  <button name="addQuestionButton" (click)="createQuestion()">
-    Submit Question
-  </button>
+    <button class="btn btn-primary" name="addQuestionButton" (click)="createQuestion()">
+      Submit Question
+    </button>
 </form>
 
 

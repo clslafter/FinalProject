@@ -1,4 +1,4 @@
-<h1>ADD Company Form</h1>
+<h1>Add Company</h1>
 <form>
   <div class="form-group">
     <div class="row">
@@ -8,6 +8,7 @@
       <div class="error">{{errorMessage}}</div>
       <div class="col col-auto">
         <input
+        class="form-control"
           id="name"
           type="text"
           name="name"
@@ -39,7 +40,7 @@
         <label for="description">Description </label>
       </div>
       <div class="col col-auto">
-        <input type="text" name="description" [(ngModel)]="newCompany.description" />
+        <input class="form-control" type="text" name="description" [(ngModel)]="newCompany.description" />
         <br />
       </div>
     </div>
@@ -51,7 +52,7 @@
         <label for="logoURL">Logo URL</label>
       </div>
       <div class="col col-auto">
-        <input type="text" name="logoURL" [(ngModel)]="newCompany.logoURL" /> <br />
+        <input class="form-control" type="text" name="logoURL" [(ngModel)]="newCompany.logoURL" /> <br />
         <br />
       </div>
     </div>
@@ -64,6 +65,7 @@
       </div>
       <div class="col col-auto">
         <input
+        class="form-control"
           id="street"
           type="text"
           name="street"
@@ -80,6 +82,7 @@
       </div>
       <div class="col col-auto">
          <input
+         class="form-control"
           id="street2"
           type="text"
           name="street2"
@@ -96,6 +99,7 @@
       </div>
       <div class="col col-auto">
          <input
+         class="form-control"
           id="city"
           type="text"
           name="city"
@@ -112,6 +116,7 @@
       </div>
       <div class="col col-auto">
          <input
+         class="form-control"
           id="state"
           type="text"
           name="state"
@@ -128,6 +133,7 @@
       </div>
       <div class="col col-auto">
          <input
+         class="form-control"
           id="zip"
           type="text"
           name="zip"
@@ -138,8 +144,8 @@
     </div>
   </div>
 
-  <button name="addCompanyButton" (click)="createCompany()">
-    Submit Company
+  <button class="btn btn-primary"name="addCompanyButton" (click)="createCompany()">
+    Submit
   </button>
 </form>
 

@@ -28,7 +28,7 @@
       </ul>
       <!-- Associating Different Companies with Same question -->
 <div>
-  <p>Add a Company</p>
+  <p>Add Company</p>
   <form>
     <select
       id="addCompany"
@@ -61,7 +61,7 @@
           class="btn btn-danger"
           (click)="deleteQuestion(selected.id)"
         >
-          Delete this Question
+          Delete Question
         </button>
       </div>
       <div class="col col-auto">
@@ -70,7 +70,7 @@
         *ngIf="user.id === selected?.user?.id"
         [routerLink]="['/editQuestion', selected?.id]"
       >
-        Edit this Question
+        Edit Question
       </button>
       </div>
       </div>
@@ -125,7 +125,7 @@
             *ngIf="answer && user.id === answer?.user?.id || user.role === 'ADMIN'"
             (click)="deleteAnswer(answer.id)"
           >
-            Delete This Answer
+            Delete Answer
           </button>
           <button
           class="btn btn-outline-primary"
@@ -169,7 +169,7 @@
                 *ngIf="answer && user.id === answer?.user?.id || user.role === 'ADMIN'"
                 (click)="deleteAnswer(answer.id)"
               >
-                Delete This Answer
+                Delete Answer
               </button>
               <button
               class="btn btn-outline-primary"
@@ -258,7 +258,7 @@
                 *ngIf="comment && user.id === comment?.user?.id || user.role === 'ADMIN'"
                   (click)="deleteAnswerComment(comment.id)"
                 >
-                  Delete This Comment
+                Delete Comment
                 </button>
               <!-- </div> -->
               <button
@@ -276,7 +276,8 @@
             class="btn btn-outline-primary"
             (click)="setAddAnswerComment(answer); commentBoxDisplay[i] = true;"
           >
-            add a comment
+
+          Add Comment
           </button>
 
           <div id="addAnswerCommentFormDiv">
@@ -293,7 +294,7 @@
               class="btn btn-outline-danger"
               (click)="cancelAddAnswerComment(); commentBoxDisplay[i] = false;"
             >
-              cancel
+              Cancel
             </button>
           </div>
         </div>
@@ -332,7 +333,7 @@
       </div>
       <br><br>
       <button *ngIf="!addAnswer" class="btn btn-outline-primary" (click)="setAddAnswer()">
-        add an answer
+        Add Answer
       </button>
 
       <div id="addAnswerFormDiv">
@@ -345,7 +346,7 @@
       </div>
       <div *ngIf="addAnswer">
         <button class="btn btn-outline-danger" (click)="cancelAddAnswer()">
-          cancel
+          Cancel
         </button>
       </div>
 
@@ -367,4 +368,4 @@
 
 
 
-<h5>Answers:</h5>
+

@@ -1,13 +1,14 @@
 
-<button *ngIf="!addQuestion" class="btn btn-outline-primary" (click)="setAddQuestion()">add a question</button>
+<button *ngIf="!addQuestion" class="btn btn-outline-primary" (click)="setAddQuestion()">Add Question</button>
 <div id="addAnswerFormDiv" >
   <app-add-question *ngIf="addQuestion" (reloadParent)="questionAdded()"> </app-add-question>
 </div>
-<button *ngIf="addQuestion" name="backToQuestionList" (click)="addQuestion = false">
+<button class="btn btn-outline-danger" *ngIf="addQuestion" name="backToQuestionList" (click)="addQuestion = false">
   Cancel
 </button><br>
 
-
+<label for="categories">Filter:</label>
+<br>
 <select name="categories" id="categories" [(ngModel)]="selectedCategory">
   <option type="text" >All</option>
   <option type="text" *ngFor="let category of categories">{{category.name}}</option>
