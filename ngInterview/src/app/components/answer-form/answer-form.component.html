@@ -1,26 +1,20 @@
-
-<form>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
-        <label for="answer"><b>ANSWER: </b></label>
-      </div>
+<div class="card" tyle="width: auto;">
+  <div class="card-body">
+    <h5 class="card-title">New Answer</h5>
+    <form>
       <div class="error">{{errorMessage}}</div>
-      <div class="col col-auto">
-        <textarea
-          id="answer"
-          type="text"
-          name="answer"
-          rows="4"
-          cols="50"
-          placeholder="answer"
-          [(ngModel)]="newAnswer.answer"
-        >
-        </textarea>
-        <br>
-        <button class="btn btn-outline-primary" name="addAnswerButton" (click)="createAnswer()">Submit Answer</button>
-      </div>
+      <textarea
+      id="answer"
+      type="text"
+      name="answer"
+      rows="4"
+      cols="50"
+      placeholder="answer"
+      [(ngModel)]="newAnswer.answer"
+    >
+    </textarea>
+    <br>
+    <button class="btn btn-outline-primary" name="addAnswerButton" (click)="createAnswer()">Submit Answer</button>
+     </form>
     </div>
-  </div>
-</form>
-
+</div>
