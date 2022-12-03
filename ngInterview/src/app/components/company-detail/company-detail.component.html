@@ -15,6 +15,10 @@
               <h5 class="card-title">{{selected?.name}}</h5>
               <p class="card-text">{{selected?.description}}</p>
               <p class="card-text">{{selected?.address?.street}}, {{selected?.address?.city}}, {{selected?.address?.state}}   {{selected?.address?.zip}}</p>
+              <button class="btn btn-primary"[routerLink]="['/editCompany', selected?.id]"> Edit this Company</button>
+              <div *ngIf="selected">
+                <button *ngIf="user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteCompany(selected.id)"> Delete this Company</button>
+              </div>
                 <!-- <p *ngIf="selected?.address?.street2"> {{selected?.address?.street2}}</p> -->
             </div>
           </div>
@@ -66,25 +70,3 @@
 
       </div>
     </div>
-
-    <div class="container justify-content-center">
-      <div class="row align-items-start">
-        <div class="col-3">
-
-        </div>
-        <div class="col-3">
-
-          <button class="btn btn-primary"[routerLink]="['/editCompany', selected?.id]"> Edit this Company</button>
-
-        </div>
-        <div class="col-3">
-
-          <div *ngIf="selected">
-            <button *ngIf="user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteCompany(selected.id)"> Delete this Company</button>
-          </div>
-
-        </div>
-        <div class="col-3">
-
-        </div>
-      </div>
