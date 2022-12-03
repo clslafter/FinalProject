@@ -6,6 +6,10 @@
   Cancel
 </button><br>
 
+<div class="form-group">
+  <input type="text" class="form-control search-field" placeholder="Keyword Search" [(ngModel)]="searchText" id="listSearch">
+</div>
+
 <div>
   <table class="table table-striped table-hover">
     <thead class="table-dark">
@@ -15,9 +19,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let company of companies | alphabetize:'name'">
-        <td *ngIf="company.enabled">{{ company.id }}</td>
-        <td *ngIf="company.enabled"><a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{ company.name }}</a></td>
+      <tr *ngFor="let company of companies | alphabetize:'name' | searchFilter: searchText">
+        <td *ngIf="company.enabled">{{company.id}}</td>
+        <td *ngIf="company.enabled"><img [src]="company.logoURL" style="width: 30px; height: 30px"> <a [routerLink]="['/companyDetail', company.id]">{{ company.name }}</a></td>
       </tr>
     </tbody>
   </table>
