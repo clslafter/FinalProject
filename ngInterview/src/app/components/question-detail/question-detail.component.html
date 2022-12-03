@@ -1,69 +1,34 @@
-<h5>Details for: {{ selected?.question }}</h5>
-<!-- Buttons for edit and delete next to question.
-  If the selected question's user is the same as the logged in user, the buttons show up -->
-<div class="row">
-  <div *ngIf="selected" class="col col-auto">
-  <button
-    *ngIf="user.id === selected?.user?.id || user.role === 'ADMIN'"
-    class="btn btn-danger"
-    (click)="deleteQuestion(selected.id)"
-  >
-    Delete this Question
-  </button>
-</div>
-<div class="col col-auto">
-<button
-class="btn btn-primary"
-  *ngIf="user.id === selected?.user?.id"
-  [routerLink]="['/editQuestion', selected?.id]"
->
-  Edit this Question
-</button>
-</div>
-</div>
-<br>
-
-  <p> <small> by
-<a [routerLink]="['/userProfile', selected?.user?.id]">{{ selected?.user?.username }}
-    <img
-      [src]="selected?.user?.avatarUrl"
-      alt="avatarPic"
-      style="width: 30px; height: 30px"
-  /></a>
-  on {{ selected?.dateCreated | date: "short" }}</small>
-</p>
-
-<!-- Add a date updated -->
-<!-- Can anyone add a company to a question, or just the user? -->
-<h5>Companies that have asked similar questions:</h5>
-
-<ul *ngFor="let company of selected!.companies | enabledCompany">
-  <!-- <ul *ngFor="let company of selected?.companies"> -->
-  <li>
-    <a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{
-      company.name
-    }}</a>
-    <br />
-    <a class="nav-link" [routerLink]="['/companyDetail', company.id]"
-      ><img
-        [src]="company.logoURL"
-        alt="companyPic"
-        style="width: 128px; height: 128px"
-      />
-    </a>
-    <br />
-    <button
-      class="btn btn-outline-danger"
-      (click)="unassociateQuestionWithCompany(company.id)"
-    >
-      Delete Company
-    </button>
-  </li>
-  <br />
-</ul>
-
-<!-- Associating Different Companies with Same question -->
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col col-2">
+      <h6>Companies: </h6>
+      <ul *ngFor="let company of selected!.companies | enabledCompany">
+        <!-- <ul *ngFor="let company of selected?.companies"> -->
+        <li>
+          <a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{
+            company.name
+          }}</a>
+          <br />
+          <a class="nav-link" [routerLink]="['/companyDetail', company.id]"
+            ><img
+              [src]="company.logoURL"
+              alt="companyPic"
+              style="width: 80px; height: 80px"
+            />
+          </a>
+          <br />
+          <button
+            class="btn btn-outline-danger"
+            (click)="unassociateQuestionWithCompany(company.id)"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .55rem;">
+            Delete Company
+          </button>
+        </li>
+        <br />
+      </ul>
+      <!-- Associating Different Companies with Same question -->
 <div>
+  <p>Add a Company</p>
   <form>
     <select
       id="addCompany"
@@ -80,221 +45,326 @@ class="btn btn-primary"
       </option>
     </select>
 
-    <button class="btn btn-secondary" (click)="associateQuestionWithCompany()">
+    <button class="btn btn-outline-secondary btn-sm" (click)="associateQuestionWithCompany()">
       Save
     </button>
   </form>
 </div>
 <br />
-
-<!-- Can anyone select new categories for a question, or just the user? -->
-<h5>Applicable Categories:</h5>
-<ul *ngFor="let category of selected?.categories">
-  <li>{{ category.name }}</li>
-</ul>
-<h5>Answers:</h5>
-<div *ngIf="!updateAnswer">
-  <div *ngFor="let answer of selected?.answers; let i = index ">
-    <ul *ngIf="answer.enabled">
-      <br />
-      <li >{{ answer.answer }}</li>
-      <div *ngIf="answer.ratings">
-        Rating: {{ determineRatingValue(answer) }}
-      </div>
-      <br />
-      <button class="btn btn-outline-primary" (click)="voteUp(answer)">
-        👍
-      </button>
-      <button class="btn btn-outline-danger" (click)="voteDown(answer)">
-        👎
-      </button>
-      <br />
-
-      <!-- <br /> -->
-      <!-- <div *ngIf="answer"> -->
+      One of three columns
+    </div>
+    <div class="col col-8 text-center">
+      <div class="row justify-content-center">
+        <div *ngIf="selected" class="col col-auto">
         <button
-          class="btn btn-outline-danger"
-          *ngIf="answer && user.id === answer?.user?.id || user.role === 'ADMIN'"
-          (click)="deleteAnswer(answer.id)"
+          *ngIf="user.id === selected?.user?.id || user.role === 'ADMIN'"
+          class="btn btn-danger"
+          (click)="deleteQuestion(selected.id)"
         >
-          Delete This Answer
+          Delete this Question
         </button>
-        <button
-        class="btn btn-outline-primary"
-        *ngIf="user.id === answer?.user?.id"
-        (click)="setUpdateAnswer(answer)"
+      </div>
+      <div class="col col-auto">
+      <button
+      class="btn btn-primary"
+        *ngIf="user.id === selected?.user?.id"
+        [routerLink]="['/editQuestion', selected?.id]"
       >
-        Edit Answer
+        Edit this Question
       </button>
-      <!-- </div> -->
-      <br />
-      <!-- <img [src]="answer.user?.avatarUrl" alt="" style="width:80px;height:80px;"> -->
-
-      <!-- <app-edit-answer *ngIf="updateAnswer && updateAnswer != null" [selectedAnswer]="answer" (returnToParent)="loadNewAnswer()"></app-edit-answer> -->
-
-      <ul><small> by
-        <a [routerLink]="['/userProfile', answer.user?.id]"
-          >{{ answer.user?.username }}
+      </div>
+      </div>
+      <br>
+     <h2 class="justify-content-center">{{ selected?.question }}</h2>
+     <p> <small> by
+      <a [routerLink]="['/userProfile', selected?.user?.id]">{{ selected?.user?.username }}
           <img
-            [src]="answer.user?.avatarUrl"
+            [src]="selected?.user?.avatarUrl"
             alt="avatarPic"
             style="width: 30px; height: 30px"
         /></a>
-        on
-        {{
-          answer.dateCreated | date: "short"
-        }}
-      </small>
-      </ul>
-    </ul>
+        on {{ selected?.dateCreated | date: "short" }}</small>
+      </p>
+      <h5>Answers:</h5>
+      <div *ngIf="!updateAnswer">
+        <div *ngFor="let answer of selected?.answers; let i = index ">
+      <div class="card" style="width: auto;"  *ngIf="answer.enabled">
+        <div class="card-header">
+          <!-- Featured -->
+          {{ answer.answer }}
 
-    <h3>Add answer comments here</h3>
-    <div *ngFor="let comment of answer.comments">
-      <div *ngIf="comment.enabled">
-        <p *ngIf="!updateAnswerComment">Comment: {{ comment.commentText }}</p>
-
-        <div *ngIf="updateAnswerComment">
-          <form>
-            <textarea
-              class="form-control"
-              id="commentText"
-              type="text"
-              name="commentText"
-              rows="3"
-              [(ngModel)]="updateAnswerComment.commentText"
-              >{{ updateAnswerComment.commentText }}</textarea
-            >
-            <input
-            class="btn btn-secondary"
-            type="submit"
-            name="cancelAnswerComment"
-            value="Cancel"
-            (click)="updateAnswerComment = null"
-          />
-
-            <input
-              class="btn btn-secondary"
-              type="submit"
-              name="updateAnswerComment"
-              value="Save"
-              (click)="answerCommentToUpdate(updateAnswerComment)"
-            />
+          <ul><small> by
+            <a [routerLink]="['/userProfile', answer.user?.id]"
+              >{{ answer.user?.username }}
+              <img
+                [src]="answer.user?.avatarUrl"
+                alt="avatarPic"
+                style="width: 30px; height: 30px"
+            /></a>
+            on
+            {{
+              answer.dateCreated | date: "short"
+            }}
+          </small>
+          </ul>
 
 
-          </form>
-        </div>
-
-        <p><small>
-          by
-          <a [routerLink]="['/userProfile', comment.user?.id]"
-            >{{ comment.user?.username }}
-            <img
-              [src]="comment.user?.avatarUrl"
-              alt="avatarPic"
-              style="width: 30px; height: 30px"
-          /></a>
-          on {{ comment.commentDate | date: 'short'}}
-        </small>
-        </p>
-
-        <br />
-
-        <!-- <br /> -->
-        <!-- <div *ngIf="comment"> -->
-          <button
-          class="btn btn-outline-danger"
-          *ngIf="comment && user.id === comment?.user?.id || user.role === 'ADMIN'"
-            (click)="deleteAnswerComment(comment.id)"
+          <div *ngIf="answer.ratings">
+              Rating: {{ determineRatingValue(answer) }}
+            </div>
+            <br />
+            <button class="btn btn-outline-primary" (click)="voteUp(answer)">
+              👍
+            </button>
+            <button class="btn btn-outline-danger" (click)="voteDown(answer)">
+              👎
+            </button>
+            <br />
+            <button
+            class="btn btn-outline-danger"
+            *ngIf="answer && user.id === answer?.user?.id || user.role === 'ADMIN'"
+            (click)="deleteAnswer(answer.id)"
           >
-            Delete This Comment
+            Delete This Answer
           </button>
-        <!-- </div> -->
-        <button
-        class="btn btn-outline-primary"
-        *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'"
-          (click)="setUpdateAnswerComment(comment)"
+          <button
+          class="btn btn-outline-primary"
+          *ngIf="user.id === answer?.user?.id"
+          (click)="setUpdateAnswer(answer)"
         >
-          Edit Comment
+          Edit Answer
         </button>
-
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
 
       </div>
     </div>
-    <button
-      class="btn btn-outline-primary"
-      (click)="setAddAnswerComment(answer); commentBoxDisplay[i] = true;"
-    >
-      add a comment
-    </button>
+  </div>
+      <h5>Answers:</h5>
+      <div *ngIf="!updateAnswer">
+        <div *ngFor="let answer of selected?.answers; let i = index ">
+          <ul *ngIf="answer.enabled">
+            <br />
+            <li >{{ answer.answer }}</li>
+            <div *ngIf="answer.ratings">
+              Rating: {{ determineRatingValue(answer) }}
+            </div>
+            <br />
+            <button class="btn btn-outline-primary" (click)="voteUp(answer)">
+              👍
+            </button>
+            <button class="btn btn-outline-danger" (click)="voteDown(answer)">
+              👎
+            </button>
+            <br />
 
-    <div id="addAnswerCommentFormDiv">
-      <app-answer-comment-form
-        *ngIf="commentBoxDisplay[i]"
-        [selectedAnswer]="answerForComment"
-        (returnToParent)="loadNewAnswer(); commentBoxDisplay[i] = false;"
-      >
-      </app-answer-comment-form>
-    </div>
+            <!-- <br /> -->
+            <!-- <div *ngIf="answer"> -->
+              <button
+                class="btn btn-outline-danger"
+                *ngIf="answer && user.id === answer?.user?.id || user.role === 'ADMIN'"
+                (click)="deleteAnswer(answer.id)"
+              >
+                Delete This Answer
+              </button>
+              <button
+              class="btn btn-outline-primary"
+              *ngIf="user.id === answer?.user?.id"
+              (click)="setUpdateAnswer(answer)"
+            >
+              Edit Answer
+            </button>
+            <!-- </div> -->
+            <br />
+            <!-- <img [src]="answer.user?.avatarUrl" alt="" style="width:80px;height:80px;"> -->
 
-    <div *ngIf="addAnswerComment">
-      <button
-        class="btn btn-outline-danger"
-        (click)="cancelAddAnswerComment(); commentBoxDisplay[i] = false;"
-      >
-        cancel
+            <!-- <app-edit-answer *ngIf="updateAnswer && updateAnswer != null" [selectedAnswer]="answer" (returnToParent)="loadNewAnswer()"></app-edit-answer> -->
+
+            <ul><small> by
+              <a [routerLink]="['/userProfile', answer.user?.id]"
+                >{{ answer.user?.username }}
+                <img
+                  [src]="answer.user?.avatarUrl"
+                  alt="avatarPic"
+                  style="width: 30px; height: 30px"
+              /></a>
+              on
+              {{
+                answer.dateCreated | date: "short"
+              }}
+            </small>
+            </ul>
+          </ul>
+
+          <h3>Add answer comments here</h3>
+          <div *ngFor="let comment of answer.comments">
+            <div *ngIf="comment.enabled">
+              <p *ngIf="!updateAnswerComment">Comment: {{ comment.commentText }}</p>
+
+              <div *ngIf="updateAnswerComment">
+                <form>
+                  <textarea
+                    class="form-control"
+                    id="commentText"
+                    type="text"
+                    name="commentText"
+                    rows="3"
+                    [(ngModel)]="updateAnswerComment.commentText"
+                    >{{ updateAnswerComment.commentText }}</textarea
+                  >
+                  <input
+                  class="btn btn-secondary"
+                  type="submit"
+                  name="cancelAnswerComment"
+                  value="Cancel"
+                  (click)="updateAnswerComment = null"
+                />
+
+                  <input
+                    class="btn btn-secondary"
+                    type="submit"
+                    name="updateAnswerComment"
+                    value="Save"
+                    (click)="answerCommentToUpdate(updateAnswerComment)"
+                  />
+
+
+                </form>
+              </div>
+
+              <p><small>
+                by
+                <a [routerLink]="['/userProfile', comment.user?.id]"
+                  >{{ comment.user?.username }}
+                  <img
+                    [src]="comment.user?.avatarUrl"
+                    alt="avatarPic"
+                    style="width: 30px; height: 30px"
+                /></a>
+                on {{ comment.commentDate | date: 'short'}}
+              </small>
+              </p>
+
+              <br />
+
+              <!-- <br /> -->
+              <!-- <div *ngIf="comment"> -->
+                <button
+                class="btn btn-outline-danger"
+                *ngIf="comment && user.id === comment?.user?.id || user.role === 'ADMIN'"
+                  (click)="deleteAnswerComment(comment.id)"
+                >
+                  Delete This Comment
+                </button>
+              <!-- </div> -->
+              <button
+              class="btn btn-outline-primary"
+              *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'"
+                (click)="setUpdateAnswerComment(comment)"
+              >
+                Edit Comment
+              </button>
+
+
+            </div>
+          </div>
+          <button
+            class="btn btn-outline-primary"
+            (click)="setAddAnswerComment(answer); commentBoxDisplay[i] = true;"
+          >
+            add a comment
+          </button>
+
+          <div id="addAnswerCommentFormDiv">
+            <app-answer-comment-form
+              *ngIf="commentBoxDisplay[i]"
+              [selectedAnswer]="answerForComment"
+              (returnToParent)="loadNewAnswer(); commentBoxDisplay[i] = false;"
+            >
+            </app-answer-comment-form>
+          </div>
+
+          <div *ngIf="addAnswerComment">
+            <button
+              class="btn btn-outline-danger"
+              (click)="cancelAddAnswerComment(); commentBoxDisplay[i] = false;"
+            >
+              cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="updateAnswer">
+        <form>
+          <textarea
+            class="form-control"
+            id="answer"
+            type="text"
+            name="answer"
+            rows="3"
+            [(ngModel)]="updateAnswer.answer"
+            >{{ updateAnswer.answer }}</textarea
+          >
+
+          <input
+          class="btn btn-secondary"
+          type="submit"
+          name="cancelAnswer"
+          value="Cancel"
+          (click)="updateAnswer = null"
+        />
+
+          <input
+            class="btn btn-secondary"
+            type="submit"
+            name="updateAnswer"
+            value="Save"
+            (click)="answerToUpdate(updateAnswer)"
+          />
+
+
+        </form>
+      </div>
+      <br><br>
+      <button *ngIf="!addAnswer" class="btn btn-outline-primary" (click)="setAddAnswer()">
+        add an answer
       </button>
+
+      <div id="addAnswerFormDiv">
+        <app-answer-form
+          *ngIf="addAnswer && addAnswer != null"
+          [selectedQuestion]="selected"
+          (returnToParent)="loadNewAnswer()"
+        >
+        </app-answer-form>
+      </div>
+      <div *ngIf="addAnswer">
+        <button class="btn btn-outline-danger" (click)="cancelAddAnswer()">
+          cancel
+        </button>
+      </div>
+
+
+
+    </div>
+    <div class="col col-2">
+      <h5>Categories:</h5>
+<ul *ngFor="let category of selected?.categories">
+  <li>{{ category.name }}</li>
+</ul>
     </div>
   </div>
-</div>
-
-<div *ngIf="updateAnswer">
-  <form>
-    <textarea
-      class="form-control"
-      id="answer"
-      type="text"
-      name="answer"
-      rows="3"
-      [(ngModel)]="updateAnswer.answer"
-      >{{ updateAnswer.answer }}</textarea
-    >
-
-    <input
-    class="btn btn-secondary"
-    type="submit"
-    name="cancelAnswer"
-    value="Cancel"
-    (click)="updateAnswer = null"
-  />
-
-    <input
-      class="btn btn-secondary"
-      type="submit"
-      name="updateAnswer"
-      value="Save"
-      (click)="answerToUpdate(updateAnswer)"
-    />
 
 
-  </form>
-</div>
-<br><br>
-<button *ngIf="!addAnswer" class="btn btn-outline-primary" (click)="setAddAnswer()">
-  add an answer
-</button>
-
-<div id="addAnswerFormDiv">
-  <app-answer-form
-    *ngIf="addAnswer && addAnswer != null"
-    [selectedQuestion]="selected"
-    (returnToParent)="loadNewAnswer()"
-  >
-  </app-answer-form>
-</div>
-<div *ngIf="addAnswer">
-  <button class="btn btn-outline-danger" (click)="cancelAddAnswer()">
-    cancel
-  </button>
-</div>
 
 
+
+
+
+
+<h5>Answers:</h5>
