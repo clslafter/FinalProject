@@ -30,7 +30,7 @@
     <tbody>
       <tr *ngFor="let question of questions | enabledQuestion | category: selectedCategory | searchFilter: searchText">
         <td>{{ question.id }}</td>
-        <td><a class="nav-link" [routerLink]="['/userProfile', question.user?.id]">{{ question.user?.username }}</a></td>
+        <td><img [src]="question.user.avatarUrl" style="width: 30px; height: 30px"><a [routerLink]="['/userProfile', question.user?.id]">{{ question.user?.username }}</a></td>
         <td><a class="nav-link" [routerLink]="['/questionDetail', question.id]">{{ question.question }}</a></td>
         <td>
           <button *ngIf="user.id === question.user?.id || user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteQuestion(question.id)">
