@@ -22,9 +22,12 @@
         <li class="nav-item" *ngIf="!loggedIn()">
           <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active">Register</a>
         </li>
-        <li class="nav-item" *ngIf="!loggedIn()">
-          <app-login></app-login>
-        </li>
+        <div class="d-flex flex-row-reverse">
+
+          <li class="nav-item" *ngIf="!loggedIn()">
+               <app-login></app-login>
+            </li>
+        </div>
         <li class="nav-item" *ngIf="loggedIn()">
           <a class="nav-link" [routerLink]="['/userAccount']" routerLinkActive="active">My Account</a>
         </li>
