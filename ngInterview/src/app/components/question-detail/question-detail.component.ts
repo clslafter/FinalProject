@@ -48,6 +48,18 @@ export class QuestionDetailComponent implements OnInit {
 
   }
 
+  answerCount () {
+    let sum = 0;
+    if (this.selected?.answers) {
+    this.selected.answers.forEach(answer => {
+    if(answer.enabled) {
+      sum++;
+    }
+     });
+  }
+  return sum;
+  }
+
   updateAnswer: Answer | null = null;
   addAnswer: boolean = false;
 

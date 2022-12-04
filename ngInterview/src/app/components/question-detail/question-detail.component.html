@@ -1,65 +1,74 @@
 <div class="container">
   <div class="row align-items-start">
     <div class="col col-2">
-      <h6>Companies:</h6>
-      <ul *ngFor="let company of selected!.companies | enabledCompany">
-        <!-- <ul *ngFor="let company of selected?.companies"> -->
-        <li>
-          <a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{
-            company.name
-          }}</a>
-          <br />
-          <a class="nav-link" [routerLink]="['/companyDetail', company.id]"
-            ><img
-              [src]="company.logoURL"
-              alt="companyPic"
-              style="width: 80px; height: 80px"
-            />
-          </a>
-          <br />
-          <button
-            class="btn btn-outline-danger"
-            (click)="unassociateQuestionWithCompany(company.id)"
-            style="
-              --bs-btn-padding-y: 0.25rem;
-              --bs-btn-padding-x: 0.5rem;
-              --bs-btn-font-size: 0.55rem;
-            "
-          >
-            Remove Company
-          </button>
-        </li>
-        <br />
-      </ul>
-      <!-- Associating Different Companies with Same question -->
-      <div>
-        <p>Add Company</p>
-        <form>
-          <select
-            id="addCompany"
-            class="form-select"
-            name="company.id"
-            [(ngModel)]="selectedCompanyID"
-          >
-            <option
-              name="company.name"
-              value="{{ company.id }}"
-              *ngFor="let company of companies | enabledCompany"
-            >
-              {{ company.name }}
-            </option>
-          </select>
-
-          <button
-            class="btn btn-outline-secondary btn-sm"
-            (click)="associateQuestionWithCompany()"
-          >
-            Add
-          </button>
-        </form>
+      <div class="card text-center">
+        <div class="card-body">
+          <h6 class="card-title">Companies:</h6>
+        </div>
       </div>
-      <br />
-      One of three columns
+      <hr />
+
+      <div *ngFor="let company of selected!.companies | enabledCompany">
+
+        <!-- Beginning of Company Cards inside company loop -->
+        <div class="card text-center">
+          <a class="nav-link" [routerLink]="['/companyDetail', company.id]"
+          > <img [src]="company.logoURL" class="card-img-top" alt="company.name Logo"> </a>
+          <div class="card-body">
+            <h5 class="card-title"><a class="nav-link" [routerLink]="['/companyDetail', company.id]">{{
+              company.name
+            }}</a></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"> <button
+              class="btn btn-outline-danger"
+              (click)="unassociateQuestionWithCompany(company.id)"
+              style="
+                --bs-btn-padding-y: 0.25rem;
+                --bs-btn-padding-x: 0.5rem;
+                --bs-btn-font-size: 0.55rem;
+              "
+            >
+              Remove Company
+            </button></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End of Company Cards inside Loop -->
+      <hr />
+      <!-- Beginning of Add Company Card -->
+      <div class="card text-center">
+        <div class="card-body">
+          <h6 class="card-title">Add Company</h6>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"> <form>
+            <select
+              id="addCompany"
+              class="form-select"
+              name="company.id"
+              [(ngModel)]="selectedCompanyID"
+            >
+              <option
+                name="company.name"
+                value="{{ company.id }}"
+                *ngFor="let company of companies | enabledCompany"
+              >
+                {{ company.name }}
+              </option>
+            </select>
+
+            <button
+              class="btn btn-outline-success btn-sm"
+              (click)="associateQuestionWithCompany()"
+            >
+              Add
+            </button>
+          </form></li>
+        </ul>
+      </div>
+<!-- End of Add Company Card -->
+
     </div>
     <!-- End of Left Column -->
     <div class="col col-8 text-center">
@@ -98,15 +107,25 @@
           on {{ selected?.dateCreated | date: "short" }}</small
         >
       </p>
-
+      <hr />
+      <h4>
+        <span class="badge bg-success"> {{ answerCount() }}</span> Answers
+      </h4>
+      <hr />
       <!-- Beginning of Answer Loop -->
       <div *ngFor="let answer of selected?.answers; let i = index">
         <!-- Beginning of Center Card -->
+
         <div class="card" style="width: auto" *ngIf="answer.enabled">
           <div class="card-header">
             <div *ngIf="!editAnswerBoxDisplay[i]">
               <!-- Featured -->
-              <h6> <u> Answer: {{answer.id}} </u> </h6>
+              <h6>
+                <u>
+                  Answered:
+                  <small>{{ answer.dateCreated | date: "short" }}</small>
+                </u>
+              </h6>
               <div *ngIf="answer.ratings">
                 Rating: {{ determineRatingValue(answer) }}
               </div>
@@ -114,7 +133,6 @@
 
               <ul>
                 <small>
-                  by
                   <a [routerLink]="['/userProfile', answer.user?.id]"
                     >{{ answer.user?.username }}
                     <img
@@ -122,11 +140,8 @@
                       alt="avatarPic"
                       style="width: 30px; height: 30px"
                   /></a>
-                  on
-                  {{ answer.dateCreated | date: "short" }}
                 </small>
               </ul>
-
 
               <br />
               <button class="btn btn-outline-primary" (click)="voteUp(answer)">
@@ -170,7 +185,7 @@
                 >
 
                 <input
-                  class="btn btn-secondary"
+                  class="btn btn-outline-danger"
                   type="submit"
                   name="cancelAnswer"
                   value="Cancel"
@@ -178,7 +193,7 @@
                 />
 
                 <input
-                  class="btn btn-secondary"
+                  class="btn btn-outline-success"
                   type="submit"
                   name="updateAnswer"
                   value="Save"
@@ -197,16 +212,20 @@
               <!-- Beginning of comment display -->
               <li class="list-group-item" *ngIf="comment.enabled">
                 <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-                <!-- Beginning of Accordion -->
-                  <ngb-panel title="Comment: {{comment.id}}">
+                  <!-- Beginning of Accordion -->
+                  <ngb-panel
+                    title="Comment:  {{ comment.commentDate | date: 'short' }}"
+                  >
                     <ng-template ngbPanelContent>
                       <p *ngIf="!editAnswerCommentBoxDisplay[j]">
-                        Comment: {{ comment.commentText }}
+                        {{ comment.commentText }}
                       </p>
 
                       <!-- Beginning of Edit Answer Comment Form -->
                       <div
-                        *ngIf="updateAnswerComment && editAnswerCommentBoxDisplay[j]"
+                        *ngIf="
+                          updateAnswerComment && editAnswerCommentBoxDisplay[j]
+                        "
                       >
                         <form>
                           <textarea
@@ -244,7 +263,6 @@
                       <!-- End of Edit Answer Comment Form -->
                       <p>
                         <small>
-                          by
                           <a [routerLink]="['/userProfile', comment.user?.id]"
                             >{{ comment.user?.username }}
                             <img
@@ -252,7 +270,6 @@
                               alt="avatarPic"
                               style="width: 30px; height: 30px"
                           /></a>
-                          on {{ comment.commentDate | date: "short" }}
                         </small>
                       </p>
                       <br />
@@ -268,7 +285,9 @@
                       </button>
                       <button
                         class="btn btn-outline-primary btn-sm"
-                        *ngIf="user.id === comment?.user?.id || user.role === 'ADMIN'"
+                        *ngIf="
+                          user.id === comment?.user?.id || user.role === 'ADMIN'
+                        "
                         (click)="
                           setUpdateAnswerComment(comment);
                           editAnswerCommentBoxDisplay[j] = true
@@ -283,9 +302,6 @@
               </li>
               <!-- End of Accordion -->
             </div>
-
-
-
 
             <!-- Beginning of Add Comments -->
             <li class="list-group-item">
@@ -332,7 +348,7 @@
       <!-- Beginning od Add Answer -->
       <button
         *ngIf="!addAnswer"
-        class="btn btn-outline-primary"
+        class="btn btn-primary"
         (click)="setAddAnswer()"
       >
         Add Answer
@@ -351,15 +367,20 @@
           Cancel New Answer
         </button>
       </div>
-      <br><br><br><br>
+      <br /><br /><br /><br />
       <!-- End of Add Answer -->
     </div>
     <!-- End of Center Column -->
     <div class="col col-2">
-      <h5>Categories:</h5>
-      <ul *ngFor="let category of selected?.categories">
-        <li>{{ category.name }}</li>
-      </ul>
+      <div class="card text-center">
+        <div class="card-body">
+          <h6 class="card-title">Categories:</h6>
+        </div>
+        <ul class="list-group list-group-flush" *ngFor="let category of selected?.categories">
+          <li class="list-group-item">{{ category.name }}</li>
+        </ul>
+      </div>
+
     </div>
     <!-- End of Right Column -->
   </div>
