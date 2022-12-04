@@ -78,7 +78,7 @@ export class CompanyDetailComponent implements OnInit {
     }
 
     deleteCompany(id: number){
-      if(confirm("Are you sure you want to delete your question?")){
+      if(confirm("Are you sure you want to delete this company?")){
       this.companyService.destroy(id).subscribe({
         next: (data: any) => {
           this.selected = null;
