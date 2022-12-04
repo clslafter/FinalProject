@@ -382,26 +382,26 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (1, 1, NULL, NULL, 'How do I start my apprenticeship?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (2, 2, NULL, NULL, 'Is Java \"pass by reference\" or \"pass by value\"?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (3, 3, NULL, NULL, 'Name and describe the four pillars of OOP', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (4, 4, NULL, NULL, 'Describe various data structures (stacks, queues, maps, linked list)', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (5, 5, NULL, NULL, 'why are you interested in this company?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (6, 6, NULL, NULL, 'what\'s a weakness of yours?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (7, 7, NULL, NULL, 'what questions do you have for the company?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (8, 8, NULL, NULL, 'What happens when you hit enter on your browser?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (9, 9, NULL, NULL, 'Define \"Referential Integrity\"', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (10, 10, NULL, NULL, 'What is encapsulation', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (11, 1, NULL, NULL, 'Explain the difference between Public and Private access modifiers', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (12, 2, NULL, NULL, 'What are Constructors in Java?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (13, 3, NULL, NULL, 'What are access modifiers in Java', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (14, 4, NULL, NULL, 'What is the difference between a local variable and an instance variable?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (15, 5, NULL, NULL, 'What is the difference between break and continue statements?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (16, 6, NULL, NULL, 'What is inheritance in Java', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (17, 7, NULL, NULL, 'Can you overrive a private or static method in Java?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (18, 8, NULL, NULL, 'Define Wrapper Classes in Java.', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (19, 9, NULL, NULL, 'What is the final keyword in Java?', 1);
-INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (20, 10, NULL, NULL, 'Explain ‘this’ keyword in Java.', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (1, 1, '2022-11-30 08:11:9', NULL, 'How do I start my apprenticeship?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (2, 2, '2022-11-30 08:11:9', NULL, 'Is Java \"pass by reference\" or \"pass by value\"?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (3, 3, '2022-11-30 08:11:9', NULL, 'Name and describe the four pillars of OOP', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (4, 4, '2022-11-30 08:11:9', NULL, 'Describe various data structures (stacks, queues, maps, linked list)', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (5, 5, '2022-11-30 08:11:9', NULL, 'why are you interested in this company?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (6, 6, '2022-11-30 08:11:9', NULL, 'what\'s a weakness of yours?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (7, 7, '2022-11-30 08:11:9', NULL, 'what questions do you have for the company?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (8, 8, '2022-11-30 08:11:9', NULL, 'What happens when you hit enter on your browser?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (9, 9, '2022-11-30 08:11:9', NULL, 'Define \"Referential Integrity\"', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (10, 10, '2022-11-30 08:11:9', NULL, 'What is encapsulation', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (11, 1, '2022-11-30 08:11:9', NULL, 'Explain the difference between Public and Private access modifiers', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (12, 2, '2022-11-30 08:11:9', NULL, 'What are Constructors in Java?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (13, 3, '2022-11-30 08:11:9', NULL, 'What are access modifiers in Java', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (14, 4, '2022-11-30 08:11:9', NULL, 'What is the difference between a local variable and an instance variable?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (15, 5, '2022-11-30 08:11:9', NULL, 'What is the difference between break and continue statements?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (16, 6, '2022-11-30 08:11:9', NULL, 'What is inheritance in Java', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (17, 7, '2022-11-30 08:11:9', NULL, 'Can you overrive a private or static method in Java?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (18, 8, '2022-11-30 08:11:9', NULL, 'Define Wrapper Classes in Java.', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (19, 9, '2022-11-30 08:11:9', NULL, 'What is the final keyword in Java?', 1);
+INSERT INTO `question` (`id`, `user_id`, `date_created`, `date_updated`, `question`, `enabled`) VALUES (20, 10, '2022-11-30 08:11:9', NULL, 'Explain ‘this’ keyword in Java.', 1);
 
 COMMIT;
 
@@ -429,6 +429,7 @@ INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (1, 'Construction', 1);
 INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (2, 'Manufacturing', 1);
 INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (3, 'Electrical Engineering', 1);
 INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (4, 'Utilities', 1);
+INSERT INTO `industry` (`id`, `name`, `enabled`) VALUES (5, 'Programming', 1);
 
 COMMIT;
 
@@ -482,6 +483,7 @@ INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (3, 5);
 INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (4, 5);
 INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (2, 8);
 INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (3, 7);
+INSERT INTO `company_has_question` (`company_id`, `question_id`) VALUES (2, 3);
 
 COMMIT;
 
@@ -523,6 +525,8 @@ INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (1, 1);
 INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (2, 2);
 INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (3, 3);
 INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (4, 3);
+INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (5, 4);
+INSERT INTO `industry_has_company` (`industry_id`, `company_id`) VALUES (1, 4);
 
 COMMIT;
 
@@ -566,8 +570,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `answer_comment` (`id`, `comment_date`, `comment_text`, `user_id`, `answer_id`, `in_reply_to_id`, `enabled`) VALUES (1, NULL, 'thanks!', 1, 1, 1, 1);
+INSERT INTO `answer_comment` (`id`, `comment_date`, `comment_text`, `user_id`, `answer_id`, `in_reply_to_id`, `enabled`) VALUES (1, '2022-12-03 18:25:16', 'thanks!', 1, 1, 1, 1);
 INSERT INTO `answer_comment` (`id`, `comment_date`, `comment_text`, `user_id`, `answer_id`, `in_reply_to_id`, `enabled`) VALUES (2, '2022-12-03 18:25:16', 'Close but not quite.', 8, 5, 2, 1);
+INSERT INTO `answer_comment` (`id`, `comment_date`, `comment_text`, `user_id`, `answer_id`, `in_reply_to_id`, `enabled`) VALUES (3, '2022-12-03 23:40:16', 'Almost', 9, 5, 2, 1);
 
 COMMIT;
 

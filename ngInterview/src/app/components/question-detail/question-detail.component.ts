@@ -239,13 +239,13 @@ answerCommentToUpdate(comment: AnswerComment){
               console.error(
                 'QuestionDetailComponent.ngOnInit: question not found'
               );
-              this.router.navigateByUrl('questionNotFound'); //doesn't exist
+              this.router.navigateByUrl('questionNotFound');
             },
           });
       },
       error: (fail) => {
         console.error('Answer: not found');
-        this.router.navigateByUrl('AnswerNotFound'); //doesn't exist
+        this.router.navigateByUrl('AnswerNotFound');
       },
     });
   }
