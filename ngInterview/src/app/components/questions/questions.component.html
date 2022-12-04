@@ -7,7 +7,7 @@
   Cancel
 </button><br>
 
-<label for="categories">Filter:</label>
+<label for="categories">Filter by category:</label>
 <br>
 <select name="categories" id="categories" [(ngModel)]="selectedCategory">
   <option type="text" >All</option>
@@ -22,17 +22,19 @@
   <table class="table table-striped table-hover">
     <thead class="table-dark">
       <tr>
-        <th>Id</th>
+        <!-- <th>Id</th> -->
         <th>User</th>
         <th>Question</th>
+        <th>Date Created</th>
         <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let question of questions | enabledQuestion | category: selectedCategory | searchFilter: searchText">
-        <td>{{ question.id }}</td>
+        <!-- <td>{{ question.id }}</td> -->
         <td><img [src]="question.user.avatarUrl" style="width: 30px; height: 30px"><a [routerLink]="['/userProfile', question.user?.id]">{{ question.user?.username }}</a></td>
         <td><a class="nav-link" [routerLink]="['/questionDetail', question.id]">{{ question.question }}</a></td>
+        <td>{{ question.dateCreated | date:'shortDate'}}</td>
         <td>
           <button *ngIf="user.id === question.user?.id || user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteQuestion(question.id)">
             X
