@@ -4,6 +4,8 @@ import { Company } from 'src/app/models/company';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { CompanyService } from 'src/app/services/company.service';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-company-detail',
@@ -12,10 +14,17 @@ import { CompanyService } from 'src/app/services/company.service';
 })
 export class CompanyDetailComponent implements OnInit {
 
+  trustedUrl: SafeUrl | undefined;
   selected: Company | null = null;
   user: User = new User();
+  unformattedStreet: string = " ";
+  formattedStreet: string = " ";
+  baseUrl: string = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCL6kYp65wigxnJ7xKbT6HdEW6Yxo1apDc&q="
 
-  constructor(private companyService: CompanyService,private route: ActivatedRoute, private router: Router, private auth: AuthService) { }
+
+  constructor(private companyService: CompanyService,private route: ActivatedRoute,
+                      private router: Router, private auth: AuthService,
+                      private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.loadPage();
@@ -33,6 +42,14 @@ export class CompanyDetailComponent implements OnInit {
         this.companyService.show(companyId).subscribe({
           next: (data: any) => {
             this.selected = data;
+            this.unformattedStreet = data.address.street;
+            console.log(this.unformattedStreet)
+            let re = /\ /gi;
+            if (this.formattedStreet && this.selected?.address?.city){
+            this.formattedStreet = this.unformattedStreet.replace(re, "+");
+            console.log(this.formattedStreet);
+            this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl + this.formattedStreet + this.selected?.address.city + this.selected?.address?.state + this.selected?.address.zip)
+            }
           },
           error: (fail: any) => {
             console.error('CompanyDetailComponent.ngOnInit: company not found');
@@ -76,9 +93,5 @@ export class CompanyDetailComponent implements OnInit {
       });
     }
     }
-
 }
-
-
-
 

@@ -15,10 +15,10 @@
               <h5 class="card-title">{{selected?.name}}</h5>
               <p class="card-text">{{selected?.description}}</p>
               <p class="card-text">{{selected?.address?.street}}, {{selected?.address?.city}}, {{selected?.address?.state}}   {{selected?.address?.zip}}</p>
-              <button class="btn btn-primary"[routerLink]="['/editCompany', selected?.id]">Edit</button>
-              <div *ngIf="selected">
-                <button *ngIf="user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteCompany(selected.id)">Delete</button>
-              </div>
+
+
+                <button *ngIf="selected && user.role === 'ADMIN'" class="btn btn-danger" (click)="deleteCompany(selected.id)">Delete</button>
+                <button class="btn btn-primary"[routerLink]="['/editCompany', selected?.id]">Edit</button>
                 <!-- <p *ngIf="selected?.address?.street2"> {{selected?.address?.street2}}</p> -->
             </div>
           </div>
@@ -50,10 +50,7 @@
             </ul>
           </div>
         </div>
-
-      </div>
-      <div class="col-5">
-
+<br>
         <div class="card" style="width: auto;">
           <div class="card-body">
             <h5 class="card-title">Questions for this company:</h5>
@@ -66,7 +63,25 @@
         </div>
 
       </div>
+      <div class="col-5">
+
+        <iframe
+        width="400"
+        height="400"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        [src]="trustedUrl">
+      </iframe>
+
+      </div>
       <div class="col-1">
 
       </div>
     </div>
+  </div>
+
+
+
+
