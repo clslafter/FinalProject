@@ -1,65 +1,137 @@
 <div id="userData" *ngIf="!editUser">
+  <H2>User Information For {{ user.firstName }}</H2>
 
-<H2>User Information For {{user.firstName}}</H2>
-
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img [src]="user.avatarUrl" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Name: {{user.firstName}} {{user.lastName}}</h5>
-        <p class="card-text">Username: {{user.username}}</p>
-        <p class="card-text">Email: {{user.email}}</p>
-        <p class="card-text">About you: {{user.aboutMe}}</p>
-        <p class="card-text">{{user.address?.street}} {{user.address?.city}}, {{user.address?.state}}  {{user.address?.zip}}</p>
-        <p class="card-text"><small class="text-muted">Member since: {{user.dateCreated}}</small></p>
+  <div class="card mb-3" style="max-width: 540px">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img [src]="user.avatarUrl" class="img-fluid rounded-start" alt="..." />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">
+            Name: {{ user.firstName }} {{ user.lastName }}
+          </h5>
+          <p class="card-text">Username: {{ user.username }}</p>
+          <p class="card-text">Email: {{ user.email }}</p>
+          <p class="card-text">About you: {{ user.aboutMe }}</p>
+          <p class="card-text">
+            {{ user.address?.street }} {{ user.address?.city }},
+            {{ user.address?.state }} {{ user.address?.zip }}
+          </p>
+          <p class="card-text">
+            <small class="text-muted"
+              >Member since: {{ user.dateCreated }}</small
+            >
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-  <button class="btn btn-danger" (click)="deleteUserAccount()">Delete Account</button>
+  <button class="btn btn-danger" (click)="deleteUserAccount()">
+    Delete Account
+  </button>
   <button class="btn btn-primary" (click)="setEditUser()">Edit Account</button>
-  <a *ngIf="isAdmin" routerLink="/admin"><button class="btn btn-outline-success" > Admin Settings</button></a>
+  <a *ngIf="isAdmin" routerLink="/admin"
+    ><button class="btn btn-outline-success">Admin Settings</button></a
+  >
 </div>
-
 
 <div id="userDataEdit" *ngIf="editUser">
-
-  <div class="card" style="width: auto; max-width: 500px;">
+  <div class="card" style="width: auto; max-width: 500px">
     <div class="card-body">
       <h5 class="card-title">Edit Account:</h5>
       <form>
         <label for="firstName">First Name </label>
-        <input class="form-control" type="text" name="firstName" [(ngModel)]="editUser.firstName" /> <br />
+        <input
+          class="form-control"
+          type="text"
+          name="firstName"
+          [(ngModel)]="editUser.firstName"
+        />
+        <br />
         <label for="lastName">Last Name </label>
-        <input class="form-control" type="text" name="lastName" [(ngModel)]="editUser.lastName" /> <br />
+        <input
+          class="form-control"
+          type="text"
+          name="lastName"
+          [(ngModel)]="editUser.lastName"
+        />
+        <br />
         <label for="email">Email Address </label>
-        <input class="form-control" type="text" name="email" [(ngModel)]="editUser.email" /> <br />
+        <input
+          class="form-control"
+          type="text"
+          name="email"
+          [(ngModel)]="editUser.email"
+        />
+        <br />
         <label for="aboutMe">About Me </label>
-        <input  class="form-control" type="text" name="aboutMe" [(ngModel)]="editUser.aboutMe" /> <br />
+        <input
+          class="form-control"
+          type="text"
+          name="aboutMe"
+          [(ngModel)]="editUser.aboutMe"
+        />
+        <br />
 
         <label for="avatarUrl">Avatar URL</label>
-        <input class="form-control" type="text" name="avatarUrl" [(ngModel)]="editUser.avatarUrl" /> <br />
+        <input
+          class="form-control"
+          type="text"
+          name="avatarUrl"
+          [(ngModel)]="editUser.avatarUrl"
+        />
+        <br />
 
         <div *ngIf="editUser.address">
-        <label for="street">Street Address</label>
-        <input class="form-control"  type="text" name="street" [(ngModel)]="editUser.address.street" /> <br />
-        <label for="street2">Unit</label>
-        <input class="form-control" type="text" name="street2" [(ngModel)]="editUser.address.street2" /> <br />
-        <label for="city">City</label>
-        <input class="form-control" type="text" name="city" [(ngModel)]="editUser.address.city" /> <br />
-        <label for="state">State</label>
-        <input class="form-control" type="text" name="state" [(ngModel)]="editUser.address.state" /> <br />
-        <label for="zip">Zip Code</label>
-        <input class="form-control" type="text" name="zip" [(ngModel)]="editUser.address.zip" /> <br />
+          <label for="street">Street Address</label>
+          <input
+            class="form-control"
+            type="text"
+            name="street"
+            [(ngModel)]="editUser.address.street"
+          />
+          <br />
+          <label for="street2">Unit</label>
+          <input
+            class="form-control"
+            type="text"
+            name="street2"
+            [(ngModel)]="editUser.address.street2"
+          />
+          <br />
+          <label for="city">City</label>
+          <input
+            class="form-control"
+            type="text"
+            name="city"
+            [(ngModel)]="editUser.address.city"
+          />
+          <br />
+          <label for="state">State</label>
+          <input
+            class="form-control"
+            type="text"
+            name="state"
+            [(ngModel)]="editUser.address.state"
+          />
+          <br />
+          <label for="zip">Zip Code</label>
+          <input
+            class="form-control"
+            type="text"
+            name="zip"
+            [(ngModel)]="editUser.address.zip"
+          />
+          <br />
         </div>
 
         <button class="btn btn-danger" (click)="editUser = null">Cancel</button>
         <!-- <button class="btn btn-success" (click)="updateUser(editUser.id, editUser)">Save</button> -->
-        <button class="btn btn-success" (click)="updateUser(editUser)">Save</button>
+        <button class="btn btn-success" (click)="updateUser(editUser)">
+          Save
+        </button>
       </form>
     </div>
   </div>
@@ -91,9 +163,9 @@
     <input class="form-control" type="text" name="zip" [(ngModel)]="editUser.address.zip" /> <br />
     </div> -->
 
-    <!-- <button class="btn btn-danger" (click)="editUser = null">Cancel</button> -->
-    <!-- <button class="btn btn-success" (click)="updateUser(editUser.id, editUser)">Save</button> -->
-    <!-- <button class="btn btn-success" (click)="updateUser(editUser)">Save</button>
+  <!-- <button class="btn btn-danger" (click)="editUser = null">Cancel</button> -->
+  <!-- <button class="btn btn-success" (click)="updateUser(editUser.id, editUser)">Save</button> -->
+  <!-- <button class="btn btn-success" (click)="updateUser(editUser)">Save</button>
   </form> -->
 
   <!-- Create Address form with field addAddress.
@@ -102,103 +174,78 @@
     Then set editUser.address to newAddress.
     Then call updateUser(editUser)
 Will need address service for a create and a show method. Create address controller in Boot project -->
-
 </div>
 
 <div *ngIf="editUser && !editUser.address">
-  <form>
-    <div class="form-group">
-      <div class="row">
-        <div class="col-auto">
-          <label for="street"><b>Street Address: </b></label>
-        </div>
-        <div class="col col-auto">
-          <input
+  <div class="card" style="width: auto; max-width: 500px">
+    <div class="card-body">
+      <form>
+        <label for="street">Street Address:</label>
+        <input
           class="form-control"
-            id="street"
-            type="text"
-            name="street"
-            placeholder="Street Address"
-            [(ngModel)]="addAddress.street"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="row">
-        <div class="col-auto">
-          <label for="street2"><b>Unit:  </b></label>
-        </div>
-        <div class="col col-auto">
-           <input
-           class="form-control"
-            id="street2"
-            type="text"
-            name="street2"
-            placeholder="Unit"
-            [(ngModel)]="addAddress.street2"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="row">
-        <div class="col-auto">
-          <label for="city"><b>City:  </b></label>
-        </div>
-        <div class="col col-auto">
-           <input
-           class="form-control"
-            id="city"
-            type="text"
-            name="city"
-            placeholder="City"
-            [(ngModel)]="addAddress.city"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="row">
-        <div class="col-auto">
-          <label for="state"><b>State:  </b></label>
-        </div>
-        <div class="col col-auto">
-           <input
-           class="form-control"
-            id="state"
-            type="text"
-            name="state"
-            placeholder="State"
-            [(ngModel)]="addAddress.state"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="row">
-        <div class="col-auto">
-          <label for="zip"><b>Zip Code:  </b></label>
-        </div>
-        <div class="col col-auto">
-           <input
-           class="form-control"
-            id="zip"
-            type="text"
-            name="zip"
-            placeholder="Zip Code"
-            [(ngModel)]="addAddress.zip"
-          />
-        </div>
-      </div>
-    </div>
-    <input
-      class="btn btn-primary"
-      type="submit"
-      name="addAddress"
-      value="Add Address"
-      (click)="addressAdd(addAddress)"
-    />
-  </form>
-</div>
+          id="street"
+          type="text"
+          name="street"
+          placeholder="Street Address"
+          [(ngModel)]="addAddress.street"
+        />
+        <br />
 
+        <label for="street2"><b>Unit: </b></label>
+
+        <input
+          class="form-control"
+          id="street2"
+          type="text"
+          name="street2"
+          placeholder="Unit"
+          [(ngModel)]="addAddress.street2"
+        />
+        <br />
+        <label for="city"><b>City: </b></label>
+
+        <input
+          class="form-control"
+          id="city"
+          type="text"
+          name="city"
+          placeholder="City"
+          [(ngModel)]="addAddress.city"
+        />
+        <br />
+
+        <label for="state"><b>State: </b></label>
+
+        <input
+          class="form-control"
+          id="state"
+          type="text"
+          name="state"
+          placeholder="State"
+          [(ngModel)]="addAddress.state"
+        />
+        <br />
+
+        <label for="zip"><b>Zip Code: </b></label>
+
+        <input
+          class="form-control"
+          id="zip"
+          type="text"
+          name="zip"
+          placeholder="Zip Code"
+          [(ngModel)]="addAddress.zip"
+        />
+        <br />
+        <input
+          class="btn btn-primary"
+          type="submit"
+          name="addAddress"
+          value="Add Address"
+          (click)="addressAdd(addAddress)"
+        />
+      </form>
+      <br />
+    </div>
+  </div>
+</div>
