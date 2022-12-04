@@ -32,6 +32,7 @@ import { EditCompanyComponent } from './components/edit-company/edit-company.com
 import { EnabledCompanyPipe } from './pipes/enabled-company.pipe';
 import { AnswerCommentFormComponent } from './components/answer-comment-form/answer-comment-form.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { SafePipe } from './pipes/safe.pipe';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     EditCompanyComponent,
     EnabledCompanyPipe,
     AnswerCommentFormComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    SafePipe
   ],
   imports: [
     BrowserModule,
