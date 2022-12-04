@@ -1,24 +1,19 @@
 <nav class="navbar navbar-expand-lg bg-light">
+
   <div class="container-fluid">
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"  (click)="isCollapsed = !isCollapsed"
     [attr.aria-expanded]="!isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01" [ngbCollapse]='isCollapsed'>
+
       <!-- <a class="navbar-brand" href="#">Home</a> -->
       <a class="navbar-brand" *ngIf="!loggedIn()" [routerLink]="['/welcome']">Welcome</a>
       <a class="navbar-brand" *ngIf="loggedIn()" [routerLink]="['/questions']">Questions</a>
       <a class="navbar-brand" *ngIf="loggedIn()" [routerLink]="['/companies']">Companies</a>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/about']">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/contact']">Contact</a>
-        </li>
-        <li class="nav-item" *ngIf="loggedIn()">
-          <a class="nav-link" [routerLink]="['/todo']">Todos</a>
-        </li> -->
+
+      <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" *ngIf="!loggedIn()">
           <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active">Register</a>
         </li>
@@ -31,17 +26,26 @@
         <li class="nav-item" *ngIf="loggedIn()">
           <a class="nav-link" [routerLink]="['/userAccount']" routerLinkActive="active">My Account</a>
         </li>
-        <!-- <li class="nav-item" *ngIf="loggedIn()">
-          <a class="nav-link" [routerLink]="['/questions']" routerLinkActive="active">Questions</a>
-        </li> -->
         <li class="nav-item" *ngIf="loggedIn()">
           <app-logout></app-logout>
         </li>
-      </ul>
-      <!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
+      </ul> -->
+
+      <a *ngIf="!loggedIn()" class="nav-link" [routerLink]="['/register']" routerLinkActive="active">Register</a>
+
+      <div class="nav-right ms-auto">
+          <div class="nav-item" *ngIf="!loggedIn()">
+               <app-login></app-login>
+          </div>
+
+        <div>
+          <a *ngIf="loggedIn()" class="nav-link" [routerLink]="['/userAccount']" routerLinkActive="active">My Account</a>
+        </div>
+        <div class="nav-item" *ngIf="loggedIn()">
+          <app-logout></app-logout>
+        </div>
+        </div>
+      </div>
     </div>
-  </div>
+
 </nav>
