@@ -348,8 +348,8 @@ START TRANSACTION;
 USE `interviewquestiondb`;
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (1, '4245 Smoky Hill ', NULL, 'Denver', 'Colorado', '80015', 1);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (2, '90212 East West Drive', NULL, 'Pueblo', 'Colorado', '80001', 1);
-INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (3, '8923 Blood Meridian ave ', NULL, 'Westminister', 'Colorado', '72569', 1);
-INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (4, '98321 Old Man & the Sea Drive', NULL, 'Thornton', 'Colorado', '78321', 1);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (3, '200 E Colfax Ave', NULL, 'Denver', 'Colorado', '80203', 1);
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (4, '1340 Pennsylvania St', NULL, 'Denver', 'Colorado', '80203', 1);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (5, 'Bowsers Castle Drive', NULL, 'Koopa Kingdom', 'Antarctica', '65234', 1);
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip`, `enabled`) VALUES (6, 'Mushroom Kingdom Drive', NULL, 'Toad Town', 'Mushroom Kingdom', '66352', 1);
 
@@ -411,8 +411,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (1, 2, 1, 'You can start a tech school or get hired by an electrical company', NULL, NULL, 1);
-INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (2, 3, 7, 'Prior to your interview make sure you do some research on the company you are applying to and write down some questions you have for them. It shows your interest in the job and company.', NULL, NULL, 1);
+INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (1, 2, 1, 'You can start a tech school or get hired by an electrical company', '2022-12-01 14:30:9', NULL, 1);
+INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (2, 3, 7, 'Prior to your interview make sure you do some research on the company you are applying to and write down some questions you have for them. It shows your interest in the job and company.', '2022-12-01 14:30:9', NULL, 1);
 INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (3, 5, 3, 'Abstraction, Polymorphism, Inheritance, Encapsulation. APIE is a good way to remember it by.', '2022-12-02 16:00:00', NULL, 1);
 INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (4, 2, 3, 'Pillar one is kidnapping Princess Peach and Pillar two is defeating Mario. Their is no third or fourth pillar', '2022-12-02 16:30:12', NULL, 1);
 INSERT INTO `answer` (`id`, `user_id`, `question_id`, `answer`, `date_created`, `date_updated`, `enabled`) VALUES (5, 6, 3, 'All I know is that APIE\'s letters stand for something but I\'m not quite sure :/', '2022-12-01 14:30:9', NULL, 1);
