@@ -1,152 +1,132 @@
-<h1>Add Company</h1>
-<form>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
-        <label for="name"><b>Name: </b></label>
-      </div>
-      <div class="error">{{errorMessage}}</div>
-      <div class="col col-auto">
-        <input
+<div class="row justify-content-evenly">
+<div class="card" style="width: auto; max-width: 700px">
+  <div class="card-body">
+    <h5 class="card-title">Add Company</h5>
+
+    <form>
+      <label for="name"><b>Name: </b></label>
+
+      <div class="error">{{ errorMessage }}</div>
+
+      <input
         class="form-control"
-          id="name"
-          type="text"
-          name="name"
-          placeholder="name"
-          [(ngModel)]="newCompany.name"
-        />
-      </div>
-    </div>
-  </div>
-  <!-- Add checkboxes for list of industries to select -->
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
+        id="name"
+        type="text"
+        name="name"
+        placeholder="name"
+        [(ngModel)]="newCompany.name"
+      />
+      <br />
+      <!-- Add checkboxes for list of industries to select -->
+      <div class="form-group">
         <label for="industries"><b>Industries: </b></label>
-      </div>
-      <div class="col col-auto" *ngFor="let industry of industries; let i = index" [attr.data-index]="i">
-        <label for="{{industry.name}}">{{industry.name}}</label><br>
-        <input
-          type="checkbox"
-          name="{{industry.name}}"
-          [(ngModel)]="selectedIndustries[i]"
-        />
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
-        <label for="description">Description </label>
-      </div>
-      <div class="col col-auto">
-        <input class="form-control" type="text" name="description" [(ngModel)]="newCompany.description" />
-        <br />
-      </div>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
-        <label for="logoURL">Logo URL</label>
+        <div class="row">
+          <div
+            class="col col-auto"
+            *ngFor="let industry of industries; let i = index"
+            [attr.data-index]="i"
+          >
+            <label for="{{ industry.name }}">{{ industry.name }}</label
+            ><br />
+            <input
+              type="checkbox"
+              name="{{ industry.name }}"
+              [(ngModel)]="selectedIndustries[i]"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col col-auto">
-        <input class="form-control" type="text" name="logoURL" [(ngModel)]="newCompany.logoURL" /> <br />
-        <br />
-      </div>
-    </div>
-  </div>
+      <br />
 
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
-        <label for="street"><b>Street Address: </b></label>
-      </div>
-      <div class="col col-auto">
-        <input
+      <label for="description">Description </label>
+
+      <input
         class="form-control"
-          id="street"
-          type="text"
-          name="street"
-          placeholder="Street Address"
-          [(ngModel)]="addAddress.street"
-        />
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
-        <label for="street2"><b>Unit:  </b></label>
-      </div>
-      <div class="col col-auto">
-         <input
-         class="form-control"
-          id="street2"
-          type="text"
-          name="street2"
-          placeholder="Unit"
-          [(ngModel)]="addAddress.street2"
-        />
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
-        <label for="city"><b>City:  </b></label>
-      </div>
-      <div class="col col-auto">
-         <input
-         class="form-control"
-          id="city"
-          type="text"
-          name="city"
-          placeholder="City"
-          [(ngModel)]="addAddress.city"
-        />
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
-        <label for="state"><b>State:  </b></label>
-      </div>
-      <div class="col col-auto">
-         <input
-         class="form-control"
-          id="state"
-          type="text"
-          name="state"
-          placeholder="State"
-          [(ngModel)]="addAddress.state"
-        />
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-auto">
-        <label for="zip"><b>Zip Code:  </b></label>
-      </div>
-      <div class="col col-auto">
-         <input
-         class="form-control"
-          id="zip"
-          type="text"
-          name="zip"
-          placeholder="Zip Code"
-          [(ngModel)]="addAddress.zip"
-        />
-      </div>
-    </div>
-  </div>
+        type="text"
+        name="description"
+        [(ngModel)]="newCompany.description"
+      />
+      <br />
 
-  <button class="btn btn-primary"name="addCompanyButton" (click)="createCompany()">
-    Submit
-  </button>
-</form>
+      <label for="logoURL">Logo URL</label>
+
+      <input
+        class="form-control"
+        type="text"
+        name="logoURL"
+        [(ngModel)]="newCompany.logoURL"
+      />
+      <br />
 
 
+      <label for="street"><b>Street Address: </b></label>
+
+      <input
+        class="form-control"
+        id="street"
+        type="text"
+        name="street"
+        placeholder="Street Address"
+        [(ngModel)]="addAddress.street"
+      />
+<br>
+      <label for="street2"><b>Unit: </b></label>
+
+      <input
+        class="form-control"
+        id="street2"
+        type="text"
+        name="street2"
+        placeholder="Unit"
+        [(ngModel)]="addAddress.street2"
+      />
+<br>
+      <label for="city"><b>City: </b></label>
+
+      <input
+        class="form-control"
+        id="city"
+        type="text"
+        name="city"
+        placeholder="City"
+        [(ngModel)]="addAddress.city"
+      />
+      <br />
+
+      <label for="state"><b>State: </b></label>
+
+      <input
+        class="form-control"
+        id="state"
+        type="text"
+        name="state"
+        placeholder="State"
+        [(ngModel)]="addAddress.state"
+      />
+      <br />
+      <label for="zip"><b>Zip Code: </b></label>
+
+      <input
+        class="form-control"
+        id="zip"
+        type="text"
+        name="zip"
+        placeholder="Zip Code"
+        [(ngModel)]="addAddress.zip"
+      />
+      <br />
+
+      <button
+        class="btn btn-primary"
+        name="addCompanyButton"
+        (click)="createCompany()"
+      >
+        Submit
+      </button>
+    </form>
+
+
+  </div>
+</div>
+</div>
