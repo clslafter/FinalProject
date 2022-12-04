@@ -64,7 +64,7 @@ This web based application provides users access to job interview questions and 
       * remove user submitted content (questions, answers, comments, companies, etc.)
 
 Welcome Page:
-![Welcome page](image link here)
+![Welcome page](https://github.com/clslafter/FinalProject/blob/main/Welcome%20page%20screen%20shot.png)
 
 Sample Question Detail Page:
 ![Sample question detail page](image link here)
@@ -80,7 +80,7 @@ After the foundation was created, we alternated between splitting the work and s
 Once we had a minimum viable product in terms of functionality, we implemented a few stretch goals, then designed and styled the individual pages using CSS and Bootstrap.
 
 ER DIAGRAM:
-![Photo of ER diagram](image link here)
+![Photo of ER diagram](https://github.com/clslafter/FinalProject/blob/main/DB/interviewquestion.png)
 
 ## Technologies and Methodologies Used:
 ### Technologies/Frameworks:

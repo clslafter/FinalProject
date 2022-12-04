@@ -20,8 +20,8 @@
   </div>
 </div>
 
-  <button class="btn btn-primary" (click)="setEditUser()">Edit Account</button>
   <button class="btn btn-danger" (click)="deleteUserAccount()">Delete Account</button>
+  <button class="btn btn-primary" (click)="setEditUser()">Edit Account</button>
   <a *ngIf="isAdmin" routerLink="/admin"><button class="btn btn-outline-success" > Admin Settings</button></a>
 </div>
 
@@ -31,7 +31,6 @@
   <div class="card" style="width: auto; max-width: 500px;">
     <div class="card-body">
       <h5 class="card-title">Edit Account:</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
       <form>
         <label for="firstName">First Name </label>
         <input class="form-control" type="text" name="firstName" [(ngModel)]="editUser.firstName" /> <br />
