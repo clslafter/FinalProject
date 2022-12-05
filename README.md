@@ -17,17 +17,15 @@ This web based application provides users access to job interview questions and 
       * create an account
 
   * Once logged in, the user can:
-      * create a question
-      * update their questions
-      * read answers
-      * create an answer
+      * create, update and delete a question
+      * create, update and delete an answer
+      * create, update and delete a comment
+      * create and update a company
+      * read answers and comments from other users
       * update their account and profile details
       * up/down vote answers
-      * comment on answers
       * logout to complete their session
       * delete their account
-      ADD MORE HERE
-
 
   * Question information includes:
       * description
@@ -44,17 +42,20 @@ This web based application provides users access to job interview questions and 
       * date last edited
       * the current rating
 
+  * Answer Comments:
+      * the comment text
+      * the username of the creator
+      * date created
+
   * Company information includes:
-      * name
-      * description
+      * name, description, address, industry
       * logo
-      * address
       * a list of questions
+      * Google map displaying its location
 
 
   * A user's personal profile page shows account details including:
-      * about me
-      * date created
+      * personal details such as about me and date created
       * questions created, with links
       * answers created, with links
 
@@ -66,8 +67,8 @@ This web based application provides users access to job interview questions and 
 Welcome Page:
 ![Welcome page](https://github.com/clslafter/FinalProject/blob/main/Welcome%20page%20screen%20shot.png)
 
-Sample Question Detail Page:
-![Sample question detail page](image link here)
+Sample Question List Page:
+![Sample question list page](https://github.com/clslafter/FinalProject/blob/main/Question%20list%20screen%20shot.png)
 
 ## Implementation
 
@@ -92,7 +93,7 @@ ER DIAGRAM:
   * SQL
   * MySQL Workbench
   * Atom
-  * Bootstrap
+  * Bootstrap/BootstrapNG
   * Unix Terminal
   * Spring
   * Spring Boot
@@ -122,11 +123,10 @@ ER DIAGRAM:
   *
 
 ## How to Download and Run
-Go to:
-// link to an EC2 deployment
+Go to: http://54.201.192.182:8080/InterviewQuestions/
 
 Guests can create their own account or log in as:
-* username: // give user name
-* password: // give password
+* username: user
+* password: visitor
 
 Have a look around!
