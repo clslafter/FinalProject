@@ -1,3 +1,8 @@
+<br><br>
+<div class="row justify-content-evenly">
+  <div class="card" style="width: auto;">
+    <div class="card-body">
+
 <div *ngIf="editCompany && editCompany.address">
   <form>
 
@@ -14,6 +19,7 @@
             name="name"
             [(ngModel)]="editCompany.name"
           />
+          <br>
         </div>
       </div>
     </div>
@@ -21,7 +27,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-auto">
-          <label for="description">Description </label>
+          <label for="description"><b>Description: </b> </label>
         </div>
         <div class="col col-auto">
           <input class="form-control" type="text" name="description" [(ngModel)]="editCompany.description" />
@@ -33,11 +39,11 @@
     <div class="form-group">
       <div class="row">
         <div class="col-auto">
-          <label for="logoURL">Logo URL</label>
+          <label for="logoURL"><b>Logo URL: </b></label>
         </div>
         <div class="col col-auto">
           <input  class="form-control" type="text" name="logoURL" [(ngModel)]="editCompany.logoURL" /> <br />
-          <br />
+
         </div>
       </div>
     </div>
@@ -57,6 +63,7 @@
         </div>
       </div>
     </div>
+    <br>
 
 
     <div class="form-group">
@@ -72,6 +79,7 @@
             name="street"
             [(ngModel)]="editCompany.address.street"
           />
+          <br>
         </div>
       </div>
     </div>
@@ -88,6 +96,7 @@
             name="street2"
             [(ngModel)]="editCompany.address.street2"
           />
+          <br>
         </div>
       </div>
     </div>
@@ -104,6 +113,7 @@
             name="city"
             [(ngModel)]="editCompany.address.city"
           />
+          <br>
         </div>
       </div>
     </div>
@@ -120,6 +130,7 @@
             name="state"
             [(ngModel)]="editCompany.address.state"
           />
+          <br>
         </div>
       </div>
     </div>
@@ -136,27 +147,32 @@
             name="zip"
             [(ngModel)]="editCompany.address.zip"
           />
+          <br>
         </div>
       </div>
     </div>
+    <div class = "text-center">
 
+      <input
+      class="btn btn-outline-danger"
+      type="submit"
+      value="Cancel"
+      (click)="backToCompanyDetail()"/>
 
-    <input
-    class="btn btn-outline-danger"
-    type="submit"
-    value="Cancel"
-    (click)="backToCompanyDetail()"/>
+      <input
+      class="btn btn-primary"
+      type="submit"
+      name="editCompany"
+      value="Save"
+      (click)="updateCompany()"
+      />
 
-  <input
-  class="btn btn-secondary"
-  type="submit"
-  name="editCompany"
-  value="Save"
-  (click)="updateCompany()"
-/>
-
+    </div>
 </form>
 
+</div>
+</div>
+</div>
 </div>
 
 
