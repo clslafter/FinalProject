@@ -536,7 +536,6 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `interviewquestiondb`;
-INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 2, 1, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 3, 1, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 6, 1, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 4, 1, NULL);
@@ -545,8 +544,6 @@ INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VA
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 8, 1, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (1, 9, 1, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 1, 0, NULL);
-INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 2, 0, NULL);
-INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 3, 0, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 4, 0, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 5, 0, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 6, 0, NULL);
@@ -557,7 +554,6 @@ INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VA
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 11, 0, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (4, 12, 0, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (3, 1, 1, NULL);
-INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (3, 2, 1, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (3, 3, 1, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (3, 4, 1, NULL);
 INSERT INTO `answer_rating` (`answer_id`, `user_id`, `upvote`, `rating_date`) VALUES (5, 1, 0, NULL);
