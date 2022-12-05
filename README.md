@@ -76,7 +76,7 @@ We began this project by putting our ideas into a Trello board in the form of di
 
 Following that, we created and populated the database tables and relationships through MySql Workbench and built the foundation of the project with Beans using test-driven development.
 
-After the foundation was created, we alternated between splitting the work and swarming to develop the CRUD for the Question, Answer, User, and Answer Comment entities.  To prevent overwhelming the site with user-created check box options, entities such as Question Category and Company Industry have limited CRUD from the user's perspective.  
+After the foundation was created, we mostly split the work to develop the CRUD for the Question, Answer, User, Answer Comment, and Company entities.  To prevent overwhelming the site with user-created check box options, entities such as Question Category and Company Industry have limited CRUD from the user's perspective.  
 
 Once we had a minimum viable product in terms of functionality, we implemented a few stretch goals, then designed and styled the individual pages using CSS and Bootstrap.
 
@@ -98,6 +98,7 @@ ER DIAGRAM:
   * Spring
   * Spring Boot
   * Spring Data
+  * Postman
   * JPA
   * Spring Tools Suite
   * Visual Studio Code
@@ -115,12 +116,23 @@ ER DIAGRAM:
   * git collaboration
 
 ## Lessons Learned:
-
-//Fill this out
+  * Ranking Tracker required use of nested ternaries  
+  * To edit Many-to-Many relationships with checkboxes required an array of all of one entity and another boolean array of the same size.
+  * Authenication, making use of AntMatchers to control access to REST endpoints
+  * Use comments at beginning and end of complicated code sections
+  * Documentation is your friend - but be sure it's the correct version
+  * Composite Key tables require an ID entity that serves as composite key entity's ID
+  * Join and inverse join tables - the ID of the current entity is the join table, the other entity is the inverse join
+  * JsonIgnoreProperties can have multiple properties
+  * Have an end design/layout in mind in the beginning
 
 ## Stretch Goals Implemented:
-  * // Add stretch goals here
-  *
+  * Answer Comment
+  * Companies have industries
+  * Keyword searches on questions and companies
+  * Companies and Users have avatars/logos
+  * Google map integration
+
 
 ## How to Download and Run
 Go to: http://54.201.192.182:8080/InterviewQuestions/
