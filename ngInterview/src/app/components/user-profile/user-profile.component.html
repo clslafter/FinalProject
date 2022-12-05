@@ -14,7 +14,7 @@
             <div class="card-body">
               <h5 class="card-title">{{selectedUser?.username}}</h5>
               <p class="card-text">{{selectedUser?.aboutMe}}</p>
-              <p class="card-text"><small class="text-muted">Member since: {{selectedUser?.dateCreated}}</small></p>
+              <p class="card-text"><small class="text-muted">Member since: {{selectedUser?.dateCreated | date: 'mediumDate'}}</small></p>
             </div>
           </div>
         </div>
