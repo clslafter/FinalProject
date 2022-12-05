@@ -27,9 +27,10 @@
       <div id="addAnswerFormDiv" >
         <app-add-question *ngIf="addQuestion" (reloadParent)="questionAdded()"> </app-add-question>
       </div>
+      <div class="text-center">
       <button class="btn btn-outline-danger" *ngIf="addQuestion" name="backToQuestionList" (click)="addQuestion = false">
         Cancel
-      </button><br>
+      </button></div><br>
     </div>
     <div class="col-4">
 
@@ -46,7 +47,7 @@
 
 
 <div class="form-group">
-  <input type="text" class="form-control search-field" placeholder="Keyword Search" [(ngModel)]="searchText" id="listSearch">
+  <input style="width: 300px;" type="text" class="form-control search-field" placeholder="Keyword Search" [(ngModel)]="searchText" id="listSearch">
 </div>
 
 <div>
