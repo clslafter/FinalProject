@@ -1,13 +1,16 @@
-<button *ngIf="!addCompany" class="btn btn-outline-primary" (click)="setAddCompany()">Add Company</button>
+<button *ngIf="!addCompany" class="btn btn-primary" (click)="setAddCompany()">Add Company</button>
 <div id="addAnswerFormDiv" >
   <app-add-company *ngIf="addCompany" (reloadParent)="companyAdded()"> </app-add-company>
 </div>
-<button class="btn btn-outline-danger" *ngIf="addCompany" name="backToCompanyList" (click)="addCompany = false">
+<div class="text-center">
+<button class="btn btn-danger" *ngIf="addCompany" name="backToCompanyList" (click)="addCompany = false">
   Cancel
-</button><br>
+</button>
+</div>
+<br>
 
 <div class="form-group">
-  <input type="text" class="form-control search-field" placeholder="Keyword Search" [(ngModel)]="searchText" id="listSearch">
+  <input style="width: 300px;" type="text" class="form-control search-field" placeholder="Keyword Search" [(ngModel)]="searchText" id="listSearch">
 </div>
 
 <div>
